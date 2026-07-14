@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nirbhay Katiyar — err0rgod</title>
+<meta name="description" content="Nirbhay Katiyar (err0rgod) — Software Developer, Security Researcher, Cloud-Native Backend Engineer.">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg-alt: #0f141d;
+    --panel: #121821;
+    --border: #1f2937;
+    --fg: #c9d1d9;
+    --muted: #6b7688;
+    --accent: #00ff9c;
+    --accent-dim: #0a8a5c;
+    --red: #ff5370;
+    --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--mono);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; transition: opacity .15s; }
+  a:hover { opacity: .7; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(10,14,20,.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  nav .brand { color: var(--accent); font-weight: 600; }
+  nav .brand::before { content: "$ "; color: var(--muted); }
+  nav .links a { color: var(--muted); margin-left: 20px; font-size: 14px; }
+  nav .links a:hover { color: var(--accent); }
+
+  /* hero */
+  header { padding: 90px 0 70px; border-bottom: 1px solid var(--border); }
+  .prompt { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  .prompt .blink { animation: blink 1.1s step-end infinite; color: var(--accent); }
+  @keyframes blink { 50% { opacity: 0; } }
+  h1 { font-size: 42px; letter-spacing: -1px; margin-bottom: 8px; color: #fff; }
+  h1 .tag { color: var(--accent); }
+  .role { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
+  .quote {
+    border-left: 2px solid var(--accent-dim);
+    padding-left: 14px; color: var(--muted);
+    font-style: italic; font-size: 14px; margin-top: 24px;
+  }
+
+  /* sections */
+  section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+  h2 { font-size: 22px; color: #fff; margin-bottom: 28px; }
+  h2::before { content: "// "; color: var(--accent); }
+
+  /* project grid */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color .15s, transform .15s;
+  }
+  .card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+  .card h3 { color: var(--accent); font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .card p { color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+  .card .meta { margin-top: 14px; display: flex; gap: 10px; align-items: center; font-size: 12px; }
+  .lang { color: var(--fg); }
+  .lang::before { content: "● "; color: var(--accent); }
+  .stars { color: var(--muted); }
+
+  /* about */
+  .about p { color: var(--fg); margin-bottom: 14px; }
+  .about .muted { color: var(--muted); }
+
+  /* contact */
+  .links-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .link-item {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 6px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .link-item:hover { border-color: var(--accent-dim); }
+  .link-item .k { color: var(--muted); font-size: 13px; }
+  .link-item .v { color: var(--accent); font-size: 13px; }
+
+  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 32px; }
+    .grid { grid-template-columns: 1fr; }
+    nav .links a:not(.brand) { margin-left: 14px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a href="#" class="brand">err0rgod</a>
+    <div class="links">
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="prompt">~/nirbhay $ whoami<span class="blink">_</span></div>
+    <h1>Nirbhay Katiyar <span class="tag">&lt;err0rgod/&gt;</span></h1>
+    <p class="role">Software Developer · Security Researcher · Cloud-Native Backend Engineer</p>
+    <p class="quote">"Code is read many more times than it is written."</p>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <h2>about</h2>
+    <p>I build production backends and security tooling. My work spans distributed systems, authentication, and offensive/defensive security research.</p>
+    <p class="muted">Currently building <a href="https://flexurl.app" target="_blank" rel="noopener">FlexURL</a> — a production URL management platform on a PostgreSQL/Redis hybrid stack with Snowflake IDs. I write about security and systems on <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>projects</h2>
+    <div class="grid">
+
+      <a class="card" href="projects.html#flexurl">
+        <h3>FlexURL</h3>
+        <p>Production URL management platform — FastAPI, PostgreSQL, Redis, analytics.</p>
+        <div class="meta"><span class="lang">Python / FastAPI</span></div>
+      </a>
+
+      <a class="card" href="projects.html#zerodaily">
+        <h3>ZeroDaily</h3>
+        <p>Serverless AI-powered cybersecurity newsletter platform on AWS Lambda.</p>
+        <div class="meta"><span class="lang">Python / Flask</span></div>
+      </a>
+
+      <a class="card" href="projects.html#tokenly">
+        <h3>tokenly</h3>
+        <p>Hybrid stateless authentication library on PyPI using Argon2 hashing.</p>
+        <div class="meta"><span class="lang">Python</span></div>
+      </a>
+
+      <a class="card" href="projects.html#revlimiter">
+        <h3>revlimiter</h3>
+        <p>Python rate limiting library — token bucket and leaky bucket algorithms.</p>
+        <div class="meta"><span class="lang">Python</span></div>
+      </a>
+
+      <a class="card" href="projects.html#nascar">
+        <h3>nascar</h3>
+        <p>Multi-threaded network scanner with OS fingerprinting via Scapy.</p>
+        <div class="meta"><span class="lang">Python</span></div>
+      </a>
+
+      <a class="card" href="projects.html#midanalyzer">
+        <h3>MidAnalyzer</h3>
+        <p>Browser-based PCAP analyzer — no upload limits, runs local via Docker.</p>
+        <div class="meta"><span class="lang">Python / Streamlit</span></div>
+      </a>
+
+      <a class="card" href="projects.html#blackwidow">
+        <h3>blackwidow</h3>
+        <p>HID reverse-shell research device on ATtiny85. Security research.</p>
+        <div class="meta"><span class="lang">C++</span><span class="stars">★ 2</span></div>
+      </a>
+
+    </div>
+    <p style="text-align:center;margin-top:20px"><a href="projects.html" style="color:var(--muted);font-size:14px">view all with full details →</a></p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>contact</h2>
+    <div class="links-list">
+      <a class="link-item" href="https://github.com/err0rgod" target="_blank" rel="noopener"><span class="k">github</span><span class="v">@err0rgod</span></a>
+      <a class="link-item" href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener"><span class="k">linkedin</span><span class="v">nirbhay-katiyar</span></a>
+      <a class="link-item" href="https://x.com/err0rgod" target="_blank" rel="noopener"><span class="k">x / twitter</span><span class="v">@err0rgod</span></a>
+      <a class="link-item" href="https://err0rgod.medium.com" target="_blank" rel="noopener"><span class="k">medium</span><span class="v">err0rgod</span></a>
+      <a class="link-item" href="https://instagram.com/err0rgod" target="_blank" rel="noopener"><span class="k">instagram</span><span class="v">err0rgod</span></a>
+      <a class="link-item" href="mailto:nirbhay@flexurl.app"><span class="k">email</span><span class="v">nirbhay@flexurl.app</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>built with plain HTML/CSS · no frameworks · <span style="color:var(--accent)">err0rgod</span></p>
+  </div>
+</footer>
+</body>
+</html>

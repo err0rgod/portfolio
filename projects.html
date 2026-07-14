@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — err0rgod</title>
+<meta name="description" content="Detailed breakdown of Nirbhay Katiyar's projects — security tooling, backend libraries, and cloud-native platforms.">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --panel: #121821;
+    --border: #1f2937;
+    --fg: #c9d1d9;
+    --muted: #6b7688;
+    --accent: #00ff9c;
+    --accent-dim: #0a8a5c;
+    --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: var(--mono); line-height: 1.6; font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; transition: opacity .15s; }
+  a:hover { opacity: .7; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(10,14,20,.85); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  nav .brand { color: var(--accent); font-weight: 600; }
+  nav .brand::before { content: "$ "; color: var(--muted); }
+  nav .links a { color: var(--muted); margin-left: 20px; font-size: 14px; }
+  nav .links a:hover, nav .links a.active { color: var(--accent); }
+
+  header { padding: 70px 0 40px; border-bottom: 1px solid var(--border); }
+  .prompt { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  .prompt .blink { animation: blink 1.1s step-end infinite; color: var(--accent); }
+  @keyframes blink { 50% { opacity: 0; } }
+  h1 { font-size: 34px; letter-spacing: -1px; color: #fff; }
+  h1::before { content: "// "; color: var(--accent); }
+  header p { color: var(--muted); margin-top: 10px; }
+
+  /* index / toc */
+  .toc { padding: 30px 0; border-bottom: 1px solid var(--border); }
+  .toc-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .toc-grid a {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 6px; padding: 6px 12px; font-size: 13px; color: var(--fg);
+  }
+  .toc-grid a:hover { border-color: var(--accent-dim); color: var(--accent); }
+
+  /* project block */
+  .project { padding: 50px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 70px; }
+  .project .head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .project h2 { font-size: 24px; color: #fff; }
+  .project h2 .hash { color: var(--accent); }
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge {
+    font-size: 11px; padding: 3px 9px; border-radius: 20px;
+    border: 1px solid var(--border); color: var(--muted);
+  }
+  .badge.lang { color: var(--accent); border-color: var(--accent-dim); }
+  .tagline { color: var(--muted); font-style: italic; margin: 12px 0 20px; }
+  .project p.desc { margin-bottom: 18px; }
+
+  .sub { color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin: 20px 0 10px; }
+  ul.feat { list-style: none; }
+  ul.feat li { padding: 4px 0 4px 20px; position: relative; color: var(--fg); font-size: 14px; }
+  ul.feat li::before { content: ">"; position: absolute; left: 0; color: var(--accent-dim); }
+  ul.feat li b { color: #fff; }
+
+  pre {
+    background: #060a0f; border: 1px solid var(--border); border-radius: 6px;
+    padding: 14px 16px; overflow-x: auto; font-size: 13px; margin: 10px 0;
+    color: var(--fg);
+  }
+  pre .c { color: var(--muted); }
+  pre .k { color: var(--accent); }
+
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 4px; }
+  .chip { font-size: 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 3px 9px; color: var(--fg); }
+
+  .actions { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+  .btn {
+    border: 1px solid var(--accent-dim); border-radius: 6px; padding: 8px 16px;
+    font-size: 13px; color: var(--accent);
+  }
+  .btn:hover { background: var(--accent-dim); color: #fff; opacity: 1; }
+  .btn.ghost { border-color: var(--border); color: var(--muted); }
+  .btn.ghost:hover { border-color: var(--accent-dim); color: var(--accent); background: none; }
+
+  .warn {
+    margin-top: 18px; border-left: 2px solid #ff5370; padding: 8px 14px;
+    background: rgba(255,83,112,.06); color: #ffa8b6; font-size: 13px;
+  }
+
+  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 26px; }
+    .project h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand">err0rgod</a>
+    <div class="links">
+      <a href="index.html#about">about</a>
+      <a href="projects.html" class="active">projects</a>
+      <a href="index.html#contact">contact</a>
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="prompt">~/nirbhay $ cat projects/*<span class="blink">_</span></div>
+    <h1>projects</h1>
+    <p>Security tooling, backend libraries, and cloud-native platforms. Full breakdown below.</p>
+  </div>
+</header>
+
+<div class="toc">
+  <div class="wrap">
+    <div class="toc-grid">
+      <a href="#flexurl">flexurl</a>
+      <a href="#zerodaily">zerodaily</a>
+      <a href="#tokenly">tokenly</a>
+      <a href="#revlimiter">revlimiter</a>
+      <a href="#nascar">nascar</a>
+      <a href="#midanalyzer">midanalyzer</a>
+      <a href="#blackwidow">blackwidow</a>
+    </div>
+  </div>
+</div>
+
+<!-- FLEXURL -->
+<div class="project" id="flexurl">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> FlexURL</h2>
+      <div class="badges">
+        <span class="badge lang">Python / FastAPI</span>
+        <span class="badge lang">PostgreSQL</span>
+        <span class="badge lang">Redis</span>
+        <span class="badge lang">Nginx</span>
+        <span class="badge lang">Tailwind CSS</span>
+      </div>
+    </div>
+    <p class="desc">Production URL management platform with analytics, Snowflake IDs, and a PostgreSQL/Redis hybrid backend. Full-stack ownership from frontend to deployment infrastructure.</p>
+    <div class="details">
+      <div class="col">
+        <h3>features</h3>
+        <ul>
+          <li>URL shortening with custom aliases and Snowflake ID generation</li>
+          <li>Click analytics and tracking dashboard</li>
+          <li>Redis caching layer for low-latency redirects</li>
+          <li>Nginx reverse proxy configuration</li>
+          <li>Performance-audited architecture</li>
+          <li>Support ticket system</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>architecture</h3>
+        <ul>
+          <li>FastAPI backend with PostgreSQL persistence</li>
+          <li>Redis for caching hot URLs and rate limiting</li>
+          <li>Tailwind CSS frontend served separately</li>
+          <li>Nginx as reverse proxy in production</li>
+          <li>Shell-scripted deployment automation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="links-row">
+      <a href="https://flexurl.app" target="_blank" rel="noopener">live site</a>
+      <a href="https://github.com/err0rgod/urlshortener" target="_blank" rel="noopener">source</a>
+    </div>
+  </div>
+</div>
+
+<!-- ZERODAILY -->
+<div class="project" id="zerodaily">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> ZeroDaily</h2>
+      <div class="badges">
+        <span class="badge lang">Python / Flask</span>
+        <span class="badge">AWS Lambda</span>
+        <span class="badge">MIT</span>
+      </div>
+    </div>
+    <p class="tagline">"A high-performance, serverless, automated cybersecurity newsletter platform."</p>
+    <p class="desc">ZeroDaily aggregates, summarizes, and broadcasts threat intelligence, CVEs, and security news. LLM-powered parsers digest raw security feeds and produce readable summaries, delivered as a daily newsletter — running fully serverless on AWS Lambda.</p>
+
+    <div class="sub">Stack</div>
+    <div class="stack">
+      <span class="chip">Flask + Jinja2</span>
+      <span class="chip">SQLAlchemy / SQLite</span>
+      <span class="chip">AWS Lambda (WSGI)</span>
+      <span class="chip">Groq / OpenAI</span>
+      <span class="chip">Resend API</span>
+      <span class="chip">GitHub Actions</span>
+      <span class="chip">Docker</span>
+    </div>
+
+    <div class="sub">Highlights</div>
+    <ul class="feat">
+      <li><b>Automated ingestion</b> — feed parsers use LLMs to summarize technical CVEs into digestible copy</li>
+      <li><b>Double opt-in</b> — cryptographic verify + unique unsubscribe tokens per subscriber</li>
+      <li><b>Telemetry</b> — tracks page views, reading session duration, average read time</li>
+      <li><b>Daily Hack Roasts</b> — witty recap of recent breaches</li>
+      <li><b>SEO-ready</b> — auto-updating sitemap, RSS feed, robots.txt</li>
+      <li><b>CI/CD</b> — syntax + dependency checks on every push</li>
+    </ul>
+
+    <div class="actions">
+      <a class="btn" href="https://zerodaily.in" target="_blank" rel="noopener">live ↗</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/zeroday" target="_blank" rel="noopener">source</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/bot0" target="_blank" rel="noopener">scraper repo</a>
+    </div>
+  </div>
+</div>
+
+<!-- TOKENLY -->
+<div class="project" id="tokenly">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> Tokenly-Auth</h2>
+      <div class="badges">
+        <span class="badge lang">Python</span>
+        <span class="badge">PyPI</span>
+        <span class="badge">MIT</span>
+      </div>
+    </div>
+    <p class="tagline">"Database-agnostic authentication &amp; session management for Python."</p>
+    <p class="desc">A lightweight security toolkit that centralizes password hashing, JWT issuance, and refresh-token rotation — while leaving every database and model decision to you. No lock-in to SQLModel, Pydantic, or any specific driver.</p>
+
+    <div class="sub">Stack</div>
+    <div class="stack">
+      <span class="chip">Argon2id</span>
+      <span class="chip">JWT</span>
+      <span class="chip">pytest</span>
+    </div>
+
+    <div class="sub">Highlights</div>
+    <ul class="feat">
+      <li><b>Crypto utils</b> — Argon2id hashing/verification with brute-force protection</li>
+      <li><b>Token management</b> — JWT create + verify, access &amp; refresh pairs</li>
+      <li><b>Session utils</b> — secure refresh-token hashing for rotation strategies</li>
+      <li><b>Middleware</b> — storage-agnostic rate limiting + <code>@require_auth</code> decorator</li>
+      <li><b>Validation</b> — structural checks for usernames and passwords</li>
+    </ul>
+
+    <div class="sub">Install</div>
+    <pre><span class="c"># PyPI</span>
+pip install tokenly-auth</pre>
+    <pre><span class="c"># issue a token pair</span>
+handler = <span class="k">TokenHandler</span>(SECRET_KEY=...)
+tokens = handler.<span class="k">createJwt</span>(sub=user_id)
+
+<span class="c"># protect a route</span>
+<span class="k">@require_auth</span>(jwt_handler=handler)
+def dashboard(): ...</pre>
+
+    <div class="actions">
+      <a class="btn" href="https://pypi.org/project/tokenly-auth/" target="_blank" rel="noopener">PyPI ↗</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/tokenly" target="_blank" rel="noopener">source</a>
+    </div>
+  </div>
+</div>
+
+<!-- REVLIMITER -->
+<div class="project" id="revlimiter">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> revlimiter</h2>
+      <div class="badges">
+        <span class="badge lang">Python</span>
+        <span class="badge">PyPI</span>
+        <span class="badge">zero-deps</span>
+        <span class="badge">MIT</span>
+      </div>
+    </div>
+    <p class="tagline">"Implement rate limiting in your app, seamlessly."</p>
+    <p class="desc">A type-hinted, zero-dependency rate-limiting library implementing the two classic algorithms. Use a single bucket directly, or the manager layer to juggle many clients at once.</p>
+
+    <div class="sub">Highlights</div>
+    <ul class="feat">
+      <li><b>Token bucket</b> — allows short bursts while holding a steady average rate</li>
+      <li><b>Leaky bucket</b> — drains requests at a fixed rate to smooth bursts</li>
+      <li><b>RateLimitManager</b> — per-client buckets across algorithms</li>
+      <li><b>Type-safe</b> — fully hinted, no external dependencies</li>
+    </ul>
+
+    <div class="sub">Install &amp; use</div>
+    <pre>pip install revlimiter</pre>
+    <pre>mgr = <span class="k">RateLimitManager</span>(algorithm=<span class="k">"token-bucket"</span>, capacity=10, refill_rate=2.0)
+bucket = mgr.<span class="k">get_bucket</span>(client_id)
+if bucket.<span class="k">allow_request</span>():
+    handle()</pre>
+
+    <div class="actions">
+      <a class="btn" href="https://pypi.org/project/revlimiter/" target="_blank" rel="noopener">PyPI ↗</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/revlimiter" target="_blank" rel="noopener">source</a>
+    </div>
+  </div>
+</div>
+
+<!-- NASCAR -->
+<div class="project" id="nascar">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> nascar</h2>
+      <div class="badges">
+        <span class="badge lang">Python / Scapy</span>
+        <span class="badge">MIT</span>
+      </div>
+    </div>
+    <p class="tagline">"If it's on the network, it's on the radar."</p>
+    <p class="desc">A high-performance, multi-threaded network scanner. Detects live hosts on LAN and WAN using ARP for local subnets and ICMP for external ranges, then fingerprints the OS via TTL analysis.</p>
+
+    <div class="sub">Highlights</div>
+    <ul class="feat">
+      <li><b>Dual-mode detection</b> — ARP for local subnets, ICMP for external networks</li>
+      <li><b>OS fingerprinting</b> — infers Windows vs Linux/Unix from TTL</li>
+      <li><b>Target flexibility</b> — CIDR ranges, single IPs, or domain names</li>
+      <li><b>Multi-threaded</b> — concurrent scanning for speed</li>
+      <li><b>Port discovery</b> — optional common-port scan for service mapping</li>
+    </ul>
+
+    <div class="sub">Usage</div>
+    <pre><span class="c"># local subnet, 50 threads, verbose</span>
+python start.py -n 192.168.1.0/24 -t 50 -v
+
+<span class="c"># external range with port discovery</span>
+python start.py -n 10.10.10.0/24 -lm -t 20</pre>
+
+    <div class="warn">⚠ Requires root/admin (raw sockets). Strictly for authorized auditing and education — scan only networks you own or have permission to test.</div>
+
+    <div class="actions">
+      <a class="btn ghost" href="https://github.com/err0rgod/nascar" target="_blank" rel="noopener">source</a>
+    </div>
+  </div>
+</div>
+
+<!-- MIDANALYZER -->
+<div class="project" id="midanalyzer">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> MidAnalyzer</h2>
+      <div class="badges">
+        <span class="badge lang">Python / Streamlit</span>
+        <span class="badge">Docker</span>
+        <span class="badge">MIT</span>
+      </div>
+    </div>
+    <p class="tagline">"Browser-based PCAP analysis, without the hosted-tool limits."</p>
+    <p class="desc">A Streamlit tool for analyzing PCAP capture files in the browser, extracting structured network insights. Built to sidestep file-size caps and slow processing of hosted analyzers — run it locally via Docker with no size limits. Part of the broader "Midstalker" MITM framework.</p>
+
+    <div class="sub">Highlights</div>
+    <ul class="feat">
+      <li><b>Interactive UI</b> — Streamlit front-end for quick inspection</li>
+      <li><b>No size limits</b> — local Docker processing beats hosted caps</li>
+      <li><b>Minimal setup</b> — clean, modular codebase, few dependencies</li>
+    </ul>
+
+    <div class="sub">Run locally (Docker)</div>
+    <pre>git clone https://github.com/err0rgod/midstalker_analyzer.git
+cd midstalker_analyzer
+docker build -t midstalker .
+docker run -p 8501:8501 midstalker
+<span class="c"># open http://localhost:8501</span></pre>
+
+    <div class="actions">
+      <a class="btn" href="https://midanalyzer.streamlit.app/" target="_blank" rel="noopener">live demo ↗</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/midstalker_analyzer" target="_blank" rel="noopener">source</a>
+    </div>
+  </div>
+</div>
+
+<!-- BLACKWIDOW -->
+<div class="project" id="blackwidow">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> blackwidow</h2>
+      <div class="badges">
+        <span class="badge lang">C++ / ATtiny85</span>
+        <span class="badge">★ 2</span>
+        <span class="badge">MIT</span>
+      </div>
+    </div>
+    <p class="tagline">"Physical bypass for Windows Defender."</p>
+    <p class="desc">A hardware HID (BadUSB-style) research device built on the ATtiny85. Emulates a keyboard to deliver a reverse-shell payload to a Windows target — an offensive-security study in physical-access attack vectors and AV evasion.</p>
+
+    <div class="sub">Details</div>
+    <ul class="feat">
+      <li><b>Platform</b> — ATtiny85 microcontroller, Arduino <code>.ino</code> sketch</li>
+      <li><b>Vector</b> — HID keyboard emulation delivering a reverse shell</li>
+      <li><b>Topics</b> — hid, attiny85, bypass-av</li>
+    </ul>
+
+    <div class="warn">⚠ Offensive-security research. Deploying HID payloads against machines you don't own or lack authorization to test is illegal. Presented for educational/defensive study only.</div>
+
+    <div class="actions">
+      <a class="btn ghost" href="https://github.com/err0rgod/blackwidow" target="_blank" rel="noopener">source</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><a href="index.html">← back home</a> · built with plain HTML/CSS · <span style="color:var(--accent)">err0rgod</span></p>
+  </div>
+</footer>
+</body>
+</html>
