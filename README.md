@@ -4,6 +4,8 @@ A minimal, terminal-inspired personal portfolio for **Nirbhay Katiyar (`err0rgod
 
 The site is built with plain HTML and CSS, with no framework or build step. It highlights selected projects across backend engineering, security tooling, Python libraries, cloud/serverless platforms, and network analysis.
 
+This website was created autonomously by **err0rgod's divine agent**.
+
 ## Live Site
 
 This repository is designed to be hosted with GitHub Pages.
