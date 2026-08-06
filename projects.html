@@ -106,7 +106,7 @@
     h1 { font-size: 26px; }
     .project h2 { font-size: 20px; }
   }
-</style>
+  .wrap{max-width:980px}body{background-color:#0a0e14;background-image:linear-gradient(rgba(0,255,156,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,156,.022) 1px,transparent 1px);background-size:32px 32px}.toc{position:sticky;top:56px;z-index:5;background:rgba(10,14,20,.92);backdrop-filter:blur(8px)}.toc-grid a,.badge,.btn{border-radius:3px}.project{padding:66px 0;background:rgba(10,14,20,.7)}.project-priority{border-top:1px solid var(--accent-dim)}.tagline,.project p.desc{max-width:780px}.sub{border-top:1px solid var(--border);padding-top:16px}@media(max-width:640px){.toc{position:static}.toc-grid{flex-wrap:nowrap;overflow-x:auto}.project{padding:48px 0}}</style>
 </head>
 <body>
 <nav>
@@ -134,7 +134,7 @@
   <div class="wrap">
     <div class="toc-grid">
       <a href="#flexurl">flexurl</a>
-      <a href="#zerodaily">zerodaily</a>
+      <a href="#conduit">conduit</a><a href="#divine">divine</a><a href="#zerodaily">zerodaily</a>
       <a href="#tokenly">tokenly</a>
       <a href="#revlimiter">revlimiter</a>
       <a href="#nascar">nascar</a>
@@ -188,7 +188,10 @@
   </div>
 </div>
 
-<!-- ZERODAILY -->
+<!-- CONDUIT -->
+<div class="project project-priority" id="conduit"><div class="wrap"><div class="head"><h2><span class="hash">#</span> Conduit</h2><div class="badges"><span class="badge lang">TypeScript</span><span class="badge lang">MCP</span><span class="badge">Chromium</span><span class="badge">MIT</span></div></div><p class="tagline">A local-first, security-conscious bridge between AI agents and a real browser.</p><p class="desc">Conduit connects MCP and CLI clients to a user's existing Chromium profile through an authenticated local daemon and a Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine.</p><div class="sub">Highlights</div><ul class="feat"><li><b>Agent-agnostic control</b> - MCP, CLI, and typed daemon clients, without tying the browser to one agent.</li><li><b>Structured automation</b> - accessibility snapshots and temporary element IDs for navigation, input, screenshots, uploads, and downloads.</li><li><b>Secure defaults</b> - authenticated transport, narrow permissions, domain policies, confirmations, rate limits, and redacted audit events.</li><li><b>Split architecture</b> - the companion extension owns Chromium execution; the main repository owns the daemon, CLI, and MCP adapter.</li></ul><div class="sub">Architecture</div><pre>AI agent (MCP / CLI) -&gt; authenticated local daemon -&gt; Chromium extension -&gt; browser tab</pre><div class="actions"><a class="btn" href="https://err0rgod.github.io/conduit-web/" target="_blank" rel="noopener">project site</a><a class="btn ghost" href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">source</a><a class="btn ghost" href="https://github.com/err0rgod/conduit-extension" target="_blank" rel="noopener">extension</a></div></div></div>
+<!-- DIVINE -->
+<div class="project" id="divine"><div class="wrap"><div class="head"><h2><span class="hash">#</span> Divine Router</h2><div class="badges"><span class="badge lang">Python 3.12+</span><span class="badge">OpenAI API</span><span class="badge">Anthropic API</span><span class="badge">Self-hosted</span></div></div><p class="tagline">A local AI API gateway for clients that need provider choice without losing control.</p><p class="desc">Divine Router is self-hostable infrastructure, not a chat application. It accepts OpenAI Chat Completions, OpenAI Responses, Anthropic Messages, and policy-driven automatic routing while separating protocol conversion from provider transport.</p><div class="sub">Highlights</div><ul class="feat"><li><b>One local endpoint</b> - explicit provider/model selection, aliases, and capability-aware routing.</li><li><b>Reliability controls</b> - validates requests before dispatch, then applies retries, fallbacks, circuit breakers, and deadlines.</li><li><b>Operations</b> - keyboard-first TUI and CLI for provider health, routes, usage, latency, and redacted logs.</li><li><b>Credential discipline</b> - authentication on localhost by default; credentials stay out of SQLite.</li></ul><div class="actions"><a class="btn" href="https://github.com/err0rgod/divine" target="_blank" rel="noopener">source</a><a class="btn ghost" href="https://divine-router-docs-err0rgod.onrender.com/" target="_blank" rel="noopener">documentation</a></div></div></div><!-- ZERODAILY -->
 <div class="project" id="zerodaily">
   <div class="wrap">
     <div class="head">
