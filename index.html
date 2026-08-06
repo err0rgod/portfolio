@@ -95,6 +95,29 @@
   .link-item .k { color: var(--muted); font-size: 13px; }
   .link-item .v { color: var(--accent); font-size: 13px; }
 
+  /* experience */
+  .timeline { display: flex; flex-direction: column; gap: 16px; }
+  .job {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--accent-dim);
+    border-radius: 8px;
+    padding: 20px 22px;
+    transition: border-color .15s, transform .15s;
+  }
+  .job:hover { border-color: var(--accent-dim); border-left-color: var(--accent); transform: translateY(-2px); }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+  .job-head h3 { color: #fff; font-size: 16px; font-weight: 600; }
+  .job-head h3 .at { color: var(--accent); }
+  .job .date { color: var(--muted); font-size: 12.5px; white-space: nowrap; }
+  .job-meta { color: var(--muted); font-size: 12.5px; margin: 4px 0 12px; }
+  .orgs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .orgs .chip { font-size: 12px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; color: var(--fg); }
+  ul.feat { list-style: none; }
+  ul.feat li { padding: 4px 0 4px 20px; position: relative; color: var(--fg); font-size: 13.5px; line-height: 1.55; }
+  ul.feat li::before { content: ">"; position: absolute; left: 0; color: var(--accent-dim); }
+  ul.feat li b { color: #fff; }
+
   footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; }
 
   @media (max-width: 640px) {
@@ -110,6 +133,7 @@
     <a href="#" class="brand">err0rgod</a>
     <div class="links">
       <a href="#about">about</a>
+      <a href="#experience">experience</a>
       <a href="#projects">projects</a>
       <a href="#contact">contact</a>
       <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
@@ -131,6 +155,46 @@
     <h2>about</h2>
     <p>I build production backends and security tooling. My work spans distributed systems, authentication, and offensive/defensive security research.</p>
     <p class="muted">Currently building <a href="https://flexurl.app" target="_blank" rel="noopener">FlexURL</a> — a production URL management platform on a PostgreSQL/Redis hybrid stack with Snowflake IDs. I write about security and systems on <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>.</p>
+  </div>
+</section>
+
+<section id="experience" class="experience">
+  <div class="wrap">
+    <h2>experience</h2>
+    <div class="timeline">
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Offensive Security Engineer <span class="at">@ InlighnX</span></h3>
+          <span class="date">May 2025 — Aug 2025</span>
+        </div>
+        <p class="job-meta">Internship · 3 mos · offensive security &amp; red-team research</p>
+        <ul class="feat">
+          <li><b>Web app pentesting</b> — assessed client web applications for OWASP Top 10 issues (IDOR, XSS, auth bypass, SSRF) and documented findings with clear remediation guidance.</li>
+          <li><b>Offensive tooling</b> — built Python automation for recon, subdomain enumeration, and vulnerability scanning to speed up the assessment pipeline.</li>
+          <li><b>Exploit dev &amp; reporting</b> — wrote proof-of-concept exploits, validated fixes through retesting, and delivered professional pentest reports to stakeholders.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Independent Security Researcher <span class="at">@ HackerOne</span></h3>
+          <span class="date">Jul 2024 — Present</span>
+        </div>
+        <p class="job-meta">Bug bounty · 2 yrs+ · responsible disclosure</p>
+        <div class="orgs">
+          <span class="chip">IBM</span>
+          <span class="chip">Spotify</span>
+          <span class="chip">Lightspark</span>
+        </div>
+        <ul class="feat">
+          <li><b>Valid, triaged reports</b> — disclosed real security bugs to enterprise bug-bounty programs including IBM, Spotify, and Lightspark.</li>
+          <li><b>Vulnerability classes</b> — access-control / IDOR, authentication flaws, information disclosure, and business-logic bugs.</li>
+          <li><b>Responsible disclosure</b> — reproducible PoCs and detailed writeups, coordinated with security teams through remediation.</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </section>
 
