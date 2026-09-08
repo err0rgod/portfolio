@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — err0rgod</title>
 <meta name="description" content="Detailed breakdown of Nirbhay Katiyar's projects — security tooling, backend libraries, and cloud-native platforms.">
+<link rel="canonical" href="https://nirbhay.me/projects.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0a0e14">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nirbhay.me/projects.html">
+<meta property="og:title" content="Projects — Nirbhay Katiyar">
+<meta property="og:description" content="Security tooling, backend libraries, and cloud-native platforms built by Nirbhay Katiyar.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Projects — Nirbhay Katiyar">
+<meta name="twitter:description" content="Security tooling, backend libraries, and cloud-native platforms built by Nirbhay Katiyar.">
 <style>
   :root {
     --bg: #0a0e14;
@@ -25,7 +35,10 @@
   }
   a { color: var(--accent); text-decoration: none; transition: opacity .15s; }
   a:hover { opacity: .7; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; opacity: 1; }
   .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .skip-link { position: absolute; left: 24px; top: -48px; z-index: 20; padding: 8px 12px; background: var(--accent); color: var(--bg); }
+  .skip-link:focus { top: 8px; }
 
   nav {
     position: sticky; top: 0; z-index: 10;
@@ -37,6 +50,8 @@
   nav .brand::before { content: "$ "; color: var(--muted); }
   nav .links a { color: var(--muted); margin-left: 20px; font-size: 14px; }
   nav .links a:hover, nav .links a.active { color: var(--accent); }
+  nav .links { display: flex; gap: 20px; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
+  nav .links a { margin-left: 0; }
 
   header { padding: 70px 0 40px; border-bottom: 1px solid var(--border); }
   .prompt { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
@@ -94,6 +109,7 @@
   .btn:hover { background: var(--accent-dim); color: #fff; opacity: 1; }
   .btn.ghost { border-color: var(--border); color: var(--muted); }
   .btn.ghost:hover { border-color: var(--accent-dim); color: var(--accent); background: none; }
+  .brand-mark { color: var(--accent); }
 
   .warn {
     margin-top: 18px; border-left: 2px solid #ff5370; padding: 8px 14px;
@@ -105,15 +121,19 @@
   @media (max-width: 640px) {
     h1 { font-size: 26px; }
     .project h2 { font-size: 20px; }
+    nav .links { gap: 14px; }
   }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   .wrap{max-width:980px}body{background-color:#0a0e14;background-image:linear-gradient(rgba(0,255,156,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,156,.022) 1px,transparent 1px);background-size:32px 32px}.toc{position:sticky;top:56px;z-index:5;background:rgba(10,14,20,.92);backdrop-filter:blur(8px)}.toc-grid a,.badge,.btn{border-radius:3px}.project{padding:66px 0;background:rgba(10,14,20,.7)}.project-priority{border-top:1px solid var(--accent-dim)}.tagline,.project p.desc{max-width:780px}.sub{border-top:1px solid var(--border);padding-top:16px}@media(max-width:640px){.toc{position:static}.toc-grid{flex-wrap:nowrap;overflow-x:auto}.project{padding:48px 0}}</style>
 </head>
 <body>
-<nav>
+<a class="skip-link" href="#projects-content">skip to content</a>
+<nav aria-label="Primary navigation">
   <div class="wrap">
     <a href="index.html" class="brand">err0rgod</a>
     <div class="links">
       <a href="index.html#about">about</a>
+      <a href="index.html#skills">skills</a>
       <a href="index.html#experience">experience</a>
       <a href="projects.html" class="active">projects</a>
       <a href="index.html#contact">contact</a>
@@ -123,6 +143,7 @@
   </div>
 </nav>
 
+<main id="projects-content">
 <header>
   <div class="wrap">
     <div class="prompt">~/nirbhay $ cat projects/*<span class="blink">_</span></div>
@@ -131,7 +152,7 @@
   </div>
 </header>
 
-<div class="toc">
+<nav class="toc" aria-label="Project navigation">
   <div class="wrap">
     <div class="toc-grid">
       <a href="#flexurl">flexurl</a>
@@ -143,7 +164,7 @@
       <a href="#blackwidow">blackwidow</a>
     </div>
   </div>
-</div>
+</nav>
 
 <!-- FLEXURL -->
 <div class="project" id="flexurl">
@@ -403,17 +424,17 @@ docker run -p 8501:8501 midstalker
         <span class="badge">MIT</span>
       </div>
     </div>
-    <p class="tagline">"Physical bypass for Windows Defender."</p>
-    <p class="desc">A hardware HID (BadUSB-style) research device built on the ATtiny85. Emulates a keyboard to deliver a reverse-shell payload to a Windows target — an offensive-security study in physical-access attack vectors and AV evasion.</p>
+    <p class="tagline">"Authorized hardware-security research on physical-access attack vectors."</p>
+    <p class="desc">A hardware HID research device built on the ATtiny85 for controlled lab testing. It explores keyboard emulation, physical-access threat models, and defensive detection of unauthorized payload delivery.</p>
 
     <div class="sub">Details</div>
     <ul class="feat">
       <li><b>Platform</b> — ATtiny85 microcontroller, Arduino <code>.ino</code> sketch</li>
-      <li><b>Vector</b> — HID keyboard emulation delivering a reverse shell</li>
-      <li><b>Topics</b> — hid, attiny85, bypass-av</li>
+      <li><b>Vector</b> — HID keyboard emulation for controlled lab payload delivery</li>
+      <li><b>Topics</b> — hid, attiny85, physical-access security</li>
     </ul>
 
-    <div class="warn">⚠ Offensive-security research. Deploying HID payloads against machines you don't own or lack authorization to test is illegal. Presented for educational/defensive study only.</div>
+    <div class="warn">⚠ Authorized lab research only. Test hardware payloads exclusively on systems you own or have explicit permission to assess.</div>
 
     <div class="actions">
       <a class="btn ghost" href="https://github.com/err0rgod/blackwidow" target="_blank" rel="noopener">source</a>
@@ -423,8 +444,9 @@ docker run -p 8501:8501 midstalker
 
 <footer>
   <div class="wrap">
-    <p><a href="index.html">← back home</a> · built with plain HTML/CSS · <span style="color:var(--accent)">err0rgod</span></p>
+    <p><a href="index.html">← back home</a> · built with plain HTML/CSS · <span class="brand-mark">err0rgod</span></p>
   </div>
 </footer>
+</main>
 </body>
 </html>

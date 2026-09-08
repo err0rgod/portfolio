@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nirbhay Katiyar — err0rgod</title>
 <meta name="description" content="Nirbhay Katiyar (err0rgod) — Software Developer, Security Researcher, Cloud-Native Backend Engineer.">
+<link rel="canonical" href="https://nirbhay.me/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0a0e14">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nirbhay.me/">
+<meta property="og:title" content="Nirbhay Katiyar — err0rgod">
+<meta property="og:description" content="Software developer and security researcher building production backends, cloud infrastructure, and security tooling.">
+<meta property="og:site_name" content="Nirbhay Katiyar">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nirbhay Katiyar — err0rgod">
+<meta name="twitter:description" content="Software developer and security researcher building production backends, cloud infrastructure, and security tooling.">
 <style>
   :root {
     --bg: #0a0e14;
@@ -30,7 +41,10 @@
   }
   a { color: var(--accent); text-decoration: none; transition: opacity .15s; }
   a:hover { opacity: .7; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; opacity: 1; }
   .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .skip-link { position: absolute; left: 24px; top: -48px; z-index: 20; padding: 8px 12px; background: var(--accent); color: var(--bg); }
+  .skip-link:focus { top: 8px; }
 
   /* nav */
   nav {
@@ -44,6 +58,8 @@
   nav .brand::before { content: "$ "; color: var(--muted); }
   nav .links a { color: var(--muted); margin-left: 20px; font-size: 14px; }
   nav .links a:hover { color: var(--accent); }
+  nav .links { display: flex; gap: 20px; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
+  nav .links a { margin-left: 0; }
 
   /* hero */
   header { padding: 90px 0 70px; border-bottom: 1px solid var(--border); }
@@ -53,6 +69,11 @@
   h1 { font-size: 42px; letter-spacing: -1px; margin-bottom: 8px; color: #fff; }
   h1 .tag { color: var(--accent); }
   .role { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
+  .hero-summary { max-width: 720px; color: var(--fg); font-size: 16px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .hero-actions a { border: 1px solid var(--accent-dim); border-radius: 4px; padding: 9px 14px; font-size: 13px; }
+  .hero-actions a:hover { background: var(--accent-dim); color: #fff; opacity: 1; }
+  .hero-actions .secondary { border-color: var(--border); color: var(--muted); }
   .quote {
     border-left: 2px solid var(--accent-dim);
     padding-left: 14px; color: var(--muted);
@@ -86,6 +107,12 @@
   .about .muted { color: var(--muted); }
   .current-project { color: var(--accent); }
 
+  /* skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .skill-group { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 18px; }
+  .skill-group h3 { color: var(--accent); font-size: 15px; margin-bottom: 8px; }
+  .skill-group p { color: var(--muted); font-size: 13.5px; }
+
   /* contact */
   .links-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
   .link-item {
@@ -93,8 +120,13 @@
     border-radius: 6px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;
   }
   .link-item:hover { border-color: var(--accent-dim); }
+  .contact-intro { max-width: 680px; color: var(--muted); margin: -12px 0 20px; }
+  .contact-primary { border-color: var(--accent-dim); }
   .link-item .k { color: var(--muted); font-size: 13px; }
   .link-item .v { color: var(--accent); font-size: 13px; }
+  .view-all { text-align: center; margin-top: 20px; }
+  .view-all a { color: var(--muted); font-size: 14px; }
+  .brand-mark { color: var(--accent); }
 
   /* experience */
   .timeline { display: flex; flex-direction: column; gap: 16px; }
@@ -124,16 +156,20 @@
   @media (max-width: 640px) {
     h1 { font-size: 32px; }
     .grid { grid-template-columns: 1fr; }
-    nav .links a:not(.brand) { margin-left: 14px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    nav .links { gap: 14px; }
   }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   .wrap{max-width:980px} body{background-color:#0a0e14;background-image:linear-gradient(rgba(0,255,156,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,156,.025) 1px,transparent 1px);background-size:32px 32px}.card{border-radius:4px;border-top:2px solid transparent}.card:hover{border-top-color:var(--accent);box-shadow:0 14px 36px rgba(0,0,0,.22)}.card.featured{background:linear-gradient(145deg,#14221f,var(--panel))}</style>
 </head>
 <body>
-<nav>
+<a class="skip-link" href="#main-content">skip to content</a>
+<nav aria-label="Primary navigation">
   <div class="wrap">
     <a href="#" class="brand">err0rgod</a>
     <div class="links">
       <a href="#about">about</a>
+      <a href="#skills">skills</a>
       <a href="#experience">experience</a>
       <a href="#projects">projects</a>
       <a href="#contact">contact</a>
@@ -143,11 +179,17 @@
   </div>
 </nav>
 
+<main id="main-content">
 <header>
   <div class="wrap">
     <div class="prompt">~/nirbhay $ whoami<span class="blink">_</span></div>
     <h1>Nirbhay Katiyar <span class="tag">&lt;err0rgod/&gt;</span></h1>
     <p class="role">Software Developer · Security Researcher · Cloud-Native Backend Engineer</p>
+    <p class="hero-summary">I design dependable backend systems and security tooling, from cloud migrations and authentication to developer-facing infrastructure.</p>
+    <div class="hero-actions">
+      <a href="#projects">view selected work</a>
+      <a href="#contact" class="secondary">start a conversation</a>
+    </div>
     <p class="quote">"Code is read many more times than it is written."</p>
   </div>
 </header>
@@ -157,6 +199,18 @@
     <h2>about</h2>
     <p>I build production backends and security tooling. My work spans distributed systems, authentication, and offensive/defensive security research.</p>
     <p class="muted">Currently building <strong class="current-project">Log AI</strong> &mdash; a centralized system for managing and triggering alerts while strengthening production-server security. I write about security and systems on <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>core skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group"><h3>backend &amp; APIs</h3><p>Python, FastAPI, Flask, TypeScript, REST APIs, authentication, JWT, Argon2id</p></div>
+      <div class="skill-group"><h3>cloud &amp; operations</h3><p>AWS Lambda, Docker, Nginx, PostgreSQL, Redis, CI/CD, deployment automation</p></div>
+      <div class="skill-group"><h3>security engineering</h3><p>Access control, vulnerability research, responsible disclosure, network analysis, secure defaults</p></div>
+      <div class="skill-group"><h3>developer tooling</h3><p>MCP integrations, CLI/TUI workflows, PyPI libraries, Streamlit, observability and testing</p></div>
+    </div>
   </div>
 </section>
 
@@ -196,7 +250,7 @@
           <h3>Independent Security Researcher <span class="at">@ HackerOne</span></h3>
           <span class="date">Jul 2025 — Jan 2026</span>
         </div>
-        <p class="job-meta">Bug bounty · 1 yr 7 mos · responsible disclosure</p>
+        <p class="job-meta">Bug bounty · 7 mos · responsible disclosure</p>
         <div class="orgs">
           <span class="chip">IBM</span>
           <span class="chip">Spotify</span>
@@ -261,28 +315,30 @@
       </a>
 
     </div>
-    <p style="text-align:center;margin-top:20px"><a href="projects.html" style="color:var(--muted);font-size:14px">view all with full details →</a></p>
+    <p class="view-all"><a href="projects.html">view all with full details →</a></p>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
     <h2>contact</h2>
+    <p class="contact-intro">For engineering roles, collaborations, or authorized security research inquiries, email is the fastest way to reach me.</p>
     <div class="links-list">
       <a class="link-item" href="https://github.com/err0rgod" target="_blank" rel="noopener"><span class="k">github</span><span class="v">@err0rgod</span></a>
       <a class="link-item" href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener"><span class="k">linkedin</span><span class="v">nirbhay-katiyar</span></a>
       <a class="link-item" href="https://x.com/err0rgod" target="_blank" rel="noopener"><span class="k">x / twitter</span><span class="v">@err0rgod</span></a>
       <a class="link-item" href="https://err0rgod.medium.com" target="_blank" rel="noopener"><span class="k">medium</span><span class="v">err0rgod</span></a>
       <a class="link-item" href="https://instagram.com/err0rgod" target="_blank" rel="noopener"><span class="k">instagram</span><span class="v">err0rgod</span></a>
-      <a class="link-item" href="mailto:nirbhay@flexurl.app"><span class="k">email</span><span class="v">nirbhay@flexurl.app</span></a>
+      <a class="link-item contact-primary" href="mailto:nirbhay@flexurl.app"><span class="k">email</span><span class="v">nirbhay@flexurl.app</span></a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p>Built with plain HTML/CSS · no frameworks & Fluff· <span style="color:var(--accent)">err0rgod</span></p>
+    <p>Built with plain HTML/CSS · <span class="brand-mark">err0rgod</span></p>
   </div>
 </footer>
+</main>
 </body>
 </html>
