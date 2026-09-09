@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>err0rgod - AI Readable</title>
+  <title>Nirbhay Katiyar - err0rgod - AI Readable</title>
   <style>
     :root {
       --bg: #0a0e14;
@@ -16,12 +16,13 @@
       font-family: var(--mono);
       line-height: 1.6;
       padding: 24px;
-      max-width: 800px;
+      max-width: 860px;
       margin: 0 auto;
     }
     pre {
       white-space: pre-wrap;
       word-wrap: break-word;
+      font-size: 15px;
     }
     .mode-switch {
       position: fixed;
@@ -50,31 +51,120 @@
 
 ## About
 Software developer and security researcher building production backends, cloud infrastructure, and security tooling.
+My work spans distributed systems, authentication, and offensive/defensive security research. I design dependable backend systems and security tooling, from cloud migrations and authentication to developer-facing infrastructure.
+
+Currently building **Log AI** — a centralized system for managing and triggering alerts while strengthening production-server security. I write about security and systems on Medium.
 
 ## Core Skills
-- Backend & APIs: Python, Node.js, Go, FastAPI, Flask, PostgreSQL, Redis, REST, GraphQL
-- Cloud & Operations: AWS (Lambda, EC2, S3), Docker, CI/CD, Nginx, Linux internals
-- Security Engineering: Pentesting, IAM architectures, static analysis, threat modeling
-- Developer Tooling: MCP (Model Context Protocol), CLI apps, Chromium automation
+* **Backend & APIs**: Python, FastAPI, Flask, TypeScript, REST APIs, authentication, JWT, Argon2id
+* **Cloud & Operations**: AWS Lambda, Docker, Nginx, PostgreSQL, Redis, CI/CD, deployment automation
+* **Security Engineering**: Access control, vulnerability research, responsible disclosure, network analysis, secure defaults
+* **Developer Tooling**: MCP (Model Context Protocol), CLI apps, PyPI libraries, Streamlit, observability and testing
 
 ## Experience
-- Backend Engineer & Operations @ Plany.space (2022 - Present)
-- Offensive Security Engineer @ InlighnX (2021 - 2022)
-- Independent Security Researcher @ HackerOne (2020 - 2021)
+
+### Backend Engineer & Operations @ Plany.space (Aug 2026 — Present)
+Product engineering · cloud infrastructure · authentication
+* **Platform migration**: Led the move from InsForge to AWS, migrating the application onto infrastructure designed for clearer ownership, operational control, and future scale.
+* **AWS foundation**: Designed and implemented the core cloud architecture, defining how application services, data, networking, and deployment concerns fit together.
+* **Identity and access**: Implemented the authentication layer and integrated it into product flows so account access is secure, reliable, and maintainable as the product evolves.
+
+### Offensive Security Engineer @ InlighnX (May 2025 — Aug 2025)
+Internship · 3 mos · offensive security & red-team research
+* **Application attack-surface reviews**: Mapped authentication flows, authorization boundaries, and exposed endpoints to uncover high-impact issues including IDOR, XSS, SSRF, and broken access controls.
+* **Assessment automation**: Developed Python utilities for reconnaissance, subdomain discovery, and repeatable vulnerability checks, reducing manual setup during web-application assessments.
+* **Evidence that drives remediation**: Turned findings into reproducible proof-of-concepts, verified fixes through retesting, and wrote concise reports engineers could act on.
+
+### Independent Security Researcher @ HackerOne (Jul 2025 — Jan 2026)
+Bug bounty · 7 mos · responsible disclosure for IBM, Spotify, and Lightspark
+* **Valid, triaged reports**: Disclosed real security bugs to enterprise bug-bounty programs.
+* **Vulnerability classes**: Access-control / IDOR, authentication flaws, information disclosure, and business-logic bugs.
+* **Responsible disclosure**: Reproducible PoCs and detailed writeups, coordinated with security teams through remediation.
 
 ## Projects
-- FlexURL: Production URL management platform (Python, FastAPI, PostgreSQL)
-- Conduit: Local-first, security-focused browser control for MCP and CLI AI agents
-- ZeroDaily: Serverless powered cybersecurity newsletter platform on AWS Lambda
-- tokenly: Hybrid stateless authentication library on PyPI
-- revlimiter: Python rate limiting library (token/leaky bucket)
-- MidAnalyzer: Browser-based PCAP analyzer
-- blackwidow: HID reverse-shell research device on ATtiny85
 
-## Links
+### FlexURL
+Production URL management platform with analytics, Snowflake IDs, and a PostgreSQL/Redis hybrid backend. Full-stack ownership from frontend to deployment infrastructure.
+* **Stack**: Python / FastAPI, PostgreSQL, Redis, Nginx, Tailwind CSS
+* **Features**: URL shortening with custom aliases and Snowflake ID generation, Click analytics and tracking dashboard, Redis caching layer for low-latency redirects, Nginx reverse proxy configuration, Performance-audited architecture, Support ticket system.
+* **Architecture**: FastAPI backend with PostgreSQL persistence, Redis for caching hot URLs and rate limiting, Tailwind CSS frontend served separately, Nginx as reverse proxy in production, Shell-scripted deployment automation.
+* **Links**: [Live Site](https://flexurl.app) | [Source](https://github.com/err0rgod/urlshortener)
+
+### Conduit
+A local-first, security-conscious bridge between AI agents and a real browser.
+Conduit connects MCP and CLI clients to a user's existing Chromium profile through an authenticated local daemon and a Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine.
+* **Stack**: TypeScript, MCP, Chromium
+* **Highlights**: 
+  - Agent-agnostic control - MCP, CLI, and typed daemon clients, without tying the browser to one agent.
+  - Structured automation - accessibility snapshots and temporary element IDs for navigation, input, screenshots, uploads, and downloads.
+  - Secure defaults - authenticated transport, narrow permissions, domain policies, confirmations, rate limits, and redacted audit events.
+  - Split architecture - the companion extension owns Chromium execution; the main repository owns the daemon, CLI, and MCP adapter.
+* **Architecture**: AI agent (MCP / CLI) -> authenticated local daemon -> Chromium extension -> browser tab
+* **Links**: [Live Site](https://conduit.zerodaily.in) | [Extension](https://chromewebstore.google.com/detail/gjhipjgiapijcdnflldnoenafeegmfpc?utm_source=item-share-cb) | [Daemon Repo](https://github.com/err0rgod/conduit) | [Extension Repo](https://github.com/err0rgod/conduit-extension)
+
+### ZeroDaily
+A high-performance, serverless, automated cybersecurity newsletter platform.
+ZeroDaily aggregates, summarizes, and broadcasts threat intelligence, CVEs, and security news. LLM-powered parsers digest raw security feeds and produce readable summaries, delivered as a daily newsletter — running fully serverless on AWS Lambda.
+* **Stack**: Flask + Jinja2, SQLAlchemy / SQLite, AWS Lambda (WSGI), Groq / OpenAI, Resend API, GitHub Actions, Docker
+* **Highlights**: 
+  - Automated ingestion — feed parsers use LLMs to summarize technical CVEs into digestible copy
+  - Double opt-in — cryptographic verify + unique unsubscribe tokens per subscriber
+  - Telemetry — tracks page views, reading session duration, average read time
+  - Daily Hack Roasts — witty recap of recent breaches
+  - SEO-ready — auto-updating sitemap, RSS feed, robots.txt
+  - CI/CD — syntax + dependency checks on every push
+* **Links**: [Live](https://zerodaily.in) | [Source](https://github.com/err0rgod/zeroday) | [Scraper Repo](https://github.com/err0rgod/bot0)
+
+### Tokenly-Auth
+Database-agnostic authentication & session management for Python.
+A lightweight security toolkit that centralizes password hashing, JWT issuance, and refresh-token rotation — while leaving every database and model decision to you. No lock-in to SQLModel, Pydantic, or any specific driver.
+* **Stack**: Argon2id, JWT, pytest
+* **Highlights**: 
+  - Crypto utils — Argon2id hashing/verification with brute-force protection
+  - Token management — JWT create + verify, access & refresh pairs
+  - Session utils — secure refresh-token hashing for rotation strategies
+  - Middleware — storage-agnostic rate limiting + @require_auth decorator
+  - Validation — structural checks for usernames and passwords
+* **Links**: [PyPI](https://pypi.org/project/tokenly-auth/) | [Source](https://github.com/err0rgod/tokenly)
+
+### revlimiter
+Implement rate limiting in your app, seamlessly.
+A type-hinted, zero-dependency rate-limiting library implementing the two classic algorithms. Use a single bucket directly, or the manager layer to juggle many clients at once.
+* **Stack**: Python, zero-deps
+* **Highlights**: 
+  - Token bucket — allows short bursts while holding a steady average rate
+  - Leaky bucket — drains requests at a fixed rate to smooth bursts
+  - RateLimitManager — per-client buckets across algorithms
+  - Type-safe — fully hinted, no external dependencies
+* **Links**: [PyPI](https://pypi.org/project/revlimiter/) | [Source](https://github.com/err0rgod/revlimiter)
+
+### MidAnalyzer
+Browser-based PCAP analysis, without the hosted-tool limits.
+A Streamlit tool for analyzing PCAP capture files in the browser, extracting structured network insights. Built to sidestep file-size caps and slow processing of hosted analyzers — run it locally via Docker with no size limits. Part of the broader "Midstalker" MITM framework.
+* **Stack**: Python / Streamlit, Docker
+* **Highlights**: 
+  - Interactive UI — Streamlit front-end for quick inspection
+  - No size limits — local Docker processing beats hosted caps
+  - Minimal setup — clean, modular codebase, few dependencies
+* **Links**: [Live Demo](https://midanalyzer.streamlit.app/) | [Source](https://github.com/err0rgod/midstalker_analyzer)
+
+### blackwidow
+Authorized hardware-security research on physical-access attack vectors.
+A hardware HID research device built on the ATtiny85 for controlled lab testing. It explores keyboard emulation, physical-access threat models, and defensive detection of unauthorized payload delivery.
+* **Stack**: C++ / ATtiny85
+* **Details**: 
+  - Platform — ATtiny85 microcontroller, Arduino .ino sketch
+  - Vector — HID keyboard emulation for controlled lab payload delivery
+  - Topics — hid, attiny85, physical-access security
+* **Links**: [Source](https://github.com/err0rgod/blackwidow)
+
+## Links & Contact
 - GitHub: https://github.com/err0rgod
 - LinkedIn: https://linkedin.com/in/nirbhay-katiyar
-- Email: contact@nirbhay.me
+- Twitter/X: https://x.com/err0rgod
+- Medium: https://err0rgod.medium.com
+- Instagram: https://instagram.com/err0rgod
+- Email: nirbhay@flexurl.app (Fastest way to reach out for engineering roles or security research)
 </pre>
 <a href="/" class="mode-switch">Human Version</a>
 </body>
