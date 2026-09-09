@@ -156,10 +156,9 @@
   <div class="wrap">
     <div class="toc-grid">
       <a href="#flexurl">flexurl</a>
-      <a href="#conduit">conduit</a><a href="#divine">divine</a><a href="#zerodaily">zerodaily</a>
+      <a href="#conduit">conduit</a><a href="#zerodaily">zerodaily</a>
       <a href="#tokenly">tokenly</a>
       <a href="#revlimiter">revlimiter</a>
-      <a href="#nascar">nascar</a>
       <a href="#midanalyzer">midanalyzer</a>
       <a href="#blackwidow">blackwidow</a>
     </div>
@@ -212,8 +211,6 @@
 
 <!-- CONDUIT -->
 <div class="project project-priority" id="conduit"><div class="wrap"><div class="head"><h2><span class="hash">#</span> Conduit</h2><div class="badges"><span class="badge lang">TypeScript</span><span class="badge lang">MCP</span><span class="badge">Chromium</span><span class="badge">MIT</span></div></div><p class="tagline">A local-first, security-conscious bridge between AI agents and a real browser.</p><p class="desc">Conduit connects MCP and CLI clients to a user's existing Chromium profile through an authenticated local daemon and a Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine.</p><div class="sub">Highlights</div><ul class="feat"><li><b>Agent-agnostic control</b> - MCP, CLI, and typed daemon clients, without tying the browser to one agent.</li><li><b>Structured automation</b> - accessibility snapshots and temporary element IDs for navigation, input, screenshots, uploads, and downloads.</li><li><b>Secure defaults</b> - authenticated transport, narrow permissions, domain policies, confirmations, rate limits, and redacted audit events.</li><li><b>Split architecture</b> - the companion extension owns Chromium execution; the main repository owns the daemon, CLI, and MCP adapter.</li></ul><div class="sub">Architecture</div><pre>AI agent (MCP / CLI) -&gt; authenticated local daemon -&gt; Chromium extension -&gt; browser tab</pre><div class="actions"><a class="btn" href="https://conduit.zerodaily.in" target="_blank" rel="noopener">live site</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/gjhipjgiapijcdnflldnoenafeegmfpc?utm_source=item-share-cb" target="_blank" rel="noopener">extension</a><a class="btn ghost" href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">daemon repo</a><a class="btn ghost" href="https://github.com/err0rgod/conduit-extension" target="_blank" rel="noopener">extension repo</a></div></div></div>
-<!-- DIVINE -->
-<div class="project" id="divine"><div class="wrap"><div class="head"><h2><span class="hash">#</span> Divine Router</h2><div class="badges"><span class="badge lang">Python 3.12+</span><span class="badge">OpenAI API</span><span class="badge">Anthropic API</span><span class="badge">Self-hosted</span></div></div><p class="tagline">A local AI API gateway for clients that need provider choice without losing control.</p><p class="desc">Divine Router is self-hostable infrastructure, not a chat application. It accepts OpenAI Chat Completions, OpenAI Responses, Anthropic Messages, and policy-driven automatic routing while separating protocol conversion from provider transport.</p><div class="sub">Highlights</div><ul class="feat"><li><b>One local endpoint</b> - explicit provider/model selection, aliases, and capability-aware routing.</li><li><b>Reliability controls</b> - validates requests before dispatch, then applies retries, fallbacks, circuit breakers, and deadlines.</li><li><b>Operations</b> - keyboard-first TUI and CLI for provider health, routes, usage, latency, and redacted logs.</li><li><b>Credential discipline</b> - authentication on localhost by default; credentials stay out of SQLite.</li></ul><div class="actions"><a class="btn" href="https://github.com/err0rgod/divine" target="_blank" rel="noopener">source</a><a class="btn ghost" href="https://divine-router-docs-err0rgod.onrender.com/" target="_blank" rel="noopener">documentation</a></div></div></div><!-- ZERODAILY -->
 <div class="project" id="zerodaily">
   <div class="wrap">
     <div class="head">
@@ -337,43 +334,6 @@ if bucket.<span class="k">allow_request</span>():
     <div class="actions">
       <a class="btn" href="https://pypi.org/project/revlimiter/" target="_blank" rel="noopener">PyPI ↗</a>
       <a class="btn ghost" href="https://github.com/err0rgod/revlimiter" target="_blank" rel="noopener">source</a>
-    </div>
-  </div>
-</div>
-
-<!-- NASCAR -->
-<div class="project" id="nascar">
-  <div class="wrap">
-    <div class="head">
-      <h2><span class="hash">#</span> nascar</h2>
-      <div class="badges">
-        <span class="badge lang">Python / Scapy</span>
-        <span class="badge">MIT</span>
-      </div>
-    </div>
-    <p class="tagline">"If it's on the network, it's on the radar."</p>
-    <p class="desc">A high-performance, multi-threaded network scanner. Detects live hosts on LAN and WAN using ARP for local subnets and ICMP for external ranges, then fingerprints the OS via TTL analysis.</p>
-
-    <div class="sub">Highlights</div>
-    <ul class="feat">
-      <li><b>Dual-mode detection</b> — ARP for local subnets, ICMP for external networks</li>
-      <li><b>OS fingerprinting</b> — infers Windows vs Linux/Unix from TTL</li>
-      <li><b>Target flexibility</b> — CIDR ranges, single IPs, or domain names</li>
-      <li><b>Multi-threaded</b> — concurrent scanning for speed</li>
-      <li><b>Port discovery</b> — optional common-port scan for service mapping</li>
-    </ul>
-
-    <div class="sub">Usage</div>
-    <pre><span class="c"># local subnet, 50 threads, verbose</span>
-python start.py -n 192.168.1.0/24 -t 50 -v
-
-<span class="c"># external range with port discovery</span>
-python start.py -n 10.10.10.0/24 -lm -t 20</pre>
-
-    <div class="warn">⚠ Requires root/admin (raw sockets). Strictly for authorized auditing and education — scan only networks you own or have permission to test.</div>
-
-    <div class="actions">
-      <a class="btn ghost" href="https://github.com/err0rgod/nascar" target="_blank" rel="noopener">source</a>
     </div>
   </div>
 </div>
