@@ -237,7 +237,54 @@
 </div>
 
 <!-- CONDUIT -->
-<div class="project" id="conduit"><div class="wrap"><div class="head"><h2><span class="hash">#</span> Conduit</h2><div class="badges"><span class="badge lang">TypeScript</span><span class="badge lang">MCP</span><span class="badge">Chromium</span><span class="badge">MIT</span></div></div><p class="tagline">A local-first, security-conscious bridge between AI agents and a real browser.</p><p class="desc">Conduit connects MCP and CLI clients to a user's existing Chromium profile through an authenticated local daemon and a Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine.</p><div class="sub">Highlights</div><ul class="feat"><li><b>Agent-agnostic control</b> - MCP, CLI, and typed daemon clients, without tying the browser to one agent.</li><li><b>Structured automation</b> - accessibility snapshots and temporary element IDs for navigation, input, screenshots, uploads, and downloads.</li><li><b>Secure defaults</b> - authenticated transport, narrow permissions, domain policies, confirmations, rate limits, and redacted audit events.</li><li><b>Split architecture</b> - the companion extension owns Chromium execution; the main repository owns the daemon, CLI, and MCP adapter.</li></ul><div class="sub">Architecture</div><pre>AI agent (MCP / CLI) -&gt; authenticated local daemon -&gt; Chromium extension -&gt; browser tab</pre><div class="actions"><a class="btn" href="https://conduit.zerodaily.in" target="_blank" rel="noopener">live site</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/gjhipjgiapijcdnflldnoenafeegmfpc?utm_source=item-share-cb" target="_blank" rel="noopener">extension</a><a class="btn ghost" href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">daemon repo</a><a class="btn ghost" href="https://github.com/err0rgod/conduit-extension" target="_blank" rel="noopener">extension repo</a></div></div></div>
+<!-- CONDUIT -->
+<div class="project" id="conduit">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> Conduit</h2>
+      <div class="badges">
+        <span class="badge lang">TypeScript</span>
+        <span class="badge lang">MCP</span>
+        <span class="badge">Native Messaging</span>
+        <span class="badge">Chromium &amp; Firefox</span>
+        <span class="badge">MIT</span>
+      </div>
+    </div>
+    <p class="tagline">"A local-first, security-conscious bridge between AI agents and a real browser."</p>
+    <p class="desc">Conduit connects MCP and CLI clients to a user's existing browser profile through an authenticated local daemon and Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine while exposing structured accessibility trees and semantic element IDs.</p>
+
+    <div class="sub">Architecture</div>
+    <pre>AI agent (MCP / CLI) ──► Authenticated Local Daemon (Node.js 22+) ──► Native Messaging ──► Extension (MV3) ──► Browser Tab</pre>
+
+    <div class="sub">Multi-Repo Ecosystem</div>
+    <ul class="feat">
+      <li><b>Core Daemon &amp; CLI (<a href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">err0rgod/conduit</a>)</b> — Owns transport, policy, and agent integration. Implements MCP server, typed CLI, P-256 proof-of-possession pairing, Zod runtime schema validation, narrow origin permissions, rate limiting, and redacted audit logs. Registers Native Messaging manifests across Chrome, Firefox, Edge, Brave, and Chromium.</li>
+      <li><b>Browser Extension (<a href="https://github.com/err0rgod/conduit-extension" target="_blank" rel="noopener">err0rgod/conduit-extension</a>)</b> — Manifest V3 extension executing browser commands. Generates accessibility snapshots with temporary numeric element IDs for resilient clicks, text input, scrolling, and tab orchestration without fragile CSS selectors.</li>
+      <li><b>Web Portal &amp; Documentation (<a href="https://github.com/err0rgod/conduit-web" target="_blank" rel="noopener">err0rgod/conduit-web</a>)</b> — Interactive documentation hub and product portal hosted on Cloudflare Pages and GitHub Pages.</li>
+    </ul>
+
+    <div class="sub">Stack</div>
+    <div class="stack">
+      <span class="chip">TypeScript</span>
+      <span class="chip">Node.js 22+</span>
+      <span class="chip">Model Context Protocol (MCP)</span>
+      <span class="chip">Manifest V3</span>
+      <span class="chip">Native Messaging</span>
+      <span class="chip">Zod</span>
+      <span class="chip">Playwright</span>
+      <span class="chip">pnpm</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="https://conduit.zerodaily.in" target="_blank" rel="noopener">live site ↗</a>
+      <a class="btn" href="https://chromewebstore.google.com/detail/conduit-extension/gjhipjgiapijcdnflldnoenafeegmfpc" target="_blank" rel="noopener">chrome extension</a>
+      <a class="btn ghost" href="https://addons.mozilla.org/en-US/firefox/addon/conduit/" target="_blank" rel="noopener">firefox add-on</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">daemon repo</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/conduit-extension" target="_blank" rel="noopener">extension repo</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/conduit-web" target="_blank" rel="noopener">web repo</a>
+    </div>
+  </div>
+</div>
 
 <!-- FLEXURL -->
 <div class="project" id="flexurl">
@@ -246,39 +293,51 @@
       <h2><span class="hash">#</span> FlexURL</h2>
       <div class="badges">
         <span class="badge lang">Python / FastAPI</span>
-        <span class="badge lang">PostgreSQL</span>
-        <span class="badge lang">Redis</span>
-        <span class="badge lang">Nginx</span>
-        <span class="badge lang">Tailwind CSS</span>
+        <span class="badge lang">PostgreSQL / SQLModel</span>
+        <span class="badge lang">Redis &amp; ARQ</span>
+        <span class="badge">Cloudflare for SaaS</span>
+        <span class="badge">Tailwind CSS</span>
       </div>
     </div>
-    <p class="desc">Production URL management platform with analytics, Snowflake IDs, and a PostgreSQL/Redis hybrid backend. Full-stack ownership from frontend to deployment infrastructure.</p>
-    <div class="details">
-      <div class="col">
-        <h3>features</h3>
-        <ul>
-          <li>URL shortening with custom aliases and Snowflake ID generation</li>
-          <li>Click analytics and tracking dashboard</li>
-          <li>Redis caching layer for low-latency redirects</li>
-          <li>Nginx reverse proxy configuration</li>
-          <li>Performance-audited architecture</li>
-          <li>Support ticket system</li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3>architecture</h3>
-        <ul>
-          <li>FastAPI backend with PostgreSQL persistence</li>
-          <li>Redis for caching hot URLs and rate limiting</li>
-          <li>Tailwind CSS frontend served separately</li>
-          <li>Nginx as reverse proxy in production</li>
-          <li>Shell-scripted deployment automation</li>
-        </ul>
-      </div>
+    <p class="tagline">"Enterprise-grade URL shortening &amp; link analytics platform with custom domain provisioning."</p>
+    <p class="desc">FlexURL is a production-grade URL management platform engineered around FastAPI, PostgreSQL, and Redis. It pairs high-speed caching and Snowflake/Base62 link redirection with an asynchronous background analytics pipeline, automated Cloudflare for SaaS custom domain provisioning, and Google Safe Browsing malware detection.</p>
+
+    <div class="sub">Architecture</div>
+    <pre>
+Client Request ──► Nginx Reverse Proxy ──► FastAPI Backend (Base62 + Snowflake)
+                        │                         │
+                        ▼                         ├──► PostgreSQL (Persistence via SQLModel)
+                  Redis Cache                     ├──► ARQ Worker (Geo-IP &amp; Bot Analytics)
+           (Rate Limits &amp; Hot URLs)               ├──► Cloudflare SaaS (Custom Domains &amp; SSL)
+                                                  └──► Resend API (Dunning &amp; Reports via Redis SET NX)</pre>
+
+    <div class="sub">Highlights</div>
+    <ul class="feat">
+      <li><b>High-Performance Redirects</b> — Base62 alias resolution with Redis caching for instant redirection, password-protected links, expiry scheduling, and OS-specific routing (iOS vs Android).</li>
+      <li><b>Non-Blocking Analytics Pipeline</b> — Redirect events stream to an ARQ background queue, parsing Geo-IP, browser, device, and bot signatures before batch-flushing to PostgreSQL.</li>
+      <li><b>Branded Domains via Cloudflare SaaS</b> — Programmatically provisions multi-tenant custom domains with automatic DNS CNAME verification and SSL certificate issuance.</li>
+      <li><b>Security &amp; Abuse Prevention</b> — Asynchronous Google Safe Browsing checks to automatically flag and block phishing or malware destinations.</li>
+      <li><b>Monetization &amp; Developer API</b> — Firebase Admin SDK authentication, JWT session cookies, Razorpay tier gating, API key management, and dynamic SVG GitHub visitor badges.</li>
+    </ul>
+
+    <div class="sub">Stack</div>
+    <div class="stack">
+      <span class="chip">FastAPI</span>
+      <span class="chip">Python 3.10+</span>
+      <span class="chip">PostgreSQL</span>
+      <span class="chip">SQLModel</span>
+      <span class="chip">Redis</span>
+      <span class="chip">ARQ Queue</span>
+      <span class="chip">Cloudflare for SaaS</span>
+      <span class="chip">Razorpay</span>
+      <span class="chip">Firebase Admin SDK</span>
+      <span class="chip">Tailwind CSS</span>
+      <span class="chip">Nginx</span>
     </div>
-    <div class="links-row">
-      <a href="https://flexurl.app" target="_blank" rel="noopener">live site</a>
-      <a href="https://github.com/err0rgod/urlshortener" target="_blank" rel="noopener">source</a>
+
+    <div class="actions">
+      <a class="btn" href="https://flexurl.app" target="_blank" rel="noopener">live site ↗</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/flexurl" target="_blank" rel="noopener">source code</a>
     </div>
   </div>
 </div>
@@ -291,26 +350,19 @@
       <div class="badges">
         <span class="badge lang">Python</span>
         <span class="badge">PyPI</span>
+        <span class="badge">Argon2id</span>
+        <span class="badge">JWT</span>
         <span class="badge">MIT</span>
       </div>
     </div>
     <p class="tagline">"Database-agnostic authentication &amp; session management for Python."</p>
-    <p class="desc">A lightweight security toolkit that centralizes password hashing, JWT issuance, and refresh-token rotation — while leaving every database and model decision to you. No lock-in to SQLModel, Pydantic, or any specific driver.</p>
+    <p class="desc">Tokenly-Auth is a lightweight security toolkit on PyPI that centralizes password hashing, JWT token lifecycle management, and refresh-token rotation without enforcing any specific database ORM or driver. The project includes a full reference implementation app and documentation portal.</p>
 
-    <div class="sub">Stack</div>
-    <div class="stack">
-      <span class="chip">Argon2id</span>
-      <span class="chip">JWT</span>
-      <span class="chip">pytest</span>
-    </div>
-
-    <div class="sub">Highlights</div>
+    <div class="sub">Multi-Repo Subsystems</div>
     <ul class="feat">
-      <li><b>Crypto utils</b> — Argon2id hashing/verification with brute-force protection</li>
-      <li><b>Token management</b> — JWT create + verify, access &amp; refresh pairs</li>
-      <li><b>Session utils</b> — secure refresh-token hashing for rotation strategies</li>
-      <li><b>Middleware</b> — storage-agnostic rate limiting + <code>@require_auth</code> decorator</li>
-      <li><b>Validation</b> — structural checks for usernames and passwords</li>
+      <li><b>Core Library (<a href="https://github.com/err0rgod/tokenly" target="_blank" rel="noopener">err0rgod/tokenly</a>)</b> — Argon2id hashing with brute-force delay protection, JWT access and refresh token pair generation, secure refresh token hash storage, storage-agnostic rate limiting, and <code>@require_auth</code> decorators.</li>
+      <li><b>Demo Application &amp; Test Suite (<a href="https://github.com/err0rgod/tokenly-app" target="_blank" rel="noopener">err0rgod/tokenly-app</a>)</b> — FastAPI reference application demonstrating user signup/login, session lifecycle management, token rotation, token blacklisting/revocation, and integration tests.</li>
+      <li><b>Documentation Hub (<a href="https://github.com/err0rgod/tokenly-auth-docs" target="_blank" rel="noopener">err0rgod/tokenly-auth-docs</a>)</b> — Architectural docs and implementation guides for integrating Tokenly-Auth into Python web services.</li>
     </ul>
 
     <div class="sub">Install</div>
@@ -322,11 +374,13 @@ tokens = handler.<span class="k">createJwt</span>(sub=user_id)
 
 <span class="c"># protect a route</span>
 <span class="k">@require_auth</span>(jwt_handler=handler)
-def dashboard(): ...</pre>
+def dashboard(payload): ...</pre>
 
     <div class="actions">
       <a class="btn" href="https://pypi.org/project/tokenly-auth/" target="_blank" rel="noopener">PyPI ↗</a>
-      <a class="btn ghost" href="https://github.com/err0rgod/tokenly" target="_blank" rel="noopener">source</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/tokenly" target="_blank" rel="noopener">library repo</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/tokenly-app" target="_blank" rel="noopener">demo app repo</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/tokenly-auth-docs" target="_blank" rel="noopener">docs repo</a>
     </div>
   </div>
 </div>
@@ -339,29 +393,30 @@ def dashboard(): ...</pre>
       <div class="badges">
         <span class="badge lang">Python / Streamlit</span>
         <span class="badge">Docker</span>
+        <span class="badge">Network Forensics</span>
         <span class="badge">MIT</span>
       </div>
     </div>
-    <p class="tagline">"Browser-based PCAP analysis, without the hosted-tool limits."</p>
-    <p class="desc">A Streamlit tool for analyzing PCAP capture files in the browser, extracting structured network insights. Built to sidestep file-size caps and slow processing of hosted analyzers — run it locally via Docker with no size limits. Part of the broader "Midstalker" MITM framework.</p>
+    <p class="tagline">"Browser-based PCAP analysis, without hosted-tool limits."</p>
+    <p class="desc">MidAnalyzer is a Streamlit-based forensic tool for analyzing packet capture (.pcap) files directly in the browser and extracting structured network telemetry. Built to sidestep cloud file-size restrictions and processing bottlenecks, it runs either hosted or locally via Docker with unlimited file capacity as part of the Midstalker MITM security framework.</p>
 
     <div class="sub">Highlights</div>
     <ul class="feat">
-      <li><b>Interactive UI</b> — Streamlit front-end for quick inspection</li>
-      <li><b>No size limits</b> — local Docker processing beats hosted caps</li>
-      <li><b>Minimal setup</b> — clean, modular codebase, few dependencies</li>
+      <li><b>Interactive Forensics UI</b> — Streamlit interface for exploring conversation flows, DNS resolutions, protocol distributions, and packet payloads.</li>
+      <li><b>No Size Limits via Docker</b> — Local Docker execution processes multi-gigabyte captures using system resources directly, eliminating cloud upload caps.</li>
+      <li><b>Part of Midstalker Framework</b> — Security tooling engineered for analyzing MITM vectors and inspecting network telemetry.</li>
     </ul>
 
     <div class="sub">Run locally (Docker)</div>
-    <pre>git clone https://github.com/err0rgod/midstalker_analyzer.git
-cd midstalker_analyzer
+    <pre>git clone https://github.com/err0rgod/midanalyzer.git
+cd midanalyzer
 docker build -t midstalker .
 docker run -p 8501:8501 midstalker
 <span class="c"># open http://localhost:8501</span></pre>
 
     <div class="actions">
-      <a class="btn" href="https://midanalyzer.streamlit.app/" target="_blank" rel="noopener">live demo ↗</a>
-      <a class="btn ghost" href="https://github.com/err0rgod/midstalker_analyzer" target="_blank" rel="noopener">source</a>
+      <a class="btn" href="https://mid-stalker-analyzer.streamlit.app" target="_blank" rel="noopener">live demo ↗</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/midanalyzer" target="_blank" rel="noopener">source code</a>
     </div>
   </div>
 </div>
@@ -373,24 +428,28 @@ docker run -p 8501:8501 midstalker
       <h2><span class="hash">#</span> blackwidow</h2>
       <div class="badges">
         <span class="badge lang">C++ / ATtiny85</span>
+        <span class="badge">Digispark</span>
+        <span class="badge">Hardware Security</span>
         <span class="badge">★ 2</span>
         <span class="badge">MIT</span>
       </div>
     </div>
-    <p class="tagline">"Authorized hardware-security research on physical-access attack vectors."</p>
-    <p class="desc">A hardware HID research device built on the ATtiny85 for controlled lab testing. It explores keyboard emulation, physical-access threat models, and defensive detection of unauthorized payload delivery.</p>
+    <p class="tagline">"Hardware HID takeover device bypassing Windows Defender Tamper Protection."</p>
+    <p class="desc">A specialized hardware attack device engineered on the ATtiny85 microcontroller (Digispark) for controlled penetration testing. It demonstrates physical-access threat vectors by automating GUI key sequences to disable Windows Defender Tamper Protection and Firewall, staging an elevated hidden reverse shell.</p>
 
-    <div class="sub">Details</div>
+    <div class="sub">Attack Chain &amp; Mechanics</div>
     <ul class="feat">
-      <li><b>Platform</b> — ATtiny85 microcontroller, Arduino <code>.ino</code> sketch</li>
-      <li><b>Vector</b> — HID keyboard emulation for controlled lab payload delivery</li>
-      <li><b>Topics</b> — hid, attiny85, physical-access security</li>
+      <li><b>Tamper Protection GUI Bypass</b> — Windows Defender Tamper Protection cannot be turned off via CLI or PowerShell; the device executes timed keyboard navigation strokes via <code>DigiKeyboard.h</code> to toggle it off through the Windows Security GUI.</li>
+      <li><b>Privilege Elevation</b> — Automates privileged terminal execution (<code>Win+X</code> → <code>A</code> → <code>Y</code>) to launch an elevated administrative command environment.</li>
+      <li><b>Defensive Neutralization</b> — Disables all Windows Firewall profiles (<code>netsh advfirewall set allprofiles state off</code>) and halts Real-time Monitoring (<code>Set-MpPreference -DisableRealtimeMonitoring $true</code>).</li>
+      <li><b>Hidden Reverse Shell Stager</b> — Downloads a netcat binary into memory via PowerShell and establishes a hidden reverse shell (<code>-w Hidden</code>) back to the listener.</li>
+      <li><b>Lab Documentation</b> — Accompanied by in-depth Windows evasion analysis and operational workflows documented in the <code>Mafia/</code> directory.</li>
     </ul>
 
     <div class="warn">⚠ Authorized lab research only. Test hardware payloads exclusively on systems you own or have explicit permission to assess.</div>
 
     <div class="actions">
-      <a class="btn ghost" href="https://github.com/err0rgod/blackwidow" target="_blank" rel="noopener">source</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/blackwidow" target="_blank" rel="noopener">source code</a>
     </div>
   </div>
 </div>

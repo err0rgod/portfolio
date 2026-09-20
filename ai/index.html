@@ -96,54 +96,58 @@ ZeroDaily is a full-fledged tech intelligence ecosystem delivering 60-word roast
 
 ### Conduit
 A local-first, security-conscious bridge between AI agents and a real browser.
-Conduit connects MCP and CLI clients to a user's existing Chromium profile through an authenticated local daemon and a Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine.
-* **Stack**: TypeScript, MCP, Chromium
-* **Highlights**: 
-  - Agent-agnostic control - MCP, CLI, and typed daemon clients, without tying the browser to one agent.
-  - Structured automation - accessibility snapshots and temporary element IDs for navigation, input, screenshots, uploads, and downloads.
-  - Secure defaults - authenticated transport, narrow permissions, domain policies, confirmations, rate limits, and redacted audit events.
-  - Split architecture - the companion extension owns Chromium execution; the main repository owns the daemon, CLI, and MCP adapter.
-* **Architecture**: AI agent (MCP / CLI) -> authenticated local daemon -> Chromium extension -> browser tab
-* **Links**: [Live Site](https://conduit.zerodaily.in) | [Extension](https://chromewebstore.google.com/detail/gjhipjgiapijcdnflldnoenafeegmfpc?utm_source=item-share-cb) | [Daemon Repo](https://github.com/err0rgod/conduit) | [Extension Repo](https://github.com/err0rgod/conduit-extension)
+Conduit connects MCP and CLI clients to a user's existing Chromium/Firefox profile through an authenticated local daemon and a Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine while exposing structured accessibility trees and semantic element IDs.
+* **Stack**: TypeScript, Node.js 22+, MCP, Manifest V3, Native Messaging, Zod, Playwright
+* **Subsystems & Multi-Repo Architecture**:
+  - **Core Daemon & CLI (`err0rgod/conduit`)**: Local-first authenticated daemon, MCP protocol adapter, P-256 pairing proof-of-possession, Zod runtime schema validation, narrow origin permissions, rate limiting, and redacted audit logs. Registers Native Messaging manifests across Chrome, Firefox, Edge, Brave, and Chromium.
+  - **Browser Extension (`err0rgod/conduit-extension`)**: Manifest V3 extension generating accessibility snapshots with temporary numeric element IDs for resilient clicks, text input, and tab orchestration without brittle CSS selectors.
+  - **Web Portal & Documentation (`err0rgod/conduit-web`)**: Documentation hub and portal on Cloudflare Pages.
+* **Architecture**: AI agent (MCP / CLI) -> Authenticated Local Daemon (Node.js 22+) -> Native Messaging -> Extension (MV3) -> Browser Tab
+* **Links**: [Live Site](https://conduit.zerodaily.in) | [Chrome Web Store](https://chromewebstore.google.com/detail/conduit-extension/gjhipjgiapijcdnflldnoenafeegmfpc) | [Firefox Add-on](https://addons.mozilla.org/en-US/firefox/addon/conduit/) | [Daemon Repo](https://github.com/err0rgod/conduit) | [Extension Repo](https://github.com/err0rgod/conduit-extension) | [Web Repo](https://github.com/err0rgod/conduit-web)
 
 ### FlexURL
-Production URL management platform with analytics, Snowflake IDs, and a PostgreSQL/Redis hybrid backend. Full-stack ownership from frontend to deployment infrastructure.
-* **Stack**: Python / FastAPI, PostgreSQL, Redis, Nginx, Tailwind CSS
-* **Features**: URL shortening with custom aliases and Snowflake ID generation, Click analytics and tracking dashboard, Redis caching layer for low-latency redirects, Nginx reverse proxy configuration, Performance-audited architecture, Support ticket system.
-* **Architecture**: FastAPI backend with PostgreSQL persistence, Redis for caching hot URLs and rate limiting, Tailwind CSS frontend served separately, Nginx as reverse proxy in production, Shell-scripted deployment automation.
-* **Links**: [Live Site](https://flexurl.app) | [Source](https://github.com/err0rgod/urlshortener)
+Enterprise-grade URL shortening & link analytics platform with custom domain provisioning.
+FlexURL is a production URL management platform built around FastAPI, PostgreSQL, and Redis. It pairs high-speed caching and Snowflake/Base62 link redirection with an asynchronous background analytics pipeline, automated Cloudflare for SaaS custom domain provisioning, and Google Safe Browsing malware detection.
+* **Stack**: Python / FastAPI, PostgreSQL, SQLModel, Redis, ARQ Background Queue, Cloudflare for SaaS, Tailwind CSS, Nginx
+* **Features & Architecture**:
+  - High-performance Base62 redirects with Redis caching for instant redirection, password-protected links, expiry scheduling, and OS-specific routing.
+  - Non-blocking ARQ background worker pipeline parsing Geo-IP, browser, device, and bot signatures before batch-flushing to PostgreSQL.
+  - Programmatic multi-tenant custom domains via Cloudflare SaaS with automatic DNS CNAME verification and SSL certificate issuance.
+  - Asynchronous Google Safe Browsing checks to flag and block malicious destinations.
+  - Firebase Admin SDK authentication, JWT session cookies, Razorpay tier gating, API key management, and dynamic SVG GitHub visitor badges.
+* **Links**: [Live Site](https://flexurl.app) | [Source Code](https://github.com/err0rgod/flexurl)
 
 ### Tokenly-Auth
 Database-agnostic authentication & session management for Python.
-A lightweight security toolkit that centralizes password hashing, JWT issuance, and refresh-token rotation — while leaving every database and model decision to you. No lock-in to SQLModel, Pydantic, or any specific driver.
-* **Stack**: Argon2id, JWT, pytest
-* **Highlights**: 
-  - Crypto utils — Argon2id hashing/verification with brute-force protection
-  - Token management — JWT create + verify, access & refresh pairs
-  - Session utils — secure refresh-token hashing for rotation strategies
-  - Middleware — storage-agnostic rate limiting + @require_auth decorator
-  - Validation — structural checks for usernames and passwords
-* **Links**: [PyPI](https://pypi.org/project/tokenly-auth/) | [Source](https://github.com/err0rgod/tokenly)
+A lightweight security toolkit on PyPI that centralizes password hashing, JWT token lifecycle management, and refresh-token rotation without enforcing any specific database ORM or driver. Includes a reference app and documentation portal.
+* **Stack**: Python, Argon2id, JWT, pytest
+* **Subsystems & Multi-Repo Architecture**:
+  - **Core Library (`err0rgod/tokenly`)**: Published on PyPI (`tokenly-auth`). Argon2id hashing with brute-force delay protection, JWT access and refresh token pair generation, secure refresh token hash storage, storage-agnostic rate limiting, and `@require_auth` decorators.
+  - **Demo Application & Test Suite (`err0rgod/tokenly-app`)**: FastAPI reference application demonstrating user signup/login, session lifecycle management, token rotation, token blacklisting/revocation, and integration tests.
+  - **Documentation Hub (`err0rgod/tokenly-auth-docs`)**: Architectural docs and implementation guides for integrating Tokenly-Auth into Python web services.
+* **Links**: [PyPI](https://pypi.org/project/tokenly-auth/) | [Library Repo](https://github.com/err0rgod/tokenly) | [Demo App Repo](https://github.com/err0rgod/tokenly-app) | [Docs Repo](https://github.com/err0rgod/tokenly-auth-docs)
 
 ### MidAnalyzer
 Browser-based PCAP analysis, without the hosted-tool limits.
-A Streamlit tool for analyzing PCAP capture files in the browser, extracting structured network insights. Built to sidestep file-size caps and slow processing of hosted analyzers — run it locally via Docker with no size limits. Part of the broader "Midstalker" MITM framework.
-* **Stack**: Python / Streamlit, Docker
+A Streamlit forensic tool for analyzing packet capture (.pcap) files directly in the browser and extracting structured network telemetry. Built to sidestep cloud file-size restrictions and processing bottlenecks, it runs either hosted or locally via Docker with unlimited file capacity as part of the Midstalker MITM security framework.
+* **Stack**: Python / Streamlit, Docker, Network Forensics
 * **Highlights**: 
-  - Interactive UI — Streamlit front-end for quick inspection
-  - No size limits — local Docker processing beats hosted caps
-  - Minimal setup — clean, modular codebase, few dependencies
-* **Links**: [Live Demo](https://midanalyzer.streamlit.app/) | [Source](https://github.com/err0rgod/midstalker_analyzer)
+  - Interactive UI for exploring conversation flows, DNS resolutions, protocol distributions, and packet payloads.
+  - Local Docker execution processes multi-gigabyte captures using system resources directly, eliminating cloud upload caps.
+  - Part of the broader "Midstalker" MITM network security research framework.
+* **Links**: [Live Demo](https://mid-stalker-analyzer.streamlit.app) | [Source Code](https://github.com/err0rgod/midanalyzer)
 
 ### blackwidow
-Authorized hardware-security research on physical-access attack vectors.
-A hardware HID research device built on the ATtiny85 for controlled lab testing. It explores keyboard emulation, physical-access threat models, and defensive detection of unauthorized payload delivery.
-* **Stack**: C++ / ATtiny85
-* **Details**: 
-  - Platform — ATtiny85 microcontroller, Arduino .ino sketch
-  - Vector — HID keyboard emulation for controlled lab payload delivery
-  - Topics — hid, attiny85, physical-access security
-* **Links**: [Source](https://github.com/err0rgod/blackwidow)
+Hardware HID takeover device bypassing Windows Defender Tamper Protection.
+A specialized hardware attack device engineered on the ATtiny85 microcontroller (Digispark) for controlled penetration testing. It demonstrates physical-access threat vectors by automating GUI key sequences to disable Windows Defender Tamper Protection and Firewall, staging an elevated hidden reverse shell.
+* **Stack**: C++ / ATtiny85, Arduino, DigiKeyboard, Hardware Security
+* **Attack Chain & Mechanics**: 
+  - Timed keyboard navigation via `DigiKeyboard.h` to navigate the Windows Security GUI and toggle off Tamper Protection (which cannot be disabled via command-line).
+  - Automates privileged terminal execution (`Win+X` -> `A` -> `Y`) to launch an elevated administrative command prompt.
+  - Disables Windows Firewall profiles and halts Real-time Monitoring via PowerShell.
+  - Downloads a netcat binary into memory via PowerShell and establishes a hidden reverse shell (`-w Hidden`) back to the listener.
+  - Comprehensive research documentation in the `Mafia/` subfolder detailing Windows 10/11 evasion mechanics.
+* **Links**: [Source Code](https://github.com/err0rgod/blackwidow)
 
 ## Links & Contact
 - GitHub: https://github.com/err0rgod
