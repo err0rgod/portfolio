@@ -155,15 +155,89 @@
 <nav class="toc" aria-label="Project navigation">
   <div class="wrap">
     <div class="toc-grid">
+      <a href="#zerodaily">zerodaily</a>
+      <a href="#conduit">conduit</a>
       <a href="#flexurl">flexurl</a>
-      <a href="#conduit">conduit</a><a href="#zerodaily">zerodaily</a>
       <a href="#tokenly">tokenly</a>
-      <a href="#revlimiter">revlimiter</a>
       <a href="#midanalyzer">midanalyzer</a>
       <a href="#blackwidow">blackwidow</a>
     </div>
   </div>
 </nav>
+
+<!-- ZERODAILY -->
+<div class="project" id="zerodaily">
+  <div class="wrap">
+    <div class="head">
+      <h2><span class="hash">#</span> ZeroDaily</h2>
+      <div class="badges">
+        <span class="badge lang">React Native / Expo</span>
+        <span class="badge lang">FastAPI</span>
+        <span class="badge">AWS Lambda · DynamoDB</span>
+        <span class="badge">Bedrock DeepSeek</span>
+        <span class="badge">Cloudflare Edge</span>
+        <span class="badge">FCM</span>
+        <span class="badge">MIT</span>
+      </div>
+    </div>
+    <p class="tagline">"Autonomous tech intelligence platform and Inshorts-style news reader built on a multi-repo distributed architecture."</p>
+    <p class="desc">ZeroDaily is a full-fledged, multi-repo tech intelligence ecosystem delivering 60-word roasted summaries across 7 technical and financial domains. The platform is decoupled into four dedicated subsystems: an offline-first mobile app client, a serverless REST &amp; push notification backend, an autonomous LLM ingestion and media engine, and an edge-deployed web showcase with dynamic release resolution.</p>
+
+    <div class="sub">Architecture</div>
+    <pre>
+┌───────────────────────────────┐         ┌─────────────────────────────────┐
+│ Ingestion &amp; Scraping (bot1)   │         │ Mobile Application (app)        │
+│ • 24+ Feeds / 7 Tech Domains  │         │ • React Native / Expo SDK 52    │
+│ • Bedrock DeepSeek v3.2 Dedup │         │ • Inshorts-Style Vertical Swipe │
+│ • Cloudscraper + Firecrawl    │         │ • 0ms Cold Boot / N-8 Prefetch  │
+│ • 800px WebP Media to S3      │         │ • FCM Topic Push &amp; Deep Links   │
+└───────────────┬───────────────┘         └────────────────┬────────────────┘
+                │ PutItem / Stream                         │ GET Feed / WebP Assets
+                ▼                                          ▼
+┌───────────────────────────────┐  Cloudflare CDN ┌─────────────────────────────────┐
+│ Amazon DynamoDB &amp; Streams     │ ◄───────────────┤ Serving API &amp; Edge Web          │
+│ • Single-Table + 2 GSIs       │                 │ • FastAPI / Lambda (zerodaily)  │
+│ • 30-min Atomic Cooldown Lock │                 │ • FCM HTTP v1 Topic Dispatch    │
+│ • DynamoDB Stream to Worker   │                 │ • Vite Web Showcase (web)       │
+└───────────────────────────────┘                 └─────────────────────────────────┘</pre>
+
+    <div class="sub">Multi-Repo Subsystems</div>
+    <ul class="feat">
+      <li><b>Mobile App (<a href="https://github.com/err0rgod/zerodaily-app" target="_blank" rel="noopener">err0rgod/zerodaily-app</a>)</b> — An Inshorts-style vertical gesture news reader built with React Native &amp; Expo (SDK 52, TypeScript). Features 0ms cold-boot disk rendering, N-8 cursor prefetching engine, hardware-accelerated WebP caching, FCM topic subscriptions (<code>topic_breaking_all</code> &amp; <code>topic_{category}</code>) with zero server-side device token tracking, and 100% cloud CI/CD APK builds via GitHub Actions.</li>
+      <li><b>Backend API &amp; Stream Worker (<a href="https://github.com/err0rgod/zerodaily" target="_blank" rel="noopener">err0rgod/zerodaily</a>)</b> — High-performance FastAPI serving layer on AWS Lambda (via Mangum) backed by DynamoDB single-table design with GSIs for cursor-based ISO-8601 pagination. Emits tuned Cloudflare edge caching headers for 10–20ms global responses. Includes an event-driven DynamoDB Streams worker enforcing atomic 30-minute anti-spam cooldowns per category with TTL locks to trigger FCM HTTP v1 breaking push notifications.</li>
+      <li><b>Ingestion &amp; Dual-Persona Roasting Engine (<a href="https://github.com/err0rgod/bot1" target="_blank" rel="noopener">err0rgod/bot1</a>)</b> — Containerized Python 3.12 AWS Lambda pipeline triggered every 3 hours by EventBridge across 24+ feeds. Uses AWS Bedrock DeepSeek v3.2 for semantic clustering (eliminating ~75% redundant fetches before extraction), multi-tier scraping (cloudscraper + Firecrawl fallback), prompt injection sandboxing via XML boundaries, a zero-trust media pipeline with SSRF/private-IP guards streaming 800px WebP assets to S3, and automated 06:00 UTC executive morning digest emails via Resend.</li>
+      <li><b>Web Showcase &amp; Release Portal (<a href="https://github.com/err0rgod/zerodaily-web" target="_blank" rel="noopener">err0rgod/zerodaily-web</a>)</b> — High-impact, minimal landing application built with Vite and deployed to Cloudflare Pages edge. Integrates with the GitHub Releases API to dynamically resolve release metadata and provide instantaneous HTTP 302 redirects (<code>/apk</code>, <code>/download</code>) to the latest standalone Android build, complete with interactive 60-word roast previews across all 7 domains.</li>
+    </ul>
+
+    <div class="sub">Stack</div>
+    <div class="stack">
+      <span class="chip">React Native / Expo</span>
+      <span class="chip">TypeScript</span>
+      <span class="chip">FastAPI</span>
+      <span class="chip">Python 3.12</span>
+      <span class="chip">AWS Lambda</span>
+      <span class="chip">Amazon DynamoDB</span>
+      <span class="chip">Amazon S3</span>
+      <span class="chip">AWS Bedrock (DeepSeek v3.2)</span>
+      <span class="chip">Cloudflare Edge &amp; Pages</span>
+      <span class="chip">Firebase Cloud Messaging (FCM)</span>
+      <span class="chip">Vite</span>
+      <span class="chip">Docker</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="https://zerodaily.in" target="_blank" rel="noopener">live site ↗</a>
+      <a class="btn" href="https://zerodaily.in/apk" target="_blank" rel="noopener">download apk</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/zerodaily-app" target="_blank" rel="noopener">app repo</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/zerodaily" target="_blank" rel="noopener">backend repo</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/zerodaily-web" target="_blank" rel="noopener">web repo</a>
+      <a class="btn ghost" href="https://github.com/err0rgod/bot1" target="_blank" rel="noopener">scraper repo</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONDUIT -->
+<div class="project" id="conduit"><div class="wrap"><div class="head"><h2><span class="hash">#</span> Conduit</h2><div class="badges"><span class="badge lang">TypeScript</span><span class="badge lang">MCP</span><span class="badge">Chromium</span><span class="badge">MIT</span></div></div><p class="tagline">A local-first, security-conscious bridge between AI agents and a real browser.</p><p class="desc">Conduit connects MCP and CLI clients to a user's existing Chromium profile through an authenticated local daemon and a Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine.</p><div class="sub">Highlights</div><ul class="feat"><li><b>Agent-agnostic control</b> - MCP, CLI, and typed daemon clients, without tying the browser to one agent.</li><li><b>Structured automation</b> - accessibility snapshots and temporary element IDs for navigation, input, screenshots, uploads, and downloads.</li><li><b>Secure defaults</b> - authenticated transport, narrow permissions, domain policies, confirmations, rate limits, and redacted audit events.</li><li><b>Split architecture</b> - the companion extension owns Chromium execution; the main repository owns the daemon, CLI, and MCP adapter.</li></ul><div class="sub">Architecture</div><pre>AI agent (MCP / CLI) -&gt; authenticated local daemon -&gt; Chromium extension -&gt; browser tab</pre><div class="actions"><a class="btn" href="https://conduit.zerodaily.in" target="_blank" rel="noopener">live site</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/gjhipjgiapijcdnflldnoenafeegmfpc?utm_source=item-share-cb" target="_blank" rel="noopener">extension</a><a class="btn ghost" href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">daemon repo</a><a class="btn ghost" href="https://github.com/err0rgod/conduit-extension" target="_blank" rel="noopener">extension repo</a></div></div></div>
 
 <!-- FLEXURL -->
 <div class="project" id="flexurl">
@@ -205,50 +279,6 @@
     <div class="links-row">
       <a href="https://flexurl.app" target="_blank" rel="noopener">live site</a>
       <a href="https://github.com/err0rgod/urlshortener" target="_blank" rel="noopener">source</a>
-    </div>
-  </div>
-</div>
-
-<!-- CONDUIT -->
-<div class="project" id="conduit"><div class="wrap"><div class="head"><h2><span class="hash">#</span> Conduit</h2><div class="badges"><span class="badge lang">TypeScript</span><span class="badge lang">MCP</span><span class="badge">Chromium</span><span class="badge">MIT</span></div></div><p class="tagline">A local-first, security-conscious bridge between AI agents and a real browser.</p><p class="desc">Conduit connects MCP and CLI clients to a user's existing Chromium profile through an authenticated local daemon and a Manifest V3 extension. It keeps browser policy, consent, and audit decisions on the user's machine.</p><div class="sub">Highlights</div><ul class="feat"><li><b>Agent-agnostic control</b> - MCP, CLI, and typed daemon clients, without tying the browser to one agent.</li><li><b>Structured automation</b> - accessibility snapshots and temporary element IDs for navigation, input, screenshots, uploads, and downloads.</li><li><b>Secure defaults</b> - authenticated transport, narrow permissions, domain policies, confirmations, rate limits, and redacted audit events.</li><li><b>Split architecture</b> - the companion extension owns Chromium execution; the main repository owns the daemon, CLI, and MCP adapter.</li></ul><div class="sub">Architecture</div><pre>AI agent (MCP / CLI) -&gt; authenticated local daemon -&gt; Chromium extension -&gt; browser tab</pre><div class="actions"><a class="btn" href="https://conduit.zerodaily.in" target="_blank" rel="noopener">live site</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/gjhipjgiapijcdnflldnoenafeegmfpc?utm_source=item-share-cb" target="_blank" rel="noopener">extension</a><a class="btn ghost" href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">daemon repo</a><a class="btn ghost" href="https://github.com/err0rgod/conduit-extension" target="_blank" rel="noopener">extension repo</a></div></div></div>
-<div class="project" id="zerodaily">
-  <div class="wrap">
-    <div class="head">
-      <h2><span class="hash">#</span> ZeroDaily</h2>
-      <div class="badges">
-        <span class="badge lang">Python / Flask</span>
-        <span class="badge">AWS Lambda</span>
-        <span class="badge">MIT</span>
-      </div>
-    </div>
-    <p class="tagline">"A high-performance, serverless, automated cybersecurity newsletter platform."</p>
-    <p class="desc">ZeroDaily aggregates, summarizes, and broadcasts threat intelligence, CVEs, and security news. LLM-powered parsers digest raw security feeds and produce readable summaries, delivered as a daily newsletter — running fully serverless on AWS Lambda.</p>
-
-    <div class="sub">Stack</div>
-    <div class="stack">
-      <span class="chip">Flask + Jinja2</span>
-      <span class="chip">SQLAlchemy / SQLite</span>
-      <span class="chip">AWS Lambda (WSGI)</span>
-      <span class="chip">Groq / OpenAI</span>
-      <span class="chip">Resend API</span>
-      <span class="chip">GitHub Actions</span>
-      <span class="chip">Docker</span>
-    </div>
-
-    <div class="sub">Highlights</div>
-    <ul class="feat">
-      <li><b>Automated ingestion</b> — feed parsers use LLMs to summarize technical CVEs into digestible copy</li>
-      <li><b>Double opt-in</b> — cryptographic verify + unique unsubscribe tokens per subscriber</li>
-      <li><b>Telemetry</b> — tracks page views, reading session duration, average read time</li>
-      <li><b>Daily Hack Roasts</b> — witty recap of recent breaches</li>
-      <li><b>SEO-ready</b> — auto-updating sitemap, RSS feed, robots.txt</li>
-      <li><b>CI/CD</b> — syntax + dependency checks on every push</li>
-    </ul>
-
-    <div class="actions">
-      <a class="btn" href="https://zerodaily.in" target="_blank" rel="noopener">live ↗</a>
-      <a class="btn ghost" href="https://github.com/err0rgod/zeroday" target="_blank" rel="noopener">source</a>
-      <a class="btn ghost" href="https://github.com/err0rgod/bot0" target="_blank" rel="noopener">scraper repo</a>
     </div>
   </div>
 </div>
@@ -297,43 +327,6 @@ def dashboard(): ...</pre>
     <div class="actions">
       <a class="btn" href="https://pypi.org/project/tokenly-auth/" target="_blank" rel="noopener">PyPI ↗</a>
       <a class="btn ghost" href="https://github.com/err0rgod/tokenly" target="_blank" rel="noopener">source</a>
-    </div>
-  </div>
-</div>
-
-<!-- REVLIMITER -->
-<div class="project" id="revlimiter">
-  <div class="wrap">
-    <div class="head">
-      <h2><span class="hash">#</span> revlimiter</h2>
-      <div class="badges">
-        <span class="badge lang">Python</span>
-        <span class="badge">PyPI</span>
-        <span class="badge">zero-deps</span>
-        <span class="badge">MIT</span>
-      </div>
-    </div>
-    <p class="tagline">"Implement rate limiting in your app, seamlessly."</p>
-    <p class="desc">A type-hinted, zero-dependency rate-limiting library implementing the two classic algorithms. Use a single bucket directly, or the manager layer to juggle many clients at once.</p>
-
-    <div class="sub">Highlights</div>
-    <ul class="feat">
-      <li><b>Token bucket</b> — allows short bursts while holding a steady average rate</li>
-      <li><b>Leaky bucket</b> — drains requests at a fixed rate to smooth bursts</li>
-      <li><b>RateLimitManager</b> — per-client buckets across algorithms</li>
-      <li><b>Type-safe</b> — fully hinted, no external dependencies</li>
-    </ul>
-
-    <div class="sub">Install &amp; use</div>
-    <pre>pip install revlimiter</pre>
-    <pre>mgr = <span class="k">RateLimitManager</span>(algorithm=<span class="k">"token-bucket"</span>, capacity=10, refill_rate=2.0)
-bucket = mgr.<span class="k">get_bucket</span>(client_id)
-if bucket.<span class="k">allow_request</span>():
-    handle()</pre>
-
-    <div class="actions">
-      <a class="btn" href="https://pypi.org/project/revlimiter/" target="_blank" rel="noopener">PyPI ↗</a>
-      <a class="btn ghost" href="https://github.com/err0rgod/revlimiter" target="_blank" rel="noopener">source</a>
     </div>
   </div>
 </div>

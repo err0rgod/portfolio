@@ -83,12 +83,16 @@ Bug bounty · 7 mos · responsible disclosure for IBM, Spotify, and Lightspark
 
 ## Projects
 
-### FlexURL
-Production URL management platform with analytics, Snowflake IDs, and a PostgreSQL/Redis hybrid backend. Full-stack ownership from frontend to deployment infrastructure.
-* **Stack**: Python / FastAPI, PostgreSQL, Redis, Nginx, Tailwind CSS
-* **Features**: URL shortening with custom aliases and Snowflake ID generation, Click analytics and tracking dashboard, Redis caching layer for low-latency redirects, Nginx reverse proxy configuration, Performance-audited architecture, Support ticket system.
-* **Architecture**: FastAPI backend with PostgreSQL persistence, Redis for caching hot URLs and rate limiting, Tailwind CSS frontend served separately, Nginx as reverse proxy in production, Shell-scripted deployment automation.
-* **Links**: [Live Site](https://flexurl.app) | [Source](https://github.com/err0rgod/urlshortener)
+### ZeroDaily
+Autonomous tech intelligence platform & Inshorts-style news reader built on a multi-repo distributed architecture.
+ZeroDaily is a full-fledged tech intelligence ecosystem delivering 60-word roasted summaries across 7 technical and financial domains. The platform is decoupled into four dedicated subsystems: an offline-first mobile app client, a serverless REST & push notification backend, an autonomous LLM ingestion and media engine, and an edge-deployed web showcase with dynamic release resolution.
+* **Stack**: React Native / Expo SDK 52, TypeScript, FastAPI, Python 3.12, AWS Lambda, Amazon DynamoDB, Amazon S3, AWS Bedrock (DeepSeek v3.2), Cloudflare Pages & Edge CDN, Firebase Cloud Messaging (FCM), Vite, Docker
+* **Subsystems & Multi-Repo Architecture**:
+  - **Mobile App (`err0rgod/zerodaily-app`)**: Inshorts-style vertical gesture news reader built with React Native & Expo SDK 52. 0ms cold-boot renders from local disk storage, N-8 prefetch engine, hardware-accelerated WebP caching, FCM topic push alerts (topic_breaking_all & topic_{category}), and 100% cloud CI/CD APK compilation via GitHub Actions.
+  - **Backend API & Notification Worker (`err0rgod/zerodaily`)**: High-performance FastAPI serving layer on AWS Lambda (via Mangum) backed by DynamoDB single-table design with GSIs for cursor-based ISO-8601 pagination. Cloudflare edge caching headers for 10–20ms global delivery. DynamoDB Streams worker with atomic 30-minute anti-spam cooldown locks via conditional writes & TTL dispatching breaking news to FCM HTTP v1 topics.
+  - **Ingestion & Roasting Engine (`err0rgod/bot1`)**: Containerized Python 3.12 AWS Lambda pipeline triggered every 3 hours by EventBridge across 24+ feeds. Semantic LLM deduplication with AWS Bedrock DeepSeek v3.2 to eliminate ~75% of redundant fetches before extraction. Multi-tier scraping (cloudscraper + Firecrawl), XML prompt-injection sandboxing, zero-trust chunked media pipeline with SSRF guards and WebP optimization to S3, and automated 06:00 UTC executive morning digest with GB-seconds telemetry via Resend.
+  - **Web Showcase & Release Portal (`err0rgod/zerodaily-web`)**: Minimalist Vite-powered SPA deployed to Cloudflare Pages edge. Dynamically resolves GitHub Releases API metadata to redirect (/apk, /download) directly to the latest production Android APK with interactive 60-word roast previews across 7 domains.
+* **Links**: [Live Site](https://zerodaily.in) | [Download APK](https://zerodaily.in/apk) | [App Repo](https://github.com/err0rgod/zerodaily-app) | [Backend Repo](https://github.com/err0rgod/zerodaily) | [Web Repo](https://github.com/err0rgod/zerodaily-web) | [Scraper Repo](https://github.com/err0rgod/bot1)
 
 ### Conduit
 A local-first, security-conscious bridge between AI agents and a real browser.
@@ -102,18 +106,12 @@ Conduit connects MCP and CLI clients to a user's existing Chromium profile throu
 * **Architecture**: AI agent (MCP / CLI) -> authenticated local daemon -> Chromium extension -> browser tab
 * **Links**: [Live Site](https://conduit.zerodaily.in) | [Extension](https://chromewebstore.google.com/detail/gjhipjgiapijcdnflldnoenafeegmfpc?utm_source=item-share-cb) | [Daemon Repo](https://github.com/err0rgod/conduit) | [Extension Repo](https://github.com/err0rgod/conduit-extension)
 
-### ZeroDaily
-A high-performance, serverless, automated cybersecurity newsletter platform.
-ZeroDaily aggregates, summarizes, and broadcasts threat intelligence, CVEs, and security news. LLM-powered parsers digest raw security feeds and produce readable summaries, delivered as a daily newsletter — running fully serverless on AWS Lambda.
-* **Stack**: Flask + Jinja2, SQLAlchemy / SQLite, AWS Lambda (WSGI), Groq / OpenAI, Resend API, GitHub Actions, Docker
-* **Highlights**: 
-  - Automated ingestion — feed parsers use LLMs to summarize technical CVEs into digestible copy
-  - Double opt-in — cryptographic verify + unique unsubscribe tokens per subscriber
-  - Telemetry — tracks page views, reading session duration, average read time
-  - Daily Hack Roasts — witty recap of recent breaches
-  - SEO-ready — auto-updating sitemap, RSS feed, robots.txt
-  - CI/CD — syntax + dependency checks on every push
-* **Links**: [Live](https://zerodaily.in) | [Source](https://github.com/err0rgod/zeroday) | [Scraper Repo](https://github.com/err0rgod/bot0)
+### FlexURL
+Production URL management platform with analytics, Snowflake IDs, and a PostgreSQL/Redis hybrid backend. Full-stack ownership from frontend to deployment infrastructure.
+* **Stack**: Python / FastAPI, PostgreSQL, Redis, Nginx, Tailwind CSS
+* **Features**: URL shortening with custom aliases and Snowflake ID generation, Click analytics and tracking dashboard, Redis caching layer for low-latency redirects, Nginx reverse proxy configuration, Performance-audited architecture, Support ticket system.
+* **Architecture**: FastAPI backend with PostgreSQL persistence, Redis for caching hot URLs and rate limiting, Tailwind CSS frontend served separately, Nginx as reverse proxy in production, Shell-scripted deployment automation.
+* **Links**: [Live Site](https://flexurl.app) | [Source](https://github.com/err0rgod/urlshortener)
 
 ### Tokenly-Auth
 Database-agnostic authentication & session management for Python.
@@ -126,17 +124,6 @@ A lightweight security toolkit that centralizes password hashing, JWT issuance, 
   - Middleware — storage-agnostic rate limiting + @require_auth decorator
   - Validation — structural checks for usernames and passwords
 * **Links**: [PyPI](https://pypi.org/project/tokenly-auth/) | [Source](https://github.com/err0rgod/tokenly)
-
-### revlimiter
-Implement rate limiting in your app, seamlessly.
-A type-hinted, zero-dependency rate-limiting library implementing the two classic algorithms. Use a single bucket directly, or the manager layer to juggle many clients at once.
-* **Stack**: Python, zero-deps
-* **Highlights**: 
-  - Token bucket — allows short bursts while holding a steady average rate
-  - Leaky bucket — drains requests at a fixed rate to smooth bursts
-  - RateLimitManager — per-client buckets across algorithms
-  - Type-safe — fully hinted, no external dependencies
-* **Links**: [PyPI](https://pypi.org/project/revlimiter/) | [Source](https://github.com/err0rgod/revlimiter)
 
 ### MidAnalyzer
 Browser-based PCAP analysis, without the hosted-tool limits.
