@@ -1,0 +1,30 @@
+first things is you have mentioned the projects but i want a different page for every project to show everything in detail. so the diagram you have build is wrong an needs to be removed 
+
+now my mail for contact is nirbhay.bin@gmail.com add my other handles in the footer also like err0rgod.medium.com x.com/err0rgod github.com/err0rgod linkedin.com/in/nirbhay-katiyar
+
+The Name is Nirbhay Katiyar 
+
+Now first coming to the zerodaily which is a multirepo system built to deleiver tech news unders 8 minutes to the users phone it is a complicated architecture which you have to show the overview of it 
+so you have to check these repos D:/bot1   which is the main content scraper D:/zerodaily   which is the main backend built in python + magnum using aws lambda and more D:/zerodaily-app  the app for users
+D:/zerodaily-web the website for intro and web user interaction and for brand image 
+
+it's has very good technicalities if you could not find ones are CDN based pre warming, 30-100 ms response time using k6 , requests per second unlimited as it's server independent and cached to the CDN
+20+ DAU 500+ articles daily generated 2500+ articles ingested daily 2-3M tokens everyday and so on add from your side according to your discoveries 
+
+Now conduit is also a multirepo system conduit.nirbhay.me is a browser extension built for agents to access users browser instead of the fake browser they come with the code is at 
+D:/conduit 
+D:/conduit-extension
+D:/conduit-web
+available on chrome web store , fire fox, edge, brave 
+
+now coming to flexurl it is a URL management platform it also has good technicalities also has a domain flexurl.app and the code exits at either D:/flexurl  D:/urlshortener
+you also have to analyse the codebase and show it in the project as intended
+
+
+Tokenly is a python Database agnostic authentication library code is at D:/tokenly it is published on the pypi with overs 1000+ users
+
+
+rest you analyse and make the content according to it 
+
+
+also properly show my github commit graph 

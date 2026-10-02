@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZeroDaily — Nirbhay Katiyar</title>
-<meta name="description" content="ZeroDaily — autonomous multi-repo tech-intelligence platform. 24+ feeds, LLM dedup, Bedrock roasting, serverless FastAPI, CDN pre-warming, FCM push. Source to phone in under 8 minutes.">
+<meta name="description" content="ZeroDaily — autonomous multi-repo tech-intelligence platform. Tech news with no PR fluff: 24+ feeds, LLM dedup, Bedrock roasting, serverless FastAPI, CDN pre-warming, FCM push.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +28,8 @@
 <div class="dhead">
   <div class="wrap">
     <a class="back" href="index.html#ship">← cd ../production</a>
-    <h1>ZeroDaily <span class="g">/ the 8-minute news machine</span></h1>
-    <p class="tagline">// autonomous multi-repo tech-intelligence ecosystem — an article goes from a source website to a roasted 60-word card on your phone in under 8 minutes, with zero human input. 4 repos · 3 lambda functions · 1 very busy cron job.</p>
+    <h1>ZeroDaily <span class="g">/ tech news, no PR fluff</span></h1>
+    <p class="tagline">// autonomous multi-repo tech-intelligence ecosystem — an article goes from a source website to a roasted 60-word card on your phone in minutes, with zero human input. 4 repos · 3 lambda functions · 1 very busy cron job.</p>
     <div class="dlinks">
       <a class="btn solid" href="https://zerodaily.in" target="_blank" rel="noopener">zerodaily.in ↗</a>
       <a class="btn line" href="https://zerodaily.in/apk" target="_blank" rel="noopener">download apk</a>
@@ -48,7 +48,7 @@
       <div class="sbox b"><div class="n">500<em>+</em></div><div class="l">PUBLISHED / DAY<br>after semantic dedup</div></div>
       <div class="sbox p"><div class="n">2–3<em>M</em></div><div class="l">LLM TOKENS / DAY<br>aws bedrock</div></div>
       <div class="sbox a"><div class="n">&lt;20<em>ms</em></div><div class="l">EDGE RESPONSE<br>k6-tested · CDN-cached</div></div>
-      <div class="sbox"><div class="n">3<em>h</em></div><div class="l">SCRAPE CADENCE<br>eventbridge cron</div></div>
+      <div class="sbox"><div class="n">8<em>min</em></div><div class="l">SCRAPE CADENCE<br>eventbridge cron</div></div>
       <div class="sbox b"><div class="n">172</div><div class="l">UNIT TESTS<br>66 bot1 + 106 backend</div></div>
       <div class="sbox p"><div class="n">0<em>ms</em></div><div class="l">APP COLD BOOT<br>last 20 cards from disk</div></div>
       <div class="sbox a"><div class="n">20<em>+</em></div><div class="l">DAILY ACTIVE USERS<br>organic, growing</div></div>
@@ -64,7 +64,7 @@
         <!-- step boxes, 2 rows -->
         <g class="pp"><rect class="box" x="10" y="40" width="122" height="58" rx="10" stroke-width="1.2"/>
           <text class="nd" x="71" y="64" text-anchor="middle">1 ⏰ cron</text>
-          <text class="sub" x="71" y="80" text-anchor="middle" font-size="9">every 3h</text></g>
+          <text class="sub" x="71" y="80" text-anchor="middle" font-size="9">every 8 min</text></g>
         <g class="pp" style="animation-delay:.25s"><rect class="box" x="162" y="40" width="122" height="58" rx="10" stroke-width="1.2"/>
           <text class="nd" x="223" y="64" text-anchor="middle">2 📡 rss</text>
           <text class="sub" x="223" y="80" text-anchor="middle" font-size="9">24+ feeds · 7 cat</text></g>
@@ -92,7 +92,7 @@
           <text class="sub" x="581" y="300" text-anchor="middle" font-size="9">fastapi · &lt;20ms</text></g>
         <g class="pp" style="animation-delay:2.25s"><rect class="box" x="700" y="260" width="150" height="58" rx="10" stroke-width="1.2" style="stroke:var(--grn)"/>
           <text x="775" y="284" text-anchor="middle" fill="var(--grn)">10 📱 phone</text>
-          <text class="sub" x="775" y="300" text-anchor="middle" font-size="9">&lt; 8 min from source</text></g>
+          <text class="sub" x="775" y="300" text-anchor="middle" font-size="9">minutes from source</text></g>
 
         <!-- flows row 1 -->
         <path class="flow" d="M132 69 H162" stroke="var(--blu)" stroke-width="1.8"/>
@@ -127,7 +127,7 @@
     <div class="repo-grid rv">
       <a class="repo" href="https://github.com/err0rgod/bot1" target="_blank" rel="noopener">
         <div class="rn">err0rgod/bot1 ↗</div>
-        <div class="rd">The ingestion engine. Containerized Python 3.12 Lambda on a 3-hour cron: RSS scrape → LLM semantic dedup → two-tier extraction (cloudscraper, Firecrawl fallback) → SSRF-guarded media pipeline → dual-persona Bedrock roasting → DynamoDB.</div>
+        <div class="rd">The ingestion engine. Containerized Python 3.12 Lambda on an 8-minute cron: RSS scrape → LLM semantic dedup → two-tier extraction (cloudscraper, Firecrawl fallback) → SSRF-guarded media pipeline → dual-persona Bedrock roasting → DynamoDB.</div>
       </a>
       <a class="repo" href="https://zerodaily.in" target="_blank" rel="noopener">
         <div class="rn">the serving layer · live at api.zerodaily.in ↗</div>
