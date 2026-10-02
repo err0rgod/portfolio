@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>revlimiter — Nirbhay Katiyar</title>
+<meta name="description" content="revlimiter — rate-limiting library for Python services on PyPI, 700+ all-time downloads.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
+    <span class="ci done"><span class="spin"></span><span>case file: revlimiter</span></span>
+    <div class="links">
+      <a href="tokenly.html">← prev: tokenly</a>
+      <a href="index.html#ship">../all-projects</a>
+      <a href="midanalyzer.html">next: midanalyzer →</a>
+      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="dhead">
+  <div class="wrap">
+    <a class="back" href="index.html#ship">← cd ../production</a>
+    <h1>revlimiter <span class="g">/ say no, politely, 600 times a minute</span></h1>
+    <p class="tagline">// a rate-limiting library for python services — born from watching FlexURL's hot paths need real protection. token-bucket semantics, pluggable storage, no framework lock-in. published on pypi, 700+ all-time downloads.</p>
+    <div class="dlinks">
+      <a class="btn solid" href="https://pypi.org/project/revlimiter/" target="_blank" rel="noopener">pypi ↗</a>
+      <a class="btn line" href="https://github.com/err0rgod/revlimiter" target="_blank" rel="noopener">source repo</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ============ NUMBERS ============ -->
+  <div class="dsec">
+    <h2><span class="k">§1</span>the numbers board</h2>
+    <p class="dsub">// small, sharp, downloaded</p>
+    <div class="statboxes rv">
+      <div class="sbox p"><div class="n">700<em>+</em></div><div class="l">PYPI DOWNLOADS · ALL TIME<br>organic adoption</div></div>
+      <div class="sbox"><div class="n">1</div><div class="l">PURPOSE<br>rate limiting, done right</div></div>
+      <div class="sbox b"><div class="n">0</div><div class="l">FRAMEWORK LOCK-IN<br>flask · fastapi · raw wsgi</div></div>
+      <div class="sbox a"><div class="n">MIT</div><div class="l">LICENSE<br>use it, ship it, don't blame me</div></div>
+    </div>
+  </div>
+
+  <!-- ============ WHY ============ -->
+  <div class="dsec">
+    <h2><span class="k">§2</span>why it exists</h2>
+    <p class="dsub">// every production service eventually needs a bouncer</p>
+    <ul class="feat rv">
+      <li><b>Built from production scars</b> — FlexURL's API serves tiered limits (60 / 180 / 600 req/min by plan) off a Redis token bucket; revlimiter packages that pattern so the next project doesn't re-derive it at 2 AM.</li>
+      <li><b>Pluggable storage</b> — same duck-typed philosophy as tokenly: bring Redis, memcached, or anything with the right primitives. Your infra, your choice.</li>
+      <li><b>Framework-agnostic</b> — a limiter is a predicate, not middleware religion. Wire it into FastAPI dependencies, Flask decorators, or a plain function call.</li>
+      <li><b>Actively evolving</b> — this page exists because the project does; new algorithms and storage adapters land as my other systems need them.</li>
+    </ul>
+  </div>
+
+  <!-- ============ CODE ============ -->
+  <div class="dsec">
+    <h2><span class="k">§3</span>the shape of it</h2>
+    <p class="dsub">// the idea in four lines</p>
+    <pre class="code rv"><span class="k">from</span> revlimiter <span class="k">import</span> RateLimiter
+
+limiter = <span class="s">RateLimiter</span>(storage=redis, max_requests=<span class="n">60</span>, window=<span class="n">60</span>)
+
+<span class="k">if not</span> limiter.allow(key=client_ip):
+    <span class="k">return</span> Response(<span class="n">429</span>, <span class="s">"calm down."</span>)</pre>
+  </div>
+
+  <div class="dsec" style="border-bottom:none">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn solid" href="midanalyzer.html">next project: midanalyzer →</a>
+      <a class="btn line" href="index.html#ship">back to all projects</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span class="handles">
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
+      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
+      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
+    </span>
+    <span>revlimiter · exit 0</span>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

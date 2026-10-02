@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tokenly — Nirbhay Katiyar</title>
+<meta name="description" content="tokenly-auth — database-agnostic Python authentication library on PyPI. Argon2id, JWT access tokens, opaque refresh tokens, 1,480 all-time downloads.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
+    <span class="ci done"><span class="spin"></span><span>case file: tokenly</span></span>
+    <div class="links">
+      <a href="flexurl.html">← prev: flexurl</a>
+      <a href="index.html#ship">../all-projects</a>
+      <a href="revlimiter.html">next: revlimiter →</a>
+      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="dhead">
+  <div class="wrap">
+    <a class="back" href="index.html#ship">← cd ../production</a>
+    <h1>tokenly <span class="g">/ auth without the ORM</span></h1>
+    <p class="tagline">// a database-agnostic authentication toolkit for python. it deliberately ships NO database driver — you control the database, you control the models, tokenly controls the cryptography. published on pypi, downloaded 1,480 times by strangers who owe me nothing.</p>
+    <div class="dlinks">
+      <a class="btn solid" href="https://pypi.org/project/tokenly-auth/" target="_blank" rel="noopener">pypi ↗</a>
+      <a class="btn line" href="https://github.com/err0rgod/tokenly" target="_blank" rel="noopener">library repo</a>
+      <a class="btn line" href="https://github.com/err0rgod/tokenly-app" target="_blank" rel="noopener">demo app</a>
+      <a class="btn line" href="https://github.com/err0rgod/tokenly-auth-docs" target="_blank" rel="noopener">docs</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ============ NUMBERS ============ -->
+  <div class="dsec">
+    <h2><span class="k">§1</span>the numbers board</h2>
+    <p class="dsub">// small library, real users</p>
+    <div class="statboxes rv">
+      <div class="sbox p"><div class="n">1,480</div><div class="l">PYPI DOWNLOADS · ALL TIME<br>and compounding</div></div>
+      <div class="sbox"><div class="n">v1.1.4</div><div class="l">CURRENT RELEASE<br>actively maintained</div></div>
+      <div class="sbox b"><div class="n">0</div><div class="l">ORM / DB DEPENDENCIES<br>postgres? mongo? your call</div></div>
+      <div class="sbox a"><div class="n">≥3.8</div><div class="l">PYTHON SUPPORT<br>MIT licensed</div></div>
+    </div>
+  </div>
+
+  <!-- ============ DESIGN ============ -->
+  <div class="dsec">
+    <h2><span class="k">§2</span>the design philosophy</h2>
+    <p class="dsub">// security primitives, not opinions about your schema</p>
+    <ul class="feat rv">
+      <li><b>Argon2id by default</b> — password hashing via argon2-cffi's PasswordHasher with the OWASP-recommended algorithm. No md5 nostalgia here.</li>
+      <li><b>Refresh tokens are NOT JWTs</b> — they're <code>secrets.token_urlsafe(64)</code> opaque strings, and only their <b>SHA-256 hash</b> ever touches a database. A leaked refresh-token table leaks nothing usable.</li>
+      <li><b>JWT access tokens, 15-minute fuse</b> — <code>sub</code>, <code>jti</code>, <code>iat</code>, <code>exp</code> — short-lived by default so a stolen access token expires before lunch.</li>
+      <li><b>Dict-style API</b> — <code>Security["hash"](pw)</code>, <code>Security["verify"](pw, hash)</code>, <code>Security["reset"](...)</code>. An unusual, javascript-flavored interface that makes the security surface feel like a toolbox, not a framework.</li>
+      <li><b>@require_auth decorator</b> — wraps any function whose first arg is a token string; the decoded payload is injected into your handler. Framework-agnostic: Flask, FastAPI, raw sockets, whatever.</li>
+      <li><b>Duck-typed rate limiting</b> — <code>RateLimiter(storage_client)</code> works against anything exposing <code>.incr()</code> and <code>.expire()</code>. Redis, memcached, a dict in a trench coat — all valid.</li>
+      <li><b>Brute-force hooks</b> — <code>verifyPassword</code> accepts <code>locked_until</code> / <code>failed_attempts</code> and refuses to even try while locked. State stays with you; the primitive enforces it.</li>
+    </ul>
+  </div>
+
+  <!-- ============ CODE ============ -->
+  <div class="dsec">
+    <h2><span class="k">§3</span>how it reads</h2>
+    <p class="dsub">// three lines to a protected route</p>
+    <pre class="code rv"><span class="k">from</span> tokenly_auth <span class="k">import</span> TokenHandler, require_auth, Security
+
+handler = <span class="s">TokenHandler</span>(SECRET_KEY=<span class="s">"…"</span>)
+tokens  = handler.createJwt(sub=user.id)   <span class="c"># {access_token, refresh_token, refresh_days}</span>
+
+<span class="k">@require_auth</span>(jwt_handler=handler)
+<span class="k">def</span> <span class="s">dashboard</span>(payload):
+    <span class="c"># payload is already verified &amp; decoded. ship the route.</span>
+    ...</pre>
+  </div>
+
+  <div class="dsec" style="border-bottom:none">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn solid" href="revlimiter.html">next project: revlimiter →</a>
+      <a class="btn line" href="index.html#ship">back to all projects</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span class="handles">
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
+      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
+      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
+    </span>
+    <span>tokenly · exit 0</span>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

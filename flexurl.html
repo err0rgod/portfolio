@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlexURL — Nirbhay Katiyar</title>
+<meta name="description" content="FlexURL — production URL management platform. Sonyflake+Base62 redirects at 410 req/s, crash-safe ARQ analytics, Cloudflare for SaaS custom domains, Razorpay monetization.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
+    <span class="ci done"><span class="spin"></span><span>case file: flexurl</span></span>
+    <div class="links">
+      <a href="conduit.html">← prev: conduit</a>
+      <a href="index.html#ship">../all-projects</a>
+      <a href="tokenly.html">next: tokenly →</a>
+      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="dhead">
+  <div class="wrap">
+    <a class="back" href="index.html#ship">← cd ../production</a>
+    <h1>FlexURL <span class="g">/ links as a platform</span></h1>
+    <p class="tagline">// production URL-management platform — redirects, analytics, custom domains, monetization, and a developer API. the kind of project where the boring parts (locking, caching, flush semantics) are where the engineering actually lives.</p>
+    <div class="dlinks">
+      <a class="btn solid" href="https://flexurl.app" target="_blank" rel="noopener">flexurl.app ↗</a>
+      <a class="btn line" href="https://github.com/err0rgod/urlshortener" target="_blank" rel="noopener">source repo</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ============ NUMBERS ============ -->
+  <div class="dsec">
+    <h2><span class="k">§1</span>the numbers board</h2>
+    <p class="dsub">// from the performance audit, not the imagination</p>
+    <div class="statboxes rv">
+      <div class="sbox"><div class="n">410<em>+</em></div><div class="l">REDIRECTS / SEC<br>on a 2vcpu box · 100% success</div></div>
+      <div class="sbox b"><div class="n">42<em>ms</em></div><div class="l">AVG LATENCY<br>p95 &lt; 210ms</div></div>
+      <div class="sbox p"><div class="n">100<em>ms</em></div><div class="l">HOT-PATH REDIS TIMEOUT<br>scheduler gets its own client</div></div>
+      <div class="sbox a"><div class="n">30<em>s</em></div><div class="l">CLICK FLUSH CYCLE<br>crash-safe read-commit-decrby</div></div>
+      <div class="sbox"><div class="n">60<em>/min</em></div><div class="l">GLOBAL RATE LIMIT<br>redis token bucket per ip</div></div>
+      <div class="sbox b"><div class="n">600<em>/min</em></div><div class="l">BUSINESS API TIER<br>60 / 180 / 600 per tier</div></div>
+      <div class="sbox p"><div class="n">7<em>d</em></div><div class="l">GEO-IP CACHE TTL<br>ua + geo parsed off the hot path</div></div>
+      <div class="sbox a"><div class="n">4</div><div class="l">GUNICORN WORKERS<br>uvicorn workers behind nginx</div></div>
+    </div>
+  </div>
+
+  <!-- ============ REDIRECT PIPELINE ============ -->
+  <div class="dsec">
+    <h2><span class="k">§2</span>life of a redirect</h2>
+    <p class="dsub">// the hot path is Redis-shaped; Postgres is the fallback, not the default</p>
+    <div class="arch rv">
+      <svg viewBox="0 0 1060 320" fill="none" font-family="JetBrains Mono" font-size="11">
+        <g class="pp"><rect class="box" x="10" y="40" width="130" height="56" rx="10" stroke-width="1.2"/>
+          <text class="nd" x="75" y="64" text-anchor="middle">🌍 request</text>
+          <text class="sub" x="75" y="80" text-anchor="middle" font-size="9">GET /{alias}</text></g>
+        <g class="pp" style="animation-delay:.3s"><rect class="box" x="200" y="40" width="130" height="56" rx="10" stroke-width="1.2"/>
+          <text class="nd" x="265" y="64" text-anchor="middle">nginx</text>
+          <text class="sub" x="265" y="80" text-anchor="middle" font-size="9">:80 → 127.0.0.1:8000</text></g>
+        <g class="pp" style="animation-delay:.6s"><rect class="box" x="390" y="40" width="150" height="56" rx="10" stroke-width="1.2" style="stroke:var(--red)"/>
+          <text x="465" y="64" text-anchor="middle" fill="var(--red)">⚡ redis</text>
+          <text class="sub" x="465" y="80" text-anchor="middle" font-size="9">100ms socket timeout</text></g>
+        <g class="pp" style="animation-delay:.9s"><rect class="box" x="600" y="40" width="150" height="56" rx="10" stroke-width="1.2"/>
+          <text class="nd" x="675" y="64" text-anchor="middle">302 ↗ dest</text>
+          <text class="sub" x="675" y="80" text-anchor="middle" font-size="9">avg 42ms</text></g>
+        <g class="pp" style="animation-delay:1.2s"><rect class="box" x="810" y="40" width="180" height="56" rx="10" stroke-width="1.2" style="stroke:var(--amb)"/>
+          <text x="900" y="64" text-anchor="middle" fill="var(--amb)">arq enqueue</text>
+          <text class="sub" x="900" y="80" text-anchor="middle" font-size="9">never blocks the 302</text></g>
+        <!-- miss path -->
+        <g class="pp" style="animation-delay:1.5s"><rect class="box" x="390" y="210" width="150" height="56" rx="10" stroke-width="1.2"/>
+          <text class="nd" x="465" y="234" text-anchor="middle">🐘 postgres</text>
+          <text class="sub" x="465" y="250" text-anchor="middle" font-size="9">pool 20 · pre_ping</text></g>
+        <g class="pp" style="animation-delay:1.8s"><rect class="box" x="810" y="210" width="180" height="56" rx="10" stroke-width="1.2" style="stroke:var(--pur)"/>
+          <text x="900" y="234" text-anchor="middle" fill="var(--pur)">flush cron · 30s</text>
+          <text class="sub" x="900" y="250" text-anchor="middle" font-size="9">batch UPDATE + DECRBY</text></g>
+        <!-- flows -->
+        <path class="flow" d="M140 68 H200" stroke="var(--ink)" stroke-width="1.8"/>
+        <path class="flow" d="M330 68 H390" stroke="var(--red)" stroke-width="1.8"/>
+        <path class="flow" d="M540 68 H600" stroke="var(--grn)" stroke-width="1.8"/>
+        <path class="flow" d="M750 68 H810" stroke="var(--amb)" stroke-width="1.8"/>
+        <path class="flow" d="M465 96 V210" stroke="var(--ink)" stroke-width="1.8" stroke-dasharray="4 6"/>
+        <text class="sub" x="478" y="160" font-size="9">cache miss → db → repopulate</text>
+        <path class="flow" d="M900 96 V210" stroke="var(--pur)" stroke-width="1.8"/>
+        <circle r="3.5" fill="var(--ink)"><animateMotion dur="1.4s" repeatCount="indefinite" path="M140 68 H200"/></circle>
+        <circle r="3.5" fill="var(--red)"><animateMotion dur="1.4s" begin=".3s" repeatCount="indefinite" path="M330 68 H390"/></circle>
+        <circle r="3.5" fill="var(--grn)"><animateMotion dur="1.4s" begin=".6s" repeatCount="indefinite" path="M540 68 H600"/></circle>
+        <circle r="3.5" fill="var(--amb)"><animateMotion dur="1.4s" begin=".9s" repeatCount="indefinite" path="M750 68 H810"/></circle>
+        <circle r="3.5" fill="var(--pur)"><animateMotion dur="1.8s" begin="1.2s" repeatCount="indefinite" path="M900 96 V210"/></circle>
+      </svg>
+      <div class="arch-cap">
+        <span>fig. 1 — redirect hot path + async analytics</span>
+        <span>banned/expired sentinels cached too — abuse costs ~0ms</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DETAILS ============ -->
+  <div class="dsec">
+    <h2><span class="k">§3</span>the parts i'm proud of</h2>
+    <p class="dsub">// production systems are won in the boring corners</p>
+    <ul class="feat rv">
+      <li><b>Crash-safe click accounting</b> — analytics increments live in Redis; every 30s a cron does batch <code>UPDATE … click_count + :inc</code>, and only <i>after Postgres commits</i> does it DECRBY the Redis counters. A worker crash mid-cycle loses nothing and double-counts nothing.</li>
+      <li><b>Textbook distributed locking</b> — the flush lock is <code>SET NX EX</code> with a UUID token, released by a Lua compare-and-delete script that verifies the token first. No releasing someone else's lock.</li>
+      <li><b>Sonyflake IDs with a custom epoch (2014-09-01)</b>, Base62-encoded with a hand-rolled encoder — short, sortable, collision-free aliases without a central counter.</li>
+      <li><b>Cache TTLs that respect expiry</b> — expiring links cache for <code>min(3600, seconds_until_expiry)</code> so a link never outlives itself in cache. Banned links cache a <code>"BANNED"</code> sentinel; unknown custom domains get negative-cached for 5 minutes.</li>
+      <li><b>Custom domains via Cloudflare for SaaS</b> — programmatic hostname registration, HTTP DCV, TLS 1.3 + HTTP/2 forced on, plus a DNS-resolution fallback check against flexurl.app A-records via dns.google.</li>
+      <li><b>SSRF protection on user-submitted URLs</b> — parse, reject literal private/loopback IPs, then <code>getaddrinfo</code> and reject if <i>any</i> resolved IP is private, loopback, link-local or multicast — then a HEAD liveness probe with a 2s timeout.</li>
+      <li><b>Async malware screening</b> — every new link goes to Google Safe Browsing v5 (<code>uris:batchGet</code>) as a background task; a hit marks the URL banned in Postgres <i>and</i> overwrites the Redis entry with the <code>"BANNED"</code> sentinel.</li>
+      <li><b>Geo-priced monetization</b> — Razorpay tiers priced by <code>CF-IPCountry</code>: ₹799/₹2499 in India, $11/$29 international, ₹9/$0.10 one-time 14-day trial, 7-day dunning grace with staged warning emails.</li>
+      <li><b>Exactly-once daily reports</b> — claimed with Redis <code>SET NX</code> <i>and</i> an <code>O_CREAT|O_EXCL</code> file fallback, so the report fires once even if Redis is down.</li>
+      <li><b>Instrumentation everywhere</b> — debug timers on Redis GETs, DB queries, enqueue durations, webhook dispatches. The 42ms average was found by measuring, then shaving.</li>
+    </ul>
+  </div>
+
+  <!-- ============ CODE ============ -->
+  <div class="dsec">
+    <h2><span class="k">§4</span>receipts</h2>
+    <p class="dsub">// the crash-safe flush, condensed</p>
+    <pre class="code rv"><span class="c"># 1. read counts → 2. commit to postgres → 3. then decrement redis</span>
+<span class="k">async with</span> db.begin():
+    <span class="k">await</span> db.execute(
+        text(<span class="s">"UPDATE urldata SET click_count = click_count + :inc WHERE short_url = :u"</span>),
+        batch,  <span class="c"># up to 1000 rows per cycle</span>
+    )
+<span class="c"># only after commit succeeds:</span>
+<span class="k">await</span> redis.decrby(key, inc)   <span class="c"># crash before this ⇒ next cycle retries, nothing lost</span></pre>
+  </div>
+
+  <div class="dsec" style="border-bottom:none">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn solid" href="tokenly.html">next project: tokenly →</a>
+      <a class="btn line" href="index.html#ship">back to all projects</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span class="handles">
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
+      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
+      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
+    </span>
+    <span>flexurl · exit 0</span>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
