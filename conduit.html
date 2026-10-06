@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conduit — Nirbhay Katiyar</title>
-<meta name="description" content="Conduit — local-first, security-focused bridge that lets AI agents drive your real browser. P-256 proof-of-possession pairing, one-time confirmations, redacted audit log. Live on Chrome Web Store & Firefox Add-ons.">
+<title>Conduit - Nirbhay Katiyar</title>
+<meta name="description" content="Conduit - local-first, security-focused bridge that lets AI agents drive your real browser. P-256 proof-of-possession pairing, one-time confirmations, redacted audit log. Live on Chrome Web Store & Firefox Add-ons.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
   <div class="wrap">
     <a class="back" href="index.html#ship">← cd ../production</a>
     <h1>Conduit <span class="g">/ agents drive YOUR browser</span></h1>
-    <p class="tagline">// AI agents usually ship with a fake sandboxed browser. Conduit instead connects them to the browser you're already logged into — through an authenticated local daemon, a manifest V3 extension, and a security model that assumes everyone is hostile.</p>
+    <p class="tagline">// AI agents usually ship with a fake sandboxed browser. Conduit instead connects them to the browser you're already logged into - through an authenticated local daemon, a manifest V3 extension, and a security model that assumes everyone is hostile.</p>
     <div class="dlinks">
       <a class="btn solid" href="https://conduit.zerodaily.in" target="_blank" rel="noopener">conduit.nirbhay.me ↗</a>
       <a class="btn line" href="https://chromewebstore.google.com/detail/conduit-extension/gjhipjgiapijcdnflldnoenafeegmfpc" target="_blank" rel="noopener">chrome web store ↗</a>
@@ -61,7 +61,7 @@
   <!-- ============ COMMAND FLOW ============ -->
   <div class="dsec">
     <h2><span class="k">§2</span>anatomy of one command</h2>
-    <p class="dsub">// what happens when an agent says "click the login button" — every hop is authenticated</p>
+    <p class="dsub">// what happens when an agent says "click the login button" - every hop is authenticated</p>
     <div class="arch rv">
       <svg viewBox="0 0 1060 300" fill="none" font-family="JetBrains Mono" font-size="11">
         <g class="pp"><rect class="box" x="10" y="110" width="140" height="66" rx="10" stroke-width="1.2"/>
@@ -94,7 +94,7 @@
         <text class="sub" x="530" y="246" text-anchor="middle" font-size="9">structured result · audit event · correlation id</text>
       </svg>
       <div class="arch-cap">
-        <span>fig. 1 — request path with two independent authority gates</span>
+        <span>fig. 1 - request path with two independent authority gates</span>
         <span>failure at any hop ⇒ typed error code, logged redacted</span>
       </div>
     </div>
@@ -111,11 +111,11 @@
       </a>
       <a class="repo" href="https://github.com/err0rgod/conduit-extension" target="_blank" rel="noopener">
         <div class="rn">err0rgod/conduit-extension ↗</div>
-        <div class="rd">The MV3 extension. Executes commands via chrome.scripting/tabs/debugger, builds accessibility-tree snapshots with ephemeral element IDs (e1, e2…), renders the popup — the only UI allowed to approve anything.</div>
+        <div class="rd">The MV3 extension. Executes commands via chrome.scripting/tabs/debugger, builds accessibility-tree snapshots with ephemeral element IDs (e1, e2…), renders the popup - the only UI allowed to approve anything.</div>
       </a>
       <a class="repo" href="https://github.com/err0rgod/conduit-web" target="_blank" rel="noopener">
         <div class="rn">err0rgod/conduit-web ↗</div>
-        <div class="rd">Docs + privacy policy portal (React 19, Vite). Static, no telemetry — its job is to host the security model documentation and the store-listing privacy policy.</div>
+        <div class="rd">Docs + privacy policy portal (React 19, Vite). Static, no telemetry - its job is to host the security model documentation and the store-listing privacy policy.</div>
       </a>
       <a class="repo" href="https://chromewebstore.google.com/detail/conduit-extension/gjhipjgiapijcdnflldnoenafeegmfpc" target="_blank" rel="noopener">
         <div class="rn">store listings ↗</div>
@@ -129,15 +129,15 @@
     <h2><span class="k">§4</span>the paranoid parts</h2>
     <p class="dsub">// a bridge between AI and your logged-in browser deserves paranoia</p>
     <ul class="feat rv">
-      <li><b>P-256 proof-of-possession for remote devices</b> — pairing produces a revocable public-key identity. Every remote request binds to a fresh 32-byte daemon nonce + a SHA-256 digest of the canonical JSON, signed by the device key. Bearer tokens alone are never enough.</li>
-      <li><b>Two authority gates, by design</b> — the browser's own per-site host permission (owned by Chromium, requestable only from a popup click) AND the daemon's capability+domain policy. Neither can bypass the other.</li>
-      <li><b>No blanket site access at install</b> — <code>http://*/*</code> is an <i>optional</i> host permission the background worker is forbidden by code from requesting. Only a user's popup click can trigger the native prompt.</li>
-      <li><b>Confirmations are one-time, 60-second, operation-bound</b> — approval is consumed by exactly one matching op, then gone. High-risk ops (file upload, debug evaluate) always require confirmation regardless of domain mode.</li>
-      <li><b>Redaction-first audit log</b> — JSONL with a regex that catches <code>token|password|secret|authorization|cookie|credential|private.?key|text|value</code> plus any 32+-hex string, replaced with <code>[redacted]</code> before it ever touches disk.</li>
-      <li><b>Closed native-messaging allowlist</b> — manifests only whitelist known extension IDs; unknown origins are rejected before the host reads a byte. New store IDs get trusted explicitly via <code>conduit extension trust &lt;id&gt;</code>.</li>
-      <li><b>Loopback-only default, hard-gated remote</b> — the daemon refuses to start on a non-loopback bind unless <code>remote.enabled</code> AND TLS are both configured. No public relay; operators are pointed at Tailscale/WireGuard.</li>
-      <li><b>Ephemeral element IDs</b> — snapshots stamp <code>data-conduit-ref="e7"</code> on DOM nodes and wipe them on the next snapshot. Stale selectors fail loudly instead of clicking the wrong thing.</li>
-      <li><b>Emergency disconnect</b> — one popup button kills the daemon socket, stops auto-reconnect, and shows a red STOP badge until the user resumes.</li>
+      <li><b>P-256 proof-of-possession for remote devices</b> - pairing produces a revocable public-key identity. Every remote request binds to a fresh 32-byte daemon nonce + a SHA-256 digest of the canonical JSON, signed by the device key. Bearer tokens alone are never enough.</li>
+      <li><b>Two authority gates, by design</b> - the browser's own per-site host permission (owned by Chromium, requestable only from a popup click) AND the daemon's capability+domain policy. Neither can bypass the other.</li>
+      <li><b>No blanket site access at install</b> - <code>http://*/*</code> is an <i>optional</i> host permission the background worker is forbidden by code from requesting. Only a user's popup click can trigger the native prompt.</li>
+      <li><b>Confirmations are one-time, 60-second, operation-bound</b> - approval is consumed by exactly one matching op, then gone. High-risk ops (file upload, debug evaluate) always require confirmation regardless of domain mode.</li>
+      <li><b>Redaction-first audit log</b> - JSONL with a regex that catches <code>token|password|secret|authorization|cookie|credential|private.?key|text|value</code> plus any 32+-hex string, replaced with <code>[redacted]</code> before it ever touches disk.</li>
+      <li><b>Closed native-messaging allowlist</b> - manifests only whitelist known extension IDs; unknown origins are rejected before the host reads a byte. New store IDs get trusted explicitly via <code>conduit extension trust &lt;id&gt;</code>.</li>
+      <li><b>Loopback-only default, hard-gated remote</b> - the daemon refuses to start on a non-loopback bind unless <code>remote.enabled</code> AND TLS are both configured. No public relay; operators are pointed at Tailscale/WireGuard.</li>
+      <li><b>Ephemeral element IDs</b> - snapshots stamp <code>data-conduit-ref="e7"</code> on DOM nodes and wipe them on the next snapshot. Stale selectors fail loudly instead of clicking the wrong thing.</li>
+      <li><b>Emergency disconnect</b> - one popup button kills the daemon socket, stops auto-reconnect, and shows a red STOP badge until the user resumes.</li>
     </ul>
   </div>
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>blackwidow — Nirbhay Katiyar</title>
-<meta name="description" content="blackwidow — physical Windows Tamper Protection bypass system on an ATtiny85A microcontroller. HID attack research for authorized lab use.">
+<title>blackwidow - Nirbhay Katiyar</title>
+<meta name="description" content="blackwidow - physical Windows Tamper Protection bypass system on an ATtiny85A microcontroller. HID attack research for authorized lab use.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
   <div class="wrap">
     <a class="back" href="index.html#ship">← cd ../production</a>
     <h1>blackwidow <span class="g">/ the $2 lockpick</span></h1>
-    <p class="tagline">// a physical windows tamper-protection bypass system built on an ATtiny85A — a chip smaller than your thumbnail that walks in through the USB port, pretends to be a keyboard, and types faster than any human ever will.</p>
+    <p class="tagline">// a physical windows tamper-protection bypass system built on an ATtiny85A - a chip smaller than your thumbnail that walks in through the USB port, pretends to be a keyboard, and types faster than any human ever will.</p>
     <div class="dlinks">
       <a class="btn line" href="https://github.com/err0rgod/blackwidow" target="_blank" rel="noopener">source repo ↗</a>
     </div>
@@ -93,7 +93,7 @@
       </svg>
     </div>
     <div class="arch-cap" style="justify-content:center;display:flex;gap:20px">
-      <span>fig. 1 — the actual IC pinout · USB data lines on PB3/PB4 do the talking</span>
+      <span>fig. 1 - the actual IC pinout · USB data lines on PB3/PB4 do the talking</span>
     </div>
   </div>
 
@@ -102,11 +102,11 @@
     <h2><span class="k">§2</span>the attack chain</h2>
     <p class="dsub">// plug in → ~30 seconds → it's over</p>
     <ul class="feat rv">
-      <li><b>Tamper Protection GUI bypass</b> — Windows Defender's Tamper Protection can't be disabled from CLI or PowerShell (that's the entire point of it). So blackwidow doesn't argue with it: it navigates the Windows Security GUI with timed <code>DigiKeyboard</code> strokes and toggles it off <i>like a user would</i> — just inhumanly fast.</li>
-      <li><b>Privilege elevation</b> — automates the <code>Win+X → A → Y</code> sequence to spawn an elevated admin terminal via UAC auto-accept.</li>
-      <li><b>Defensive neutralization</b> — <code>netsh advfirewall set allprofiles state off</code> kills every firewall profile; <code>Set-MpPreference -DisableRealtimeMonitoring $true</code> halts real-time monitoring.</li>
-      <li><b>Hidden reverse shell</b> — pulls a netcat binary down through PowerShell and stages a <code>-w Hidden</code> reverse shell back to the listener. No window, no taskbar, no mercy.</li>
-      <li><b>Documented like a lab, not a gist</b> — the repo's <code>Mafia/</code> directory holds the full Windows-evasion analysis and operational workflows.</li>
+      <li><b>Tamper Protection GUI bypass</b> - Windows Defender's Tamper Protection can't be disabled from CLI or PowerShell (that's the entire point of it). So blackwidow doesn't argue with it: it navigates the Windows Security GUI with timed <code>DigiKeyboard</code> strokes and toggles it off <i>like a user would</i> - just inhumanly fast.</li>
+      <li><b>Privilege elevation</b> - automates the <code>Win+X → A → Y</code> sequence to spawn an elevated admin terminal via UAC auto-accept.</li>
+      <li><b>Defensive neutralization</b> - <code>netsh advfirewall set allprofiles state off</code> kills every firewall profile; <code>Set-MpPreference -DisableRealtimeMonitoring $true</code> halts real-time monitoring.</li>
+      <li><b>Hidden reverse shell</b> - pulls a netcat binary down through PowerShell and stages a <code>-w Hidden</code> reverse shell back to the listener. No window, no taskbar, no mercy.</li>
+      <li><b>Documented like a lab, not a gist</b> - the repo's <code>Mafia/</code> directory holds the full Windows-evasion analysis and operational workflows.</li>
     </ul>
   </div>
 
@@ -115,10 +115,10 @@
     <h2><span class="k">§3</span>why hardware wins here</h2>
     <p class="dsub">// software exploits get patched; HID is a feature</p>
     <ul class="feat rv">
-      <li><b>It's a keyboard, not malware</b> — the OS sees a HID device. No signature to match, no heuristic to trip, no file to scan. The payload is keystrokes.</li>
-      <li><b>$2 of silicon</b> — the ATtiny85A (Digispark) costs less than the USB cable it arrives with. Physical-access threat modeling at disposable prices.</li>
-      <li><b>Timing as an exploit primitive</b> — the whole attack is choreographed delays and keystrokes. Getting sub-second GUI navigation reliable across Windows versions is genuinely hard — and that's the fun part.</li>
-      <li><b>Physical access = game over</b> — the real lesson: if someone can plug something into your machine, your threat model already lost. blackwidow demonstrates it in 30 seconds.</li>
+      <li><b>It's a keyboard, not malware</b> - the OS sees a HID device. No signature to match, no heuristic to trip, no file to scan. The payload is keystrokes.</li>
+      <li><b>$2 of silicon</b> - the ATtiny85A (Digispark) costs less than the USB cable it arrives with. Physical-access threat modeling at disposable prices.</li>
+      <li><b>Timing as an exploit primitive</b> - the whole attack is choreographed delays and keystrokes. Getting sub-second GUI navigation reliable across Windows versions is genuinely hard - and that's the fun part.</li>
+      <li><b>Physical access = game over</b> - the real lesson: if someone can plug something into your machine, your threat model already lost. blackwidow demonstrates it in 30 seconds.</li>
     </ul>
     <div class="warnbox rv">⚠ authorized lab research only. test hardware payloads exclusively on systems you own or have explicit written permission to assess. this page is documentation, not an invitation.</div>
   </div>

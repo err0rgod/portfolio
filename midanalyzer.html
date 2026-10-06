@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MidAnalyzer — Nirbhay Katiyar</title>
-<meta name="description" content="MidAnalyzer — browser & Docker based PCAP network forensics analyzer without file-size limits. Part of the Midstalker MITM security framework.">
+<title>MidAnalyzer - Nirbhay Katiyar</title>
+<meta name="description" content="MidAnalyzer - browser & Docker based PCAP network forensics analyzer without file-size limits. Part of the Midstalker MITM security framework.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
   <div class="wrap">
     <a class="back" href="index.html#ship">← cd ../production</a>
     <h1>MidAnalyzer <span class="g">/ pcap forensics, no upload caps</span></h1>
-    <p class="tagline">// hosted pcap tools all share the same dirty secret: a file-size limit. midanalyzer runs in your browser for quick looks — or in Docker on your own machine for multi-gigabyte captures that would make hosted tools cry. part of the midstalker MITM security framework.</p>
+    <p class="tagline">// hosted pcap tools all share the same dirty secret: a file-size limit. midanalyzer runs in your browser for quick looks - or in Docker on your own machine for multi-gigabyte captures that would make hosted tools cry. part of the midstalker MITM security framework.</p>
     <div class="dlinks">
       <a class="btn solid" href="https://midanalyzer.streamlit.app" target="_blank" rel="noopener">midanalyzer.streamlit.app ↗</a>
       <a class="btn line" href="https://github.com/err0rgod/midanalyzer" target="_blank" rel="noopener">source repo</a>
@@ -45,7 +45,7 @@
     <h2><span class="k">§1</span>the numbers board</h2>
     <p class="dsub">// the whole point is "no limit"</p>
     <div class="statboxes rv">
-      <div class="sbox a"><div class="n">∞</div><div class="l">FILE SIZE — DOCKER MODE<br>your ram is the only ceiling</div></div>
+      <div class="sbox a"><div class="n">∞</div><div class="l">FILE SIZE - DOCKER MODE<br>your ram is the only ceiling</div></div>
       <div class="sbox"><div class="n">2</div><div class="l">RUN MODES<br>hosted web · local docker</div></div>
       <div class="sbox b"><div class="n">0</div><div class="l">CLOUD UPLOADS IN DOCKER MODE<br>pcaps never leave your machine</div></div>
       <div class="sbox p"><div class="n">8501</div><div class="l">DEFAULT PORT<br>streamlit, obviously</div></div>
@@ -57,12 +57,12 @@
     <h2><span class="k">§2</span>what it dissects</h2>
     <p class="dsub">// wireshark answers, browser ergonomics</p>
     <ul class="feat rv">
-      <li><b>Conversation flows</b> — who talked to whom, when, how often. The first question in any capture, answered visually.</li>
-      <li><b>DNS resolutions</b> — every lookup in the capture, surfaced and searchable. Suspicious domains don't get to hide in packet 48,291.</li>
-      <li><b>Protocol distribution</b> — the shape of the traffic at a glance; weird ratios stand out immediately.</li>
-      <li><b>Packet payload inspection</b> — drill into individual packets when the summary isn't enough.</li>
-      <li><b>Docker mode for the big ones</b> — <code>docker run -p 8501:8501 midstalker</code> and your machine's resources are the limit, not some hosted tool's upload form.</li>
-      <li><b>MITM-framework native</b> — built as the analysis arm of the Midstalker framework: engineered for inspecting man-in-the-middle vectors and network telemetry.</li>
+      <li><b>Conversation flows</b> - who talked to whom, when, how often. The first question in any capture, answered visually.</li>
+      <li><b>DNS resolutions</b> - every lookup in the capture, surfaced and searchable. Suspicious domains don't get to hide in packet 48,291.</li>
+      <li><b>Protocol distribution</b> - the shape of the traffic at a glance; weird ratios stand out immediately.</li>
+      <li><b>Packet payload inspection</b> - drill into individual packets when the summary isn't enough.</li>
+      <li><b>Docker mode for the big ones</b> - <code>docker run -p 8501:8501 midstalker</code> and your machine's resources are the limit, not some hosted tool's upload form.</li>
+      <li><b>MITM-framework native</b> - built as the analysis arm of the Midstalker framework: engineered for inspecting man-in-the-middle vectors and network telemetry.</li>
     </ul>
   </div>
 
@@ -74,7 +74,7 @@
 <span class="k">cd</span> midanalyzer
 docker build -t midstalker .
 docker run -p <span class="n">8501</span>:8501 midstalker
-<span class="c"># → http://localhost:8501 — feed it a pcap</span></pre>
+<span class="c"># → http://localhost:8501 - feed it a pcap</span></pre>
   </div>
 
   <div class="dsec" style="border-bottom:none">

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tokenly — Nirbhay Katiyar</title>
-<meta name="description" content="tokenly-auth — database-agnostic Python authentication library on PyPI. Argon2id, JWT access tokens, opaque refresh tokens, 1,480 all-time downloads.">
+<title>tokenly - Nirbhay Katiyar</title>
+<meta name="description" content="tokenly-auth - database-agnostic Python authentication library on PyPI. Argon2id, JWT access tokens, opaque refresh tokens, 1,480 all-time downloads.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
   <div class="wrap">
     <a class="back" href="index.html#ship">← cd ../production</a>
     <h1>tokenly <span class="g">/ auth without the ORM</span></h1>
-    <p class="tagline">// a database-agnostic authentication toolkit for python. it deliberately ships NO database driver — you control the database, you control the models, tokenly controls the cryptography. published on pypi, downloaded 1,480 times by strangers who owe me nothing.</p>
+    <p class="tagline">// a database-agnostic authentication toolkit for python. it deliberately ships NO database driver - you control the database, you control the models, tokenly controls the cryptography. published on pypi, downloaded 1,480 times by strangers who owe me nothing.</p>
     <div class="dlinks">
       <a class="btn solid" href="https://pypi.org/project/tokenly-auth/" target="_blank" rel="noopener">pypi ↗</a>
       <a class="btn line" href="https://github.com/err0rgod/tokenly" target="_blank" rel="noopener">library repo</a>
@@ -59,13 +59,13 @@
     <h2><span class="k">§2</span>the design philosophy</h2>
     <p class="dsub">// security primitives, not opinions about your schema</p>
     <ul class="feat rv">
-      <li><b>Argon2id by default</b> — password hashing via argon2-cffi's PasswordHasher with the OWASP-recommended algorithm. No md5 nostalgia here.</li>
-      <li><b>Refresh tokens are NOT JWTs</b> — they're <code>secrets.token_urlsafe(64)</code> opaque strings, and only their <b>SHA-256 hash</b> ever touches a database. A leaked refresh-token table leaks nothing usable.</li>
-      <li><b>JWT access tokens, 15-minute fuse</b> — <code>sub</code>, <code>jti</code>, <code>iat</code>, <code>exp</code> — short-lived by default so a stolen access token expires before lunch.</li>
-      <li><b>Dict-style API</b> — <code>Security["hash"](pw)</code>, <code>Security["verify"](pw, hash)</code>, <code>Security["reset"](...)</code>. An unusual, javascript-flavored interface that makes the security surface feel like a toolbox, not a framework.</li>
-      <li><b>@require_auth decorator</b> — wraps any function whose first arg is a token string; the decoded payload is injected into your handler. Framework-agnostic: Flask, FastAPI, raw sockets, whatever.</li>
-      <li><b>Duck-typed rate limiting</b> — <code>RateLimiter(storage_client)</code> works against anything exposing <code>.incr()</code> and <code>.expire()</code>. Redis, memcached, a dict in a trench coat — all valid.</li>
-      <li><b>Brute-force hooks</b> — <code>verifyPassword</code> accepts <code>locked_until</code> / <code>failed_attempts</code> and refuses to even try while locked. State stays with you; the primitive enforces it.</li>
+      <li><b>Argon2id by default</b> - password hashing via argon2-cffi's PasswordHasher with the OWASP-recommended algorithm. No md5 nostalgia here.</li>
+      <li><b>Refresh tokens are NOT JWTs</b> - they're <code>secrets.token_urlsafe(64)</code> opaque strings, and only their <b>SHA-256 hash</b> ever touches a database. A leaked refresh-token table leaks nothing usable.</li>
+      <li><b>JWT access tokens, 15-minute fuse</b> - <code>sub</code>, <code>jti</code>, <code>iat</code>, <code>exp</code> - short-lived by default so a stolen access token expires before lunch.</li>
+      <li><b>Dict-style API</b> - <code>Security["hash"](pw)</code>, <code>Security["verify"](pw, hash)</code>, <code>Security["reset"](...)</code>. An unusual, javascript-flavored interface that makes the security surface feel like a toolbox, not a framework.</li>
+      <li><b>@require_auth decorator</b> - wraps any function whose first arg is a token string; the decoded payload is injected into your handler. Framework-agnostic: Flask, FastAPI, raw sockets, whatever.</li>
+      <li><b>Duck-typed rate limiting</b> - <code>RateLimiter(storage_client)</code> works against anything exposing <code>.incr()</code> and <code>.expire()</code>. Redis, memcached, a dict in a trench coat - all valid.</li>
+      <li><b>Brute-force hooks</b> - <code>verifyPassword</code> accepts <code>locked_until</code> / <code>failed_attempts</code> and refuses to even try while locked. State stays with you; the primitive enforces it.</li>
     </ul>
   </div>
 
