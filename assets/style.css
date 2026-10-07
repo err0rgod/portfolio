@@ -191,6 +191,11 @@ section{padding:54px 0;border-bottom:1px solid var(--line);position:relative}
 .arch .pp{animation:bob 3s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .arch-cap{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--faint);margin-top:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.arch-link{display:block;text-decoration:none;cursor:zoom-in;position:relative}
+.arch-img{width:100%;height:auto;display:block;border-radius:6px;transition:opacity .2s}
+.arch-link:hover .arch-img{opacity:.95}
+html.dark .arch-link-light{display:none}
+html:not(.dark) .arch-link-dark{display:none}
 
 /* ============ SKILLS ============ */
 .cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}

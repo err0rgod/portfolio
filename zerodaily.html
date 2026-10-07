@@ -60,61 +60,14 @@
     <h2><span class="k">§2</span>the pipeline, end to end</h2>
     <p class="dsub">// every box below is real running infrastructure - follow the packets</p>
     <div class="arch rv">
-      <svg viewBox="0 0 1060 400" fill="none" font-family="JetBrains Mono" font-size="11">
-        <!-- step boxes, 2 rows -->
-        <g class="pp"><rect class="box" x="10" y="40" width="122" height="58" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="71" y="64" text-anchor="middle">1 ⏰ cron</text>
-          <text class="sub" x="71" y="80" text-anchor="middle" font-size="9">every 8 min</text></g>
-        <g class="pp" style="animation-delay:.25s"><rect class="box" x="162" y="40" width="122" height="58" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="223" y="64" text-anchor="middle">2 📡 rss</text>
-          <text class="sub" x="223" y="80" text-anchor="middle" font-size="9">24+ feeds · 7 cat</text></g>
-        <g class="pp" style="animation-delay:.5s"><rect class="box" x="314" y="40" width="122" height="58" rx="10" stroke-width="1.2" style="stroke:var(--pur)"/>
-          <text x="375" y="64" text-anchor="middle" fill="var(--pur)">3 🧠 dedup</text>
-          <text class="sub" x="375" y="80" text-anchor="middle" font-size="9">15→4 · −75%</text></g>
-        <g class="pp" style="animation-delay:.75s"><rect class="box" x="466" y="40" width="122" height="58" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="527" y="64" text-anchor="middle">4 🕷 extract</text>
-          <text class="sub" x="527" y="80" text-anchor="middle" font-size="9">cloudscraper+fc</text></g>
-        <g class="pp" style="animation-delay:1s"><rect class="box" x="618" y="40" width="122" height="58" rx="10" stroke-width="1.2" style="stroke:var(--red)"/>
-          <text x="679" y="64" text-anchor="middle" fill="var(--red)">5 🛡 ssrf guard</text>
-          <text class="sub" x="679" y="80" text-anchor="middle" font-size="9">dns + ip blocklist</text></g>
-        <g class="pp" style="animation-delay:1.25s"><rect class="box" x="770" y="40" width="122" height="58" rx="10" stroke-width="1.2" style="stroke:var(--pur)"/>
-          <text x="831" y="64" text-anchor="middle" fill="var(--pur)">6 🧠 roast</text>
-          <text class="sub" x="831" y="80" text-anchor="middle" font-size="9">aws bedrock</text></g>
-        <g class="pp" style="animation-delay:1.5s"><rect class="box" x="922" y="40" width="128" height="58" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="986" y="64" text-anchor="middle">7 🗄 dynamodb</text>
-          <text class="sub" x="986" y="80" text-anchor="middle" font-size="9">conditional put</text></g>
-
-        <g class="pp" style="animation-delay:1.75s"><rect class="box" x="314" y="260" width="150" height="58" rx="10" stroke-width="1.2" style="stroke:var(--amb)"/>
-          <text x="389" y="284" text-anchor="middle" fill="var(--amb)">8 ⚡ stream worker</text>
-          <text class="sub" x="389" y="300" text-anchor="middle" font-size="9">cooldown · fcm · cdn</text></g>
-        <g class="pp" style="animation-delay:2s"><rect class="box" x="520" y="260" width="122" height="58" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="581" y="284" text-anchor="middle">9 🚀 serve</text>
-          <text class="sub" x="581" y="300" text-anchor="middle" font-size="9">fastapi · &lt;20ms</text></g>
-        <g class="pp" style="animation-delay:2.25s"><rect class="box" x="700" y="260" width="150" height="58" rx="10" stroke-width="1.2" style="stroke:var(--grn)"/>
-          <text x="775" y="284" text-anchor="middle" fill="var(--grn)">10 📱 phone</text>
-          <text class="sub" x="775" y="300" text-anchor="middle" font-size="9">minutes from source</text></g>
-
-        <!-- flows row 1 -->
-        <path class="flow" d="M132 69 H162" stroke="var(--blu)" stroke-width="1.8"/>
-        <path class="flow" d="M284 69 H314" stroke="var(--pur)" stroke-width="1.8"/>
-        <path class="flow" d="M436 69 H466" stroke="var(--blu)" stroke-width="1.8"/>
-        <path class="flow" d="M588 69 H618" stroke="var(--red)" stroke-width="1.8"/>
-        <path class="flow" d="M740 69 H770" stroke="var(--pur)" stroke-width="1.8"/>
-        <path class="flow" d="M892 69 H922" stroke="var(--ink)" stroke-width="1.8"/>
-        <!-- down + row 2 -->
-        <path class="flow" d="M986 98 V180 C986 210 460 200 400 260" stroke="var(--amb)" stroke-width="1.8"/>
-        <path class="flow" d="M464 289 H520" stroke="var(--ink)" stroke-width="1.8"/>
-        <path class="flow" d="M642 289 H700" stroke="var(--grn)" stroke-width="1.8"/>
-        <!-- packets -->
-        <circle r="3.5" fill="var(--blu)"><animateMotion dur="1.5s" repeatCount="indefinite" path="M132 69 H162"/></circle>
-        <circle r="3.5" fill="var(--pur)"><animateMotion dur="1.5s" begin=".3s" repeatCount="indefinite" path="M284 69 H314"/></circle>
-        <circle r="3.5" fill="var(--red)"><animateMotion dur="1.5s" begin=".6s" repeatCount="indefinite" path="M588 69 H618"/></circle>
-        <circle r="3.5" fill="var(--ink)"><animateMotion dur="1.5s" begin=".9s" repeatCount="indefinite" path="M892 69 H922"/></circle>
-        <circle r="3.5" fill="var(--amb)"><animateMotion dur="2.6s" begin="1.2s" repeatCount="indefinite" path="M986 98 V180 C986 210 460 200 400 260"/></circle>
-        <circle r="3.5" fill="var(--grn)"><animateMotion dur="1.6s" begin="1.5s" repeatCount="indefinite" path="M642 289 H700"/></circle>
-      </svg>
+      <a href="assets/zerodaily-architecture-light.svg" target="_blank" rel="noopener" class="arch-link arch-link-light" title="Click to view full resolution system architecture">
+        <img src="assets/zerodaily-architecture-light.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
+      </a>
+      <a href="assets/zerodaily-architecture-dark.svg" target="_blank" rel="noopener" class="arch-link arch-link-dark" title="Click to view full resolution system architecture">
+        <img src="assets/zerodaily-architecture-dark.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
+      </a>
       <div class="arch-cap">
-        <span>fig. 1 - the full ingestion → delivery pipeline</span>
+        <span>fig. 1 - full ZeroDaily system design & pipeline · click diagram to zoom ↗</span>
         <span>all serverless · us-east-1 + cloudflare edge</span>
       </div>
     </div>

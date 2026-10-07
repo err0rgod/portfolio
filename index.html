@@ -212,76 +212,15 @@
     </div>
 
     <div class="arch rv">
-      <svg viewBox="0 0 1060 340" fill="none" font-family="JetBrains Mono" font-size="11">
-        <!-- row 1 -->
-        <g class="pp">
-          <rect class="box" x="20" y="60" width="130" height="56" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="85" y="84" text-anchor="middle">⏰ eventbridge</text>
-          <text class="sub" x="85" y="100" text-anchor="middle" font-size="9">cron · every 8 min</text>
-        </g>
-        <g class="pp" style="animation-delay:.3s">
-          <rect class="box" x="190" y="60" width="130" height="56" rx="10" stroke-width="1.2"/>
-          <text x="255" y="84" text-anchor="middle" fill="var(--blu)">λ bot1 scrape</text>
-          <text class="sub" x="255" y="100" text-anchor="middle" font-size="9">24+ rss feeds</text>
-        </g>
-        <g class="pp" style="animation-delay:.6s">
-          <rect class="box" x="360" y="60" width="130" height="56" rx="10" stroke-width="1.2" style="stroke:var(--pur)"/>
-          <text x="425" y="84" text-anchor="middle" fill="var(--pur)">🧠 dedup</text>
-          <text class="sub" x="425" y="100" text-anchor="middle" font-size="9">15 → 4 · −75%</text>
-        </g>
-        <g class="pp" style="animation-delay:.9s">
-          <rect class="box" x="530" y="60" width="130" height="56" rx="10" stroke-width="1.2" style="stroke:var(--pur)"/>
-          <text x="595" y="84" text-anchor="middle" fill="var(--pur)">🧠 roast</text>
-          <text class="sub" x="595" y="100" text-anchor="middle" font-size="9">aws bedrock</text>
-        </g>
-        <g class="pp" style="animation-delay:1.2s">
-          <rect class="box" x="700" y="60" width="130" height="56" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="765" y="84" text-anchor="middle">🗄 dynamodb</text>
-          <text class="sub" x="765" y="100" text-anchor="middle" font-size="9">conditional put</text>
-        </g>
-        <g class="pp" style="animation-delay:1.5s">
-          <rect class="box" x="870" y="60" width="170" height="56" rx="10" stroke-width="1.2" style="stroke:var(--grn)"/>
-          <text x="955" y="84" text-anchor="middle" fill="var(--grn)">⚡ cdn pre-warm</text>
-          <text class="sub" x="955" y="100" text-anchor="middle" font-size="9">purge + warm on breaking</text>
-        </g>
-        <!-- row 2 -->
-        <g class="pp" style="animation-delay:1.8s">
-          <rect class="box" x="530" y="220" width="130" height="56" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="595" y="244" text-anchor="middle">🚀 fastapi λ</text>
-          <text class="sub" x="595" y="260" text-anchor="middle" font-size="9">mangum · 512mb</text>
-        </g>
-        <g class="pp" style="animation-delay:2.1s">
-          <rect class="box" x="700" y="220" width="130" height="56" rx="10" stroke-width="1.2" style="stroke:var(--amb)"/>
-          <text x="765" y="244" text-anchor="middle" fill="var(--amb)">🔔 fcm push</text>
-          <text class="sub" x="765" y="260" text-anchor="middle" font-size="9">topics · no tokens stored</text>
-        </g>
-        <g class="pp" style="animation-delay:2.4s">
-          <rect class="box" x="870" y="220" width="170" height="56" rx="10" stroke-width="1.2" style="stroke:var(--grn)"/>
-          <text x="955" y="244" text-anchor="middle" fill="var(--grn)">📱 your phone</text>
-          <text class="sub" x="955" y="260" text-anchor="middle" font-size="9">minutes from source</text>
-        </g>
-        <!-- flows row1 -->
-        <path class="flow" d="M150 88 H190" stroke="var(--blu)" stroke-width="1.8"/>
-        <path class="flow" d="M320 88 H360" stroke="var(--pur)" stroke-width="1.8"/>
-        <path class="flow" d="M490 88 H530" stroke="var(--pur)" stroke-width="1.8"/>
-        <path class="flow" d="M660 88 H700" stroke="var(--ink)" stroke-width="1.8"/>
-        <path class="flow" d="M830 88 H870" stroke="var(--grn)" stroke-width="1.8"/>
-        <!-- down + row2 -->
-        <path class="flow" d="M765 116 V160 C765 190 620 190 600 220" stroke="var(--ink)" stroke-width="1.8"/>
-        <path class="flow" d="M660 248 H700" stroke="var(--amb)" stroke-width="1.8"/>
-        <path class="flow" d="M830 248 H870" stroke="var(--grn)" stroke-width="1.8"/>
-        <path class="flow" d="M955 116 V220" stroke="var(--grn)" stroke-width="1.8"/>
-        <!-- travelling packets -->
-        <circle r="3.5" fill="var(--blu)"><animateMotion dur="1.6s" repeatCount="indefinite" path="M150 88 H190"/></circle>
-        <circle r="3.5" fill="var(--pur)"><animateMotion dur="1.8s" begin=".4s" repeatCount="indefinite" path="M320 88 H360"/></circle>
-        <circle r="3.5" fill="var(--pur)"><animateMotion dur="1.8s" begin=".8s" repeatCount="indefinite" path="M490 88 H530"/></circle>
-        <circle r="3.5" fill="var(--grn)"><animateMotion dur="1.6s" begin="1.2s" repeatCount="indefinite" path="M830 88 H870"/></circle>
-        <circle r="3.5" fill="var(--amb)"><animateMotion dur="2s" begin="1.6s" repeatCount="indefinite" path="M765 116 V160 C765 190 620 190 600 220"/></circle>
-        <circle r="3.5" fill="var(--grn)"><animateMotion dur="1.4s" begin="2s" repeatCount="indefinite" path="M830 248 H870"/></circle>
-      </svg>
+      <a href="assets/zerodaily-architecture-light.svg" target="_blank" rel="noopener" class="arch-link arch-link-light" title="Click to view full resolution system architecture">
+        <img src="assets/zerodaily-architecture-light.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
+      </a>
+      <a href="assets/zerodaily-architecture-dark.svg" target="_blank" rel="noopener" class="arch-link arch-link-dark" title="Click to view full resolution system architecture">
+        <img src="assets/zerodaily-architecture-dark.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
+      </a>
       <div class="arch-cap">
-        <span>fig. a - the full pipeline · every box is real, running infrastructure</span>
-        <a href="zerodaily.html" style="color:var(--grn);font-weight:700">full 9-step breakdown →</a>
+        <span>fig. a - exact ZeroDaily system design & pipeline · click diagram to zoom ↗</span>
+        <a href="zerodaily.html" style="color:var(--grn);font-weight:700">view deep dive breakdown →</a>
       </div>
     </div>
   </div>
