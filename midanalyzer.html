@@ -8,29 +8,36 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+try {
+  var t = localStorage.getItem('nk-theme');
+  if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches))
+    document.documentElement.classList.add('dark');
+} catch (e) {}
+</script>
+
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
-    <span class="ci done"><span class="spin"></span><span>case file: midanalyzer</span></span>
+    <a class="brand" href="index.html">Nirbhay</a>
     <div class="links">
-      <a href="revlimiter.html">← prev: revlimiter</a>
-      <a href="index.html#ship">../all-projects</a>
-      <a href="blackwidow.html">next: blackwidow →</a>
-      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+      <a href="revlimiter.html">revlimiter</a>
+      <a href="index.html#ship">Work</a>
+      <a href="blackwidow.html">blackwidow</a>
+      <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
     </div>
   </div>
 </nav>
 
 <div class="dhead">
   <div class="wrap">
-    <a class="back" href="index.html#ship">← cd ../production</a>
-    <h1>MidAnalyzer <span class="g">/ pcap forensics, no upload caps</span></h1>
-    <p class="tagline">// hosted pcap tools all share the same dirty secret: a file-size limit. midanalyzer runs in your browser for quick looks - or in Docker on your own machine for multi-gigabyte captures that would make hosted tools cry. part of the midstalker MITM security framework.</p>
+    <a class="back" href="index.html#ship">← Work</a>
+    <h1>MidAnalyzer <span class="g">PCAP forensics in the browser</span></h1>
+    <p class="tagline">PCAP analysis in the browser, or in Docker when the capture is too large to upload. Part of the Midstalker framework.</p>
     <div class="dlinks">
       <a class="btn solid" href="https://midanalyzer.streamlit.app" target="_blank" rel="noopener">midanalyzer.streamlit.app ↗</a>
       <a class="btn line" href="https://github.com/err0rgod/midanalyzer" target="_blank" rel="noopener">source repo</a>
@@ -42,8 +49,8 @@
 
   <!-- ============ NUMBERS ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>the numbers board</h2>
-    <p class="dsub">// the whole point is "no limit"</p>
+    <h2><span class="k">§1</span>Numbers</h2>
+    <p class="dsub">The whole point is "no limit"</p>
     <div class="statboxes rv">
       <div class="sbox a"><div class="n">∞</div><div class="l">FILE SIZE - DOCKER MODE<br>your ram is the only ceiling</div></div>
       <div class="sbox"><div class="n">2</div><div class="l">RUN MODES<br>hosted web · local docker</div></div>
@@ -54,8 +61,8 @@
 
   <!-- ============ FEATURES ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>what it dissects</h2>
-    <p class="dsub">// wireshark answers, browser ergonomics</p>
+    <h2><span class="k">§2</span>What it reads</h2>
+    <p class="dsub">Wireshark answers, browser ergonomics</p>
     <ul class="feat rv">
       <li><b>Conversation flows</b> - who talked to whom, when, how often. The first question in any capture, answered visually.</li>
       <li><b>DNS resolutions</b> - every lookup in the capture, surfaced and searchable. Suspicious domains don't get to hide in packet 48,291.</li>
@@ -68,8 +75,8 @@
 
   <!-- ============ CODE ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>run it yourself</h2>
-    <p class="dsub">// four lines to forensics</p>
+    <h2><span class="k">§3</span>Run it</h2>
+    <p class="dsub">Four lines to forensics</p>
     <pre class="code rv">git clone https://github.com/err0rgod/midanalyzer.git
 <span class="k">cd</span> midanalyzer
 docker build -t midstalker .
@@ -79,8 +86,8 @@ docker run -p <span class="n">8501</span>:8501 midstalker
 
   <div class="dsec" style="border-bottom:none">
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn solid" href="blackwidow.html">next project: blackwidow →</a>
-      <a class="btn line" href="index.html#ship">back to all projects</a>
+      <a class="btn solid" href="blackwidow.html">blackwidow</a>
+      <a class="btn line" href="index.html#ship">All work</a>
     </div>
   </div>
 
@@ -88,14 +95,13 @@ docker run -p <span class="n">8501</span>:8501 midstalker
 
 <footer>
   <div class="wrap">
-    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
       <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
       <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
       <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
       <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
     </span>
-    <span>midanalyzer · exit 0</span>
   </div>
 </footer>
 

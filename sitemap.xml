@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://nirbhay.me/</loc></url>
-  <url><loc>https://nirbhay.me/projects.html</loc></url>
+  <url><loc>https://nirbhay.me/zerodaily.html</loc></url>
+  <url><loc>https://nirbhay.me/conduit.html</loc></url>
+  <url><loc>https://nirbhay.me/flexurl.html</loc></url>
+  <url><loc>https://nirbhay.me/tokenly.html</loc></url>
+  <url><loc>https://nirbhay.me/revlimiter.html</loc></url>
+  <url><loc>https://nirbhay.me/midanalyzer.html</loc></url>
+  <url><loc>https://nirbhay.me/blackwidow.html</loc></url>
 </urlset>

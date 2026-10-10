@@ -8,28 +8,35 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+try {
+  var t = localStorage.getItem('nk-theme');
+  if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches))
+    document.documentElement.classList.add('dark');
+} catch (e) {}
+</script>
+
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
-    <span class="ci done"><span class="spin"></span><span>case file: zerodaily</span></span>
+    <a class="brand" href="index.html">Nirbhay</a>
     <div class="links">
-      <a href="index.html#ship">../all-projects</a>
-      <a href="conduit.html">next: conduit →</a>
-      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+      <a href="index.html#ship">Work</a>
+      <a href="conduit.html">Conduit</a>
+      <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
     </div>
   </div>
 </nav>
 
 <div class="dhead">
   <div class="wrap">
-    <a class="back" href="index.html#ship">← cd ../production</a>
-    <h1>ZeroDaily <span class="g">/ tech news, no PR fluff</span></h1>
-    <p class="tagline">// autonomous multi-repo tech-intelligence ecosystem - an article goes from a source website to a roasted 60-word card on your phone in minutes, with zero human input. 4 repos · 3 lambda functions · 1 very busy cron job.</p>
+    <a class="back" href="index.html#ship">← Work</a>
+    <h1>ZeroDaily <span class="g">Tech news, without the press release</span></h1>
+    <p class="tagline">An article goes from a source site to a short card on the phone in minutes. React Native, FastAPI, DynamoDB, Bedrock, and Cloudflare. Nobody edits the feed.</p>
     <div class="dlinks">
       <a class="btn solid" href="https://zerodaily.in" target="_blank" rel="noopener">zerodaily.in ↗</a>
       <a class="btn line" href="https://zerodaily.in/apk" target="_blank" rel="noopener">download apk</a>
@@ -41,8 +48,8 @@
 
   <!-- ============ NUMBERS ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>the numbers board</h2>
-    <p class="dsub">// measured, not imagined - pulled from the running system</p>
+    <h2><span class="k">§1</span>Numbers</h2>
+    <p class="dsub">Measured, not imagined - pulled from the running system</p>
     <div class="statboxes rv">
       <div class="sbox"><div class="n">2,500<em>+</em></div><div class="l">ARTICLES INGESTED / DAY<br>24+ RSS feeds · 7 domains</div></div>
       <div class="sbox b"><div class="n">500<em>+</em></div><div class="l">PUBLISHED / DAY<br>after semantic dedup</div></div>
@@ -57,8 +64,8 @@
 
   <!-- ============ THE PIPELINE ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>the pipeline, end to end</h2>
-    <p class="dsub">// every box below is real running infrastructure - follow the packets</p>
+    <h2><span class="k">§2</span>The pipeline</h2>
+    <p class="dsub">Every box below is real running infrastructure - follow the packets</p>
     <div class="arch rv">
       <a href="assets/zerodaily-architecture-light.svg" target="_blank" rel="noopener" class="arch-link arch-link-light" title="Click to view full resolution system architecture">
         <img src="assets/zerodaily-architecture-light.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
@@ -75,8 +82,8 @@
 
   <!-- ============ REPOS ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>four repos, one organism</h2>
-    <p class="dsub">// each subsystem is its own repo, its own CI, its own deploy gate</p>
+    <h2><span class="k">§3</span>Four repositories</h2>
+    <p class="dsub">Each subsystem is its own repo, its own CI, its own deploy gate</p>
     <div class="repo-grid rv">
       <a class="repo" href="https://github.com/err0rgod/bot1" target="_blank" rel="noopener">
         <div class="rn">err0rgod/bot1 ↗</div>
@@ -99,8 +106,8 @@
 
   <!-- ============ ENGINEERING DETAILS ============ -->
   <div class="dsec">
-    <h2><span class="k">§4</span>the parts i'm proud of</h2>
-    <p class="dsub">// the details that don't show up in a demo</p>
+    <h2><span class="k">§4</span>Details</h2>
+    <p class="dsub">The details that don't show up in a demo</p>
     <ul class="feat rv">
       <li><b>CDN pre-warming on breaking news</b> - when a breaking article hits DynamoDB, the Streams worker purges the affected feed URLs via Cloudflare's API, then issues HTTP GETs against the feeds + up to 20 fresh image URLs. The first real user gets a cache hit, not a cold Lambda.</li>
       <li><b>Atomic notification cooldown without Redis</b> - a DynamoDB conditional write (<code>attribute_not_exists OR ttl &lt;= now</code>) per category gives a 30-minute anti-spam lock that <b>fails closed</b>: any unexpected DB error suppresses the notification instead of risking a storm.</li>
@@ -117,8 +124,8 @@
 
   <!-- ============ CODE ============ -->
   <div class="dsec">
-    <h2><span class="k">§5</span>receipts</h2>
-    <p class="dsub">// the atomic cooldown lock, verbatim from the stream worker</p>
+    <h2><span class="k">§5</span>From the code</h2>
+    <p class="dsub">The atomic cooldown lock, verbatim from the stream worker</p>
     <pre class="code rv"><span class="c"># 30-min anti-spam lock per category - no Redis, fails closed</span>
 table.put_item(
     Item={
@@ -133,8 +140,8 @@ table.put_item(
 
   <div class="dsec" style="border-bottom:none">
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn solid" href="conduit.html">next project: conduit →</a>
-      <a class="btn line" href="index.html#ship">back to all projects</a>
+      <a class="btn solid" href="conduit.html">Conduit</a>
+      <a class="btn line" href="index.html#ship">All work</a>
     </div>
   </div>
 
@@ -142,14 +149,13 @@ table.put_item(
 
 <footer>
   <div class="wrap">
-    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
       <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
       <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
       <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
       <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
     </span>
-    <span>zerodaily · exit 0</span>
   </div>
 </footer>
 

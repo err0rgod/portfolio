@@ -8,16 +8,24 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+try {
+  var t = localStorage.getItem('nk-theme');
+  if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches))
+    document.documentElement.classList.add('dark');
+} catch (e) {}
+</script>
+
 <style>
   /* big IC hero graphic */
   .ic-hero{display:flex;justify-content:center;padding:10px 0 4px}
   .ic-hero svg{width:min(420px,86vw);height:auto}
-  .ic-hero .pinlbl{font-family:'JetBrains Mono',monospace;font-size:9px;fill:var(--soft)}
-  .ic-hero .pinnum{font-family:'JetBrains Mono',monospace;font-size:8px;fill:var(--faint)}
+  .ic-hero .pinlbl{font-family:ui-monospace,Consolas,monospace;font-size:9px;fill:var(--soft)}
+  .ic-hero .pinnum{font-family:ui-monospace,Consolas,monospace;font-size:8px;fill:var(--faint)}
   .ic-hero .body-ic{fill:var(--ink)}
-  .ic-hero .silk{fill:var(--paper);font-family:'JetBrains Mono',monospace}
+  .ic-hero .silk{fill:var(--paper);font-family:ui-monospace,Consolas,monospace}
   .ic-hero .pin-leg{stroke:var(--ink);stroke-width:5;stroke-linecap:round}
   .ic-hero .pin-in{stroke:var(--soft);stroke-width:2;stroke-linecap:round}
   .spider{animation:blink 2.4s infinite}
@@ -27,21 +35,20 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
-    <span class="ci done"><span class="spin"></span><span>case file: blackwidow</span></span>
+    <a class="brand" href="index.html">Nirbhay</a>
     <div class="links">
-      <a href="midanalyzer.html">← prev: midanalyzer</a>
-      <a href="index.html#ship">../all-projects</a>
-      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+      <a href="midanalyzer.html">MidAnalyzer</a>
+      <a href="index.html#ship">Work</a>
+      <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
     </div>
   </div>
 </nav>
 
 <div class="dhead">
   <div class="wrap">
-    <a class="back" href="index.html#ship">← cd ../production</a>
-    <h1>blackwidow <span class="g">/ the $2 lockpick</span></h1>
-    <p class="tagline">// a physical windows tamper-protection bypass system built on an ATtiny85A - a chip smaller than your thumbnail that walks in through the USB port, pretends to be a keyboard, and types faster than any human ever will.</p>
+    <a class="back" href="index.html#ship">← Work</a>
+    <h1>blackwidow <span class="g">Lab-only HID research</span></h1>
+    <p class="tagline">Authorized lab research. An ATtiny85A that enumerates as a keyboard and exercises Windows tamper protection. Not a product.</p>
     <div class="dlinks">
       <a class="btn line" href="https://github.com/err0rgod/blackwidow" target="_blank" rel="noopener">source repo ↗</a>
     </div>
@@ -52,8 +59,8 @@
 
   <!-- ============ THE IC ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>the weapon</h2>
-    <p class="dsub">// ATtiny85A · 8 pins · 8 KB flash · unlimited audacity</p>
+    <h2><span class="k">§1</span>The device</h2>
+    <p class="dsub">ATtiny85A · 8 pins · 8 KB flash · unlimited audacity</p>
     <div class="ic-hero rv">
       <svg viewBox="0 0 420 240" aria-label="ATtiny85A pinout diagram">
         <!-- left pins -->
@@ -99,8 +106,8 @@
 
   <!-- ============ ATTACK CHAIN ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>the attack chain</h2>
-    <p class="dsub">// plug in → ~30 seconds → it's over</p>
+    <h2><span class="k">§2</span>The chain</h2>
+    <p class="dsub">Plug in → ~30 seconds → it's over</p>
     <ul class="feat rv">
       <li><b>Tamper Protection GUI bypass</b> - Windows Defender's Tamper Protection can't be disabled from CLI or PowerShell (that's the entire point of it). So blackwidow doesn't argue with it: it navigates the Windows Security GUI with timed <code>DigiKeyboard</code> strokes and toggles it off <i>like a user would</i> - just inhumanly fast.</li>
       <li><b>Privilege elevation</b> - automates the <code>Win+X → A → Y</code> sequence to spawn an elevated admin terminal via UAC auto-accept.</li>
@@ -112,8 +119,8 @@
 
   <!-- ============ WHY HARDWARE ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>why hardware wins here</h2>
-    <p class="dsub">// software exploits get patched; HID is a feature</p>
+    <h2><span class="k">§3</span>Why hardware</h2>
+    <p class="dsub">Software exploits get patched; HID is a feature</p>
     <ul class="feat rv">
       <li><b>It's a keyboard, not malware</b> - the OS sees a HID device. No signature to match, no heuristic to trip, no file to scan. The payload is keystrokes.</li>
       <li><b>$2 of silicon</b> - the ATtiny85A (Digispark) costs less than the USB cable it arrives with. Physical-access threat modeling at disposable prices.</li>
@@ -125,7 +132,7 @@
 
   <div class="dsec" style="border-bottom:none">
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn solid" href="index.html#ship">back to all projects</a>
+      <a class="btn solid" href="index.html#ship">All work</a>
       <a class="btn line" href="index.html#contact">hire someone who thinks like this →</a>
     </div>
   </div>
@@ -134,14 +141,13 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
       <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
       <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
       <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
       <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
     </span>
-    <span>blackwidow · exit 0</span>
   </div>
 </footer>
 

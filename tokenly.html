@@ -8,29 +8,36 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+try {
+  var t = localStorage.getItem('nk-theme');
+  if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches))
+    document.documentElement.classList.add('dark');
+} catch (e) {}
+</script>
+
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
-    <span class="ci done"><span class="spin"></span><span>case file: tokenly</span></span>
+    <a class="brand" href="index.html">Nirbhay</a>
     <div class="links">
-      <a href="flexurl.html">← prev: flexurl</a>
-      <a href="index.html#ship">../all-projects</a>
-      <a href="revlimiter.html">next: revlimiter →</a>
-      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+      <a href="flexurl.html">FlexURL</a>
+      <a href="index.html#ship">Work</a>
+      <a href="revlimiter.html">revlimiter</a>
+      <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
     </div>
   </div>
 </nav>
 
 <div class="dhead">
   <div class="wrap">
-    <a class="back" href="index.html#ship">← cd ../production</a>
-    <h1>tokenly <span class="g">/ auth without the ORM</span></h1>
-    <p class="tagline">// a database-agnostic authentication toolkit for python. it deliberately ships NO database driver - you control the database, you control the models, tokenly controls the cryptography. published on pypi, downloaded 1,480 times by strangers who owe me nothing.</p>
+    <a class="back" href="index.html#ship">← Work</a>
+    <h1>tokenly <span class="g">Auth without an ORM</span></h1>
+    <p class="tagline">Authentication for Python when you already have a database. Argon2id, JWT access tokens, and refresh tokens stored as hashes. No ORM. On PyPI, 1,480 downloads.</p>
     <div class="dlinks">
       <a class="btn solid" href="https://pypi.org/project/tokenly-auth/" target="_blank" rel="noopener">pypi ↗</a>
       <a class="btn line" href="https://github.com/err0rgod/tokenly" target="_blank" rel="noopener">library repo</a>
@@ -44,8 +51,8 @@
 
   <!-- ============ NUMBERS ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>the numbers board</h2>
-    <p class="dsub">// small library, real users</p>
+    <h2><span class="k">§1</span>Numbers</h2>
+    <p class="dsub">Small library, real users</p>
     <div class="statboxes rv">
       <div class="sbox p"><div class="n">1,480</div><div class="l">PYPI DOWNLOADS · ALL TIME<br>and compounding</div></div>
       <div class="sbox"><div class="n">v1.1.4</div><div class="l">CURRENT RELEASE<br>actively maintained</div></div>
@@ -56,8 +63,8 @@
 
   <!-- ============ DESIGN ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>the design philosophy</h2>
-    <p class="dsub">// security primitives, not opinions about your schema</p>
+    <h2><span class="k">§2</span>Design</h2>
+    <p class="dsub">Security primitives, not opinions about your schema</p>
     <ul class="feat rv">
       <li><b>Argon2id by default</b> - password hashing via argon2-cffi's PasswordHasher with the OWASP-recommended algorithm. No md5 nostalgia here.</li>
       <li><b>Refresh tokens are NOT JWTs</b> - they're <code>secrets.token_urlsafe(64)</code> opaque strings, and only their <b>SHA-256 hash</b> ever touches a database. A leaked refresh-token table leaks nothing usable.</li>
@@ -71,8 +78,8 @@
 
   <!-- ============ CODE ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>how it reads</h2>
-    <p class="dsub">// three lines to a protected route</p>
+    <h2><span class="k">§3</span>In use</h2>
+    <p class="dsub">Three lines to a protected route</p>
     <pre class="code rv"><span class="k">from</span> tokenly_auth <span class="k">import</span> TokenHandler, require_auth, Security
 
 handler = <span class="s">TokenHandler</span>(SECRET_KEY=<span class="s">"…"</span>)
@@ -86,8 +93,8 @@ tokens  = handler.createJwt(sub=user.id)   <span class="c"># {access_token, refr
 
   <div class="dsec" style="border-bottom:none">
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn solid" href="revlimiter.html">next project: revlimiter →</a>
-      <a class="btn line" href="index.html#ship">back to all projects</a>
+      <a class="btn solid" href="revlimiter.html">revlimiter</a>
+      <a class="btn line" href="index.html#ship">All work</a>
     </div>
   </div>
 
@@ -95,14 +102,13 @@ tokens  = handler.createJwt(sub=user.id)   <span class="c"># {access_token, refr
 
 <footer>
   <div class="wrap">
-    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
       <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
       <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
       <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
       <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
     </span>
-    <span>tokenly · exit 0</span>
   </div>
 </footer>
 

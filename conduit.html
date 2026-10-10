@@ -8,29 +8,36 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+try {
+  var t = localStorage.getItem('nk-theme');
+  if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches))
+    document.documentElement.classList.add('dark');
+} catch (e) {}
+</script>
+
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
-    <span class="ci done"><span class="spin"></span><span>case file: conduit</span></span>
+    <a class="brand" href="index.html">Nirbhay</a>
     <div class="links">
-      <a href="zerodaily.html">← prev: zerodaily</a>
-      <a href="index.html#ship">../all-projects</a>
-      <a href="flexurl.html">next: flexurl →</a>
-      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+      <a href="zerodaily.html">ZeroDaily</a>
+      <a href="index.html#ship">Work</a>
+      <a href="flexurl.html">FlexURL</a>
+      <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
     </div>
   </div>
 </nav>
 
 <div class="dhead">
   <div class="wrap">
-    <a class="back" href="index.html#ship">← cd ../production</a>
-    <h1>Conduit <span class="g">/ agents drive YOUR browser</span></h1>
-    <p class="tagline">// AI agents usually ship with a fake sandboxed browser. Conduit instead connects them to the browser you're already logged into - through an authenticated local daemon, a manifest V3 extension, and a security model that assumes everyone is hostile.</p>
+    <a class="back" href="index.html#ship">← Work</a>
+    <h1>Conduit <span class="g">The browser you are already signed into</span></h1>
+    <p class="tagline">Connects an agent to the browser you are already signed into. A local daemon, a Manifest V3 extension, and a confirmation before anything sensitive.</p>
     <div class="dlinks">
       <a class="btn solid" href="https://conduit.zerodaily.in" target="_blank" rel="noopener">conduit.nirbhay.me ↗</a>
       <a class="btn line" href="https://chromewebstore.google.com/detail/conduit-extension/gjhipjgiapijcdnflldnoenafeegmfpc" target="_blank" rel="noopener">chrome web store ↗</a>
@@ -44,8 +51,8 @@
 
   <!-- ============ NUMBERS ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>the numbers board</h2>
-    <p class="dsub">// security parameters are features too</p>
+    <h2><span class="k">§1</span>Numbers</h2>
+    <p class="dsub">Security parameters are features too</p>
     <div class="statboxes rv">
       <div class="sbox"><div class="n">P-256</div><div class="l">PROOF-OF-POSSESSION<br>per-request signed nonces</div></div>
       <div class="sbox b"><div class="n">60<em>s</em></div><div class="l">CONFIRMATION TTL<br>one-time, operation-bound</div></div>
@@ -60,8 +67,8 @@
 
   <!-- ============ COMMAND FLOW ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>anatomy of one command</h2>
-    <p class="dsub">// what happens when an agent says "click the login button" - every hop is authenticated</p>
+    <h2><span class="k">§2</span>One command</h2>
+    <p class="dsub">What happens when an agent says "click the login button" - every hop is authenticated</p>
     <div class="arch rv">
       <svg viewBox="0 0 1060 300" fill="none" font-family="JetBrains Mono" font-size="11">
         <g class="pp"><rect class="box" x="10" y="110" width="140" height="66" rx="10" stroke-width="1.2"/>
@@ -102,8 +109,8 @@
 
   <!-- ============ REPOS ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>three repos</h2>
-    <p class="dsub">// pnpm monorepos, typescript everywhere, vitest + playwright</p>
+    <h2><span class="k">§3</span>Three repositories</h2>
+    <p class="dsub">Pnpm monorepos, typescript everywhere, vitest + playwright</p>
     <div class="repo-grid rv">
       <a class="repo" href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">
         <div class="rn">err0rgod/conduit ↗</div>
@@ -126,8 +133,8 @@
 
   <!-- ============ SECURITY MODEL ============ -->
   <div class="dsec">
-    <h2><span class="k">§4</span>the paranoid parts</h2>
-    <p class="dsub">// a bridge between AI and your logged-in browser deserves paranoia</p>
+    <h2><span class="k">§4</span>The security model</h2>
+    <p class="dsub">A bridge between AI and your logged-in browser deserves paranoia</p>
     <ul class="feat rv">
       <li><b>P-256 proof-of-possession for remote devices</b> - pairing produces a revocable public-key identity. Every remote request binds to a fresh 32-byte daemon nonce + a SHA-256 digest of the canonical JSON, signed by the device key. Bearer tokens alone are never enough.</li>
       <li><b>Two authority gates, by design</b> - the browser's own per-site host permission (owned by Chromium, requestable only from a popup click) AND the daemon's capability+domain policy. Neither can bypass the other.</li>
@@ -143,8 +150,8 @@
 
   <!-- ============ CODE ============ -->
   <div class="dsec">
-    <h2><span class="k">§5</span>receipts</h2>
-    <p class="dsub">// the remote-request proof, condensed</p>
+    <h2><span class="k">§5</span>From the code</h2>
+    <p class="dsub">The remote-request proof, condensed</p>
     <pre class="code rv"><span class="c">// device signs: domain separation + challenge + request digest</span>
 <span class="k">const</span> payload = [
   <span class="s">"conduit.remote.v1"</span>,
@@ -159,8 +166,8 @@ crypto.verify(<span class="s">"sha256"</span>, payload, deviceP256Pubkey, signat
 
   <div class="dsec" style="border-bottom:none">
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn solid" href="flexurl.html">next project: flexurl →</a>
-      <a class="btn line" href="index.html#ship">back to all projects</a>
+      <a class="btn solid" href="flexurl.html">FlexURL</a>
+      <a class="btn line" href="index.html#ship">All work</a>
     </div>
   </div>
 
@@ -168,14 +175,13 @@ crypto.verify(<span class="s">"sha256"</span>, payload, deviceP256Pubkey, signat
 
 <footer>
   <div class="wrap">
-    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
       <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
       <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
       <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
       <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
     </span>
-    <span>conduit · exit 0</span>
   </div>
 </footer>
 

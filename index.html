@@ -3,374 +3,184 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nirbhay Katiyar - Software Developer & Security Researcher</title>
-<meta name="description" content="Nirbhay Katiyar - software developer building production backends, cloud-native infrastructure, autonomous AI pipelines, and security tooling. Valid disclosures at Spotify, IBM, Lightspark.">
+<title>Nirbhay Katiyar</title>
+<meta name="description" content="Nirbhay Katiyar builds production backends, serverless systems, and security tooling. Valid disclosures at Spotify, IBM, and Lightspark.">
 <link rel="canonical" href="https://nirbhay.me/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nirbhay Katiyar - nirbhay.dev">
-<meta property="og:description" content="Software that ships itself - backends, serverless, AI pipelines, offensive security.">
+<meta property="og:title" content="Nirbhay Katiyar">
+<meta property="og:description" content="Production backends, serverless systems, and authorized security research.">
+<meta property="og:url" content="https://nirbhay.me/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+try {
+  var t = localStorage.getItem('nk-theme');
+  if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches))
+    document.documentElement.classList.add('dark');
+} catch (e) {}
+</script>
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html">nirbhay<em>.dev</em></a>
-    <span class="ci" id="ci"><span class="spin"></span><span id="ci-txt">running build #248…</span></span>
+    <a class="brand" href="index.html">Nirbhay</a>
     <div class="links">
-      <a href="#ship">./ship</a>
-      <a href="#zerodaily-sec">./zerodaily</a>
-      <a href="#changelog">./changelog</a>
-      <a href="#security">./security</a>
-      <a href="#contact">./hire</a>
-      <button class="theme-sw" id="themeSw" aria-label="toggle dark mode"><span class="knob" id="themeKnob">☀</span></button>
+      <a href="#ship">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
     </div>
   </div>
 </nav>
 
-<!-- ============ HERO ============ -->
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="avail"><i></i>OPEN TO WORK</span>
-      <h1 class="htitle">I build software<br>that <span class="g">ships itself.</span></h1>
-      <div class="typed-line"><span class="p">$</span> <span id="typed"></span><span class="caret"></span></div>
-      <p class="hsub"><b>Nirbhay Katiyar</b> - software developer. Backends in <b>Go &amp; Python</b>, serverless on <b>AWS</b>, autonomous AI pipelines, and a habit of breaking into things <i>legally</i> - valid disclosures at <b>Spotify, IBM &amp; Lightspark</b>.</p>
-      <div class="hcta">
-        <a class="btn solid" href="#ship">git clone my-work ↓</a>
-        <a class="btn line" href="mailto:nirbhay.bin@gmail.com">--hire</a>
-      </div>
-    </div>
-
-    <div class="machine">
-      <span class="chip c1">200 OK</span>
-      <span class="chip c2">deployed ✓</span>
-      <span class="chip c3">tests 42/42</span>
-      <span class="chip c4">uptime 99.98%</span>
-      <div class="mhead"><span>PIPELINE - nirbhay/portfolio</span><span class="live">RUNNING</span></div>
-      <div class="pipe" id="pipe">
-        <div id="packet"></div>
-        <div class="stage" data-s="0"><div class="node">git</div><div class="nm">COMMIT</div><div class="stt"></div></div>
-        <div class="stage" data-s="1"><div class="node">go</div><div class="nm">BUILD</div><div class="stt"></div></div>
-        <div class="stage" data-s="2"><div class="node">✓</div><div class="nm">TEST</div><div class="stt"></div></div>
-        <div class="stage" data-s="3"><div class="node">☁</div><div class="nm">DEPLOY</div><div class="stt"></div></div>
-      </div>
-      <div class="log" id="log"></div>
-    </div>
+  <div class="wrap">
+    <p class="eyebrow">Software developer</p>
+    <h1 class="htitle">Nirbhay Katiyar</h1>
+    <p class="lede">I build production backends and the systems around them. Python and Go, mostly on AWS. I also do authorized security research, with valid disclosures at <b>Spotify</b>, <b>IBM</b>, and <b>Lightspark</b>.</p>
+    <p class="hero-links">
+      <a href="mailto:nirbhay.bin@gmail.com">nirbhay.bin@gmail.com</a>
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+    <p class="avail">Open to work.</p>
   </div>
 </header>
 
-<!-- marquee -->
-<div class="marquee"><span id="mq">2,500+ articles ingested daily · sub-20ms edge responses · <b>valid disclosures @ spotify · ibm · lightspark</b> · 1,480 pypi downloads · 0ms cold boot · 172 unit tests · serverless everything · 24+ feeds every 8 minutes ·&nbsp;</span></div>
-
 <main>
-<!-- ============ PROJECTS ============ -->
 <section id="ship">
   <div class="wrap">
-    <div class="shead rv">
-      <span class="idx">01</span>
-      <h2>things i've <span class="g">shipped</span></h2>
-      <span class="fill"></span>
-      <span class="meta">7 artifacts · real traffic</span>
-    </div>
-    <p class="ssub rv"><span class="p">$</span> ls -la ./production - click any card for the full engineering breakdown</p>
-
-    <div class="cards">
-      <a class="card rv" href="zerodaily.html">
-        <span class="go">→</span>
-        <div class="top"><span class="g-dot"></span>zerodaily.in<span class="tag live">● LIVE</span></div>
-        <div class="body">
-          <h3>ZeroDaily <span>/multi-repo ecosystem</span></h3>
-          <p>Autonomous tech-intelligence platform - tech news on your phone with <b>zero PR fluff</b> - minutes from source. React Native app, FastAPI + DynamoDB serving layer, Bedrock LLM ingestion across <b>24+ feeds, 7 domains</b>.</p>
-          <div class="stats">
-            <div class="stat"><div class="sr"><span>edge response</span><b>sub-20ms (k6)</b></div><div class="bar"><i data-w="95%"></i></div></div>
-            <div class="stat"><div class="sr"><span>articles ingested / day</span><b>2,500+</b></div><div class="bar"><i class="b" data-w="85%"></i></div></div>
-            <div class="stat"><div class="sr"><span>llm tokens / day</span><b>2–3M</b></div><div class="bar"><i class="p" data-w="78%"></i></div></div>
-          </div>
-          <div class="foot"><span class="pill">React Native</span><span class="pill">FastAPI</span><span class="pill">Lambda</span><span class="pill">DynamoDB</span><span class="pill">Bedrock</span><span class="pill">Cloudflare</span></div>
-        </div>
+    <div class="shead"><h2>Work</h2></div>
+    <div class="work">
+      <a class="piece" href="zerodaily.html">
+        <h3>ZeroDaily</h3>
+        <p>Tech news without the press-release voice. A React Native reader fed by a serverless pipeline across 24 feeds.</p>
+        <span class="where">zerodaily.in</span>
       </a>
-
-      <a class="card rv" href="conduit.html">
-        <span class="go">→</span>
-        <div class="top"><span class="g-dot" style="background:var(--blu)"></span>conduit.nirbhay.me<span class="tag store">◆ STORES</span></div>
-        <div class="body">
-          <h3>Conduit <span>/browser bridge for AI agents</span></h3>
-          <p>Lets AI agents drive your <b>real browser</b> instead of a fake sandbox - local-first daemon, <b>P-256 proof-of-possession pairing</b>, one-time confirmations, redacted audit log. Live on <b>Chrome Web Store &amp; Firefox Add-ons</b>.</p>
-          <div class="stats">
-            <div class="stat"><div class="sr"><span>trust boundary</span><b>local-only · loopback default</b></div><div class="bar"><i class="b" data-w="100%"></i></div></div>
-            <div class="stat"><div class="sr"><span>browsers</span><b>chrome · firefox · edge · brave</b></div><div class="bar"><i data-w="100%"></i></div></div>
-          </div>
-          <div class="foot"><span class="pill">TypeScript</span><span class="pill">Node 22+</span><span class="pill">MCP</span><span class="pill">Native Messaging</span><span class="pill">Zod</span></div>
-        </div>
+      <a class="piece" href="conduit.html">
+        <h3>Conduit</h3>
+        <p>Lets an agent drive the browser you are already signed into. Local daemon, proof-of-possession pairing, a confirmation before anything sensitive.</p>
+        <span class="where">Chrome · Firefox</span>
       </a>
-
-      <a class="card rv" href="flexurl.html">
-        <span class="go">→</span>
-        <div class="top"><span class="g-dot"></span>flexurl.app<span class="tag live">● LIVE</span></div>
-        <div class="body">
-          <h3>FlexURL <span>/url management platform</span></h3>
-          <p>Enterprise URL management - <b>Sonyflake + Base62</b> redirects, crash-safe ARQ analytics pipeline, <b>Cloudflare for SaaS custom domains</b>, Safe Browsing checks, Razorpay geo-priced monetization.</p>
-          <div class="stats">
-            <div class="stat"><div class="sr"><span>redirect throughput</span><b>410 req/s · 100% success</b></div><div class="bar"><i data-w="88%"></i></div></div>
-            <div class="stat"><div class="sr"><span>latency</span><b>avg 42ms · p95 &lt; 210ms</b></div><div class="bar"><i class="b" data-w="92%"></i></div></div>
-          </div>
-          <div class="foot"><span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">PostgreSQL</span><span class="pill">Redis</span><span class="pill">ARQ</span><span class="pill">Nginx</span></div>
-        </div>
+      <a class="piece" href="flexurl.html">
+        <h3>FlexURL</h3>
+        <p>Short links, analytics, and custom domains. About 410 redirects a second, with a crash-safe click pipeline.</p>
+        <span class="where">flexurl.app</span>
       </a>
-
-      <a class="card rv" href="tokenly.html">
-        <span class="go">→</span>
-        <div class="top"><span class="g-dot" style="background:var(--pur)"></span>pypi.org/project/tokenly-auth<span class="tag pypi">◆ PYPI</span></div>
-        <div class="body">
-          <h3>tokenly <span>/auth library</span></h3>
-          <p>Database-agnostic auth toolkit - <b>Argon2id</b> hashing, JWT access tokens, <b>opaque refresh tokens</b> stored as SHA-256 hashes, <b>@require_auth</b> decorators. No ORM lock-in: your database, your models.</p>
-          <div class="stats">
-            <div class="stat"><div class="sr"><span>pypi downloads (all time)</span><b>1,480</b></div><div class="bar"><i class="p" data-w="100%"></i></div></div>
-            <div class="stat"><div class="sr"><span>orm lock-in</span><b>0%</b></div><div class="bar"><i class="a" data-w="2%"></i></div></div>
-          </div>
-          <div class="foot"><span class="pill">Python</span><span class="pill">Argon2id</span><span class="pill">JWT</span><span class="pill">pip install tokenly-auth</span></div>
-        </div>
+      <a class="piece" href="tokenly.html">
+        <h3>tokenly</h3>
+        <p>Authentication for Python services that already have a database. Argon2id, JWT access tokens, hashed refresh tokens.</p>
+        <span class="where">PyPI · 1,480</span>
       </a>
-
-      <a class="card rv" href="revlimiter.html">
-        <span class="go">→</span>
-        <div class="top"><span class="g-dot" style="background:var(--pur)"></span>pypi.org/project/revlimiter<span class="tag pypi">◆ PYPI</span></div>
-        <div class="body">
-          <h3>revlimiter <span>/rate limiting</span></h3>
-          <p>Rate-limiting library for Python services - built to protect the kind of high-traffic endpoints FlexURL serves. Simple API, pluggable storage, no framework lock-in.</p>
-          <div class="stats">
-            <div class="stat"><div class="sr"><span>pypi downloads (all time)</span><b>700+</b></div><div class="bar"><i class="p" data-w="70%"></i></div></div>
-          </div>
-          <div class="foot"><span class="pill">Python</span><span class="pill">PyPI</span><span class="pill">token-bucket</span></div>
-        </div>
+      <a class="piece" href="revlimiter.html">
+        <h3>revlimiter</h3>
+        <p>Rate limiting for Python. Pluggable storage, no framework lock-in.</p>
+        <span class="where">PyPI · 700+</span>
       </a>
-
-      <a class="card rv" href="midanalyzer.html">
-        <span class="go">→</span>
-        <div class="top"><span class="g-dot" style="background:var(--amb)"></span>midanalyzer.streamlit.app<span class="tag live">● LIVE</span></div>
-        <div class="body">
-          <h3>MidAnalyzer <span>/pcap forensics</span></h3>
-          <p>Browser-based <b>PCAP network forensics</b> - conversation flows, DNS resolutions, protocol distributions. Docker mode chews through <b>multi-gigabyte captures</b> - no cloud upload caps. Part of the Midstalker framework.</p>
-          <div class="stats">
-            <div class="stat"><div class="sr"><span>file size limit</span><b>none (docker mode)</b></div><div class="bar"><i class="a" data-w="100%"></i></div></div>
-          </div>
-          <div class="foot"><span class="pill">Python</span><span class="pill">Streamlit</span><span class="pill">Docker</span><span class="pill">Wireshark-grade</span></div>
-        </div>
+      <a class="piece" href="midanalyzer.html">
+        <h3>MidAnalyzer</h3>
+        <p>PCAP analysis in the browser. Docker mode when the capture is too large to upload.</p>
+        <span class="where">Live</span>
       </a>
-
-      <a class="card rv" href="blackwidow.html">
-        <span class="go">→</span>
-        <div class="top"><span class="g-dot" style="background:var(--red)"></span>github/err0rgod/blackwidow<span class="tag lab">▲ LAB ONLY</span></div>
-        <div class="body">
-          <h3>blackwidow <span>/hardware HID</span></h3>
-          <p>Physical Windows Tamper-Protection bypass on an <b>ATtiny85A</b> - a $2 IC that types faster than any human: GUI-automated Defender bypass, privilege elevation, hidden reverse-shell staging. Authorized lab research.</p>
-          <div class="stats">
-            <div class="stat"><div class="sr"><span>tamper protection</span><b>bypassed (gui route)</b></div><div class="bar"><i style="background:var(--red)" data-w="100%"></i></div></div>
-          </div>
-          <div class="foot"><span class="pill">C++</span><span class="pill">ATtiny85A</span><span class="pill">Digispark</span><span class="pill">★ 2</span></div>
-        </div>
-        <svg class="ic" viewBox="0 0 60 60" aria-hidden="true">
-          <rect x="14" y="10" width="32" height="40" rx="4" fill="var(--ink)"/>
-          <circle cx="20" cy="16" r="2.4" fill="var(--paper)"/>
-          <text x="30" y="33" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="var(--paper)" font-weight="700">85A</text>
-          <g stroke="var(--ink)" stroke-width="3" stroke-linecap="round">
-            <line x1="20" y1="10" x2="20" y2="4"/><line x1="30" y1="10" x2="30" y2="4"/><line x1="40" y1="10" x2="40" y2="4"/>
-            <line x1="20" y1="50" x2="20" y2="56"/><line x1="30" y1="50" x2="30" y2="56"/><line x1="40" y1="50" x2="40" y2="56"/>
-          </g>
-        </svg>
+      <a class="piece" href="blackwidow.html">
+        <h3>blackwidow</h3>
+        <p>Lab-only HID research on an ATtiny85A. Authorized work on Windows tamper protection.</p>
+        <span class="where">Lab</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ============ ZERODAILY DEEP-DIVE TEASER ============ -->
-<section id="zerodaily-sec">
+<section id="zerodaily">
   <div class="wrap">
-    <div class="shead rv">
-      <span class="idx">02</span>
-      <h2>under the hood: <span class="g">zerodaily</span></h2>
-      <span class="fill"></span>
-      <span class="meta">source → phone in minutes</span>
+    <div class="shead"><h2>ZeroDaily</h2></div>
+    <div class="figures">
+      <div><strong>2,500+</strong><span>articles ingested a day, from 24 feeds</span></div>
+      <div><strong>500+</strong><span>published after semantic dedup</span></div>
+      <div><strong>2–3M</strong><span>Bedrock tokens a day</span></div>
+      <div><strong>&lt;20ms</strong><span>edge response, measured with k6</span></div>
     </div>
-    <p class="ssub rv"><span class="p">$</span> systemctl status zerodaily - active (running), zero humans required</p>
-
-    <div class="statboxes rv">
-      <div class="sbox"><div class="n">2,500<em>+</em></div><div class="l">ARTICLES INGESTED / DAY<br>24+ feeds · every 8 min</div></div>
-      <div class="sbox b"><div class="n">500<em>+</em></div><div class="l">ARTICLES PUBLISHED / DAY<br>after LLM semantic dedup</div></div>
-      <div class="sbox p"><div class="n">2–3<em>M</em></div><div class="l">LLM TOKENS / DAY<br>aws bedrock</div></div>
-      <div class="sbox a"><div class="n">&lt;20<em>ms</em></div><div class="l">EDGE RESPONSE (k6)<br>no app-server bottleneck</div></div>
-      <div class="sbox"><div class="n">172</div><div class="l">UNIT TESTS<br>two repos, gated deploys</div></div>
-      <div class="sbox b"><div class="n">0<em>ms</em></div><div class="l">APP COLD BOOT<br>renders from disk first</div></div>
-      <div class="sbox p"><div class="n">~75<em>%</em></div><div class="l">FETCHES KILLED BY DEDUP<br>before scraping begins</div></div>
-      <div class="sbox a"><div class="n">20<em>+</em></div><div class="l">DAILY ACTIVE USERS<br>and compounding</div></div>
-    </div>
-
-    <div class="arch rv">
-      <a href="assets/zerodaily-architecture-light.svg" target="_blank" rel="noopener" class="arch-link arch-link-light" title="Click to view full resolution system architecture">
-        <img src="assets/zerodaily-architecture-light.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
+    <div class="arch">
+      <a href="assets/zerodaily-architecture-light.svg" target="_blank" rel="noopener" class="arch-link arch-link-light">
+        <img src="assets/zerodaily-architecture-light.svg" alt="ZeroDaily production architecture" class="arch-img" loading="lazy">
       </a>
-      <a href="assets/zerodaily-architecture-dark.svg" target="_blank" rel="noopener" class="arch-link arch-link-dark" title="Click to view full resolution system architecture">
-        <img src="assets/zerodaily-architecture-dark.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
+      <a href="assets/zerodaily-architecture-dark.svg" target="_blank" rel="noopener" class="arch-link arch-link-dark">
+        <img src="assets/zerodaily-architecture-dark.svg" alt="ZeroDaily production architecture" class="arch-img" loading="lazy">
       </a>
-      <div class="arch-cap">
-        <span>fig. a - exact ZeroDaily system design & pipeline · click diagram to zoom ↗</span>
-        <a href="zerodaily.html" style="color:var(--grn);font-weight:700">view deep dive breakdown →</a>
-      </div>
+    </div>
+    <p class="arch-cap">
+      <span>From a source site to the phone, without a person in the loop.</span>
+      <a href="zerodaily.html">Read the notes</a>
+    </p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="shead"><h2>Experience</h2></div>
+    <div class="roles">
+      <article class="role">
+        <div class="when">Aug 2026 — now</div>
+        <div>
+          <h3>Backend engineer <span>at Plany AI</span></h3>
+          <ul>
+            <li>Moved the platform from InsForge to AWS, with clearer ownership and room to scale.</li>
+            <li>Designed the cloud layout: services, data, networking, and deployment.</li>
+            <li>Built the auth layer and wired it into the product.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="role">
+        <div class="when">Jul 2025 — Jan 2026</div>
+        <div>
+          <h3>Security researcher <span>on HackerOne</span></h3>
+          <ul>
+            <li>Valid, triaged reports to IBM, Spotify, and Lightspark.</li>
+            <li>IDOR, authentication flaws, information disclosure, and business-logic bugs.</li>
+            <li>Wrote reproducible proofs and stayed through remediation.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="role">
+        <div class="when">May 2025 — Aug 2025</div>
+        <div>
+          <h3>Offensive security engineer <span>at InlighnX</span></h3>
+          <ul>
+            <li>Reviewed auth flows, authorization boundaries, and exposed endpoints.</li>
+            <li>Built Python for recon, subdomain discovery, and checks that could be repeated.</li>
+            <li>Turned findings into proofs an engineer could act on, then retested the fix.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="role">
+        <div class="when">Expected Apr 2029</div>
+        <div>
+          <h3>B.Tech, Electronics and Communication <span>at Galgotias College</span></h3>
+          <ul>
+            <li>Greater Noida. The hardware interest started here. The software took over.</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ============ RELEASE HISTORY ============ -->
-<section id="changelog">
+<section id="contact">
   <div class="wrap">
-    <div class="shead rv">
-      <span class="idx">03</span>
-      <h2>release <span class="g">history</span></h2>
-      <span class="fill"></span>
-      <span class="meta">semver: career edition</span>
-    </div>
-    <p class="ssub rv"><span class="p">$</span> git log --oneline --career - click a release to expand</p>
-
-    <div class="rels">
-      <div class="rel rv open">
-        <div class="rel-head">
-          <span class="ver">v2.1.0</span>
-          <span class="vt">Backend Engineer &amp; Ops <span class="at">@ plany-ai</span></span>
-          <span class="vd">Aug 2026 - now</span>
-          <span class="arrow">▶</span>
-        </div>
-        <div class="rel-body">
-          <div class="rel-notes">
-            <div class="nh">RELEASE NOTES</div>
-            <ul>
-              <li><b>feat:</b> led platform migration InsForge → AWS - clearer ownership, operational control, room to scale</li>
-              <li><b>feat:</b> designed core cloud architecture - services, data, networking, deployment</li>
-              <li><b>feat:</b> implemented auth layer, integrated into product flows</li>
-            </ul>
-          </div>
-          <span class="hash">commit a4f2c9e · signed-off-by: nirbhay</span>
-        </div>
-      </div>
-
-      <div class="rel rv">
-        <div class="rel-head">
-          <span class="ver">v2.0.0</span>
-          <span class="vt">Independent Security Researcher <span class="at">@ HackerOne</span></span>
-          <span class="vd">Jul 2025 - Jan 2026</span>
-          <span class="arrow">▶</span>
-        </div>
-        <div class="rel-body">
-          <div class="rel-notes">
-            <div class="nh">RELEASE NOTES</div>
-            <ul>
-              <li><b>security:</b> valid, triaged reports to <b>IBM, Spotify &amp; Lightspark</b> bounty programs</li>
-              <li><b>security:</b> IDOR, auth flaws, information disclosure, business-logic bugs</li>
-              <li><b>docs:</b> reproducible PoCs, coordinated disclosure through remediation</li>
-            </ul>
-          </div>
-          <span class="hash">commit 8b1d3f7 · signed-off-by: nirbhay</span>
-        </div>
-      </div>
-
-      <div class="rel rv">
-        <div class="rel-head">
-          <span class="ver">v1.5.0</span>
-          <span class="vt">Offensive Security Engineer <span class="at">@ InlighnX</span></span>
-          <span class="vd">May 2025 - Aug 2025</span>
-          <span class="arrow">▶</span>
-        </div>
-        <div class="rel-body">
-          <div class="rel-notes">
-            <div class="nh">RELEASE NOTES</div>
-            <ul>
-              <li><b>feat:</b> attack-surface reviews - auth flows, authz boundaries, exposed endpoints</li>
-              <li><b>feat:</b> python tooling for recon, subdomain discovery, repeatable vuln checks</li>
-              <li><b>fix:</b> turned findings into PoCs engineers could actually act on; verified fixes via retest</li>
-            </ul>
-          </div>
-          <span class="hash">commit c7e91a2 · signed-off-by: nirbhay</span>
-        </div>
-      </div>
-
-      <div class="rel rv">
-        <div class="rel-head">
-          <span class="ver">v1.0.0</span>
-          <span class="vt">B.Tech ECE <span class="at">@ Galgotias College of Engineering</span></span>
-          <span class="vd">exp. Apr 2029</span>
-          <span class="arrow">▶</span>
-        </div>
-        <div class="rel-body">
-          <div class="rel-notes">
-            <div class="nh">RELEASE NOTES</div>
-            <ul>
-              <li><b>init:</b> electronics &amp; communication engineering · greater noida, UP</li>
-              <li><b>note:</b> where the hardware curiosity started - the software took over from here</li>
-            </ul>
-          </div>
-          <span class="hash">commit 0000001 · genesis</span>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECURITY ============ -->
-<section id="security">
-  <div class="wrap">
-    <div class="shead rv">
-      <span class="idx">04</span>
-      <h2>things i've <span class="g">broken</span> (legally)</h2>
-      <span class="fill"></span>
-      <span class="meta">hackerone · coordinated disclosure</span>
-    </div>
-    <p class="ssub rv"><span class="p">$</span> ./recon --scope=authorized --output=valid_reports</p>
-
-    <div class="wall">
-      <div class="bounty rv">
-        <div class="co">Spotify<span>*</span></div>
-        <div class="det">critical vulnerability · responsibly disclosed<br>report status: <b style="color:var(--grn)">valid · triaged</b></div>
-        <span class="bdg">DISCLOSED ✓</span>
-      </div>
-      <div class="bounty rv">
-        <div class="co">IBM<span>*</span></div>
-        <div class="det">valid report accepted<br>classes: idor · auth flaws · info disclosure</div>
-        <span class="bdg">DISCLOSED ✓</span>
-      </div>
-      <div class="bounty rv">
-        <div class="co">Lightspark<span>*</span></div>
-        <div class="det">business-logic chain, documented end-to-end<br>coordinated through remediation</div>
-        <span class="bdg">DISCLOSED ✓</span>
-      </div>
-      <div class="wall-cap rv">// toolkit: owasp top 10 · burp suite · nmap · wireshark/pcap · sqli xss csrf ssrf cors · jwt hardening</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section id="contact" style="border-bottom:none">
-  <div class="wrap">
-    <div class="contact rv">
-      <div class="stamps">
-        <span class="stamp s1">200 OK</span>
-        <span class="stamp s2">NO SPAM</span>
-        <span class="stamp s3">REPLIES FAST</span>
-      </div>
-      <h3>deploy me to <span class="g">your team</span></h3>
-      <p><span class="p">$</span> curl -X POST hire/nirbhay -d '{"role":"interesting","remote":true}'<br><span style="color:var(--faint)"># response: 200 OK · email is fastest</span></p>
-      <div class="ctas">
-        <a class="btn solid" href="mailto:nirbhay.bin@gmail.com">nirbhay.bin@gmail.com →</a>
-        <a class="btn line" href="https://github.com/err0rgod" target="_blank" rel="noopener">github ↗</a>
-        <a class="btn line" href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin ↗</a>
-        <a class="btn line" href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium ↗</a>
-        <a class="btn line" href="https://x.com/err0rgod" target="_blank" rel="noopener">x ↗</a>
-      </div>
+    <div class="shead"><h2>Contact</h2></div>
+    <div class="contact">
+      <p>Email is the fastest way to reach me. I read everything.</p>
+      <a class="email" href="mailto:nirbhay.bin@gmail.com">nirbhay.bin@gmail.com</a>
+      <p class="hero-links">
+        <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>
+        <a href="https://x.com/err0rgod" target="_blank" rel="noopener">X</a>
+      </p>
     </div>
   </div>
 </section>
@@ -378,22 +188,14 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 nirbhay katiyar · noida, IN</span>
+    <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
       <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github.com/err0rgod</a>
-      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x.com/err0rgod</a>
-      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">err0rgod.medium.com</a>
-      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin.com/in/nirbhay-katiyar</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
     </span>
-    <span>exit 0</span>
   </div>
 </footer>
 
 <script src="assets/site.js"></script>
-<script>
-  // duplicate marquee content for seamless loop
-  const mq = document.getElementById('mq');
-  mq.innerHTML += mq.innerHTML;
-</script>
 </body>
 </html>
