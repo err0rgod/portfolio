@@ -62,6 +62,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§1</span>The device</h2>
     <p class="dsub">ATtiny85A · 8 pins · 8 KB flash · unlimited audacity</p>
+    <p class="cmd"><span>$</span> lsusb -d 16c0:05dc</p>
     <div class="ic-hero rv">
       <svg viewBox="0 0 420 240" aria-label="ATtiny85A pinout diagram">
         <!-- left pins -->
@@ -109,6 +110,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§2</span>The chain</h2>
     <p class="dsub">Plug in → ~30 seconds → it's over</p>
+    <p class="cmd"><span>$</span> gh repo view err0rgod/blackwidow</p>
     <ul class="feat rv">
       <li><b>Tamper Protection GUI bypass</b> - Windows Defender's Tamper Protection can't be disabled from CLI or PowerShell (that's the entire point of it). So blackwidow doesn't argue with it: it navigates the Windows Security GUI with timed <code>DigiKeyboard</code> strokes and toggles it off <i>like a user would</i> - just inhumanly fast.</li>
       <li><b>Privilege elevation</b> - automates the <code>Win+X → A → Y</code> sequence to spawn an elevated admin terminal via UAC auto-accept.</li>
@@ -122,6 +124,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§3</span>Why hardware</h2>
     <p class="dsub">Software exploits get patched; HID is a feature</p>
+    <p class="cmd"><span>$</span> dmesg | grep -i hid</p>
     <ul class="feat rv">
       <li><b>It's a keyboard, not malware</b> - the OS sees a HID device. No signature to match, no heuristic to trip, no file to scan. The payload is keystrokes.</li>
       <li><b>$2 of silicon</b> - the ATtiny85A (Digispark) costs less than the USB cable it arrives with. Physical-access threat modeling at disposable prices.</li>

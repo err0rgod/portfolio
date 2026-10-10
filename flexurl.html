@@ -51,6 +51,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§1</span>Numbers</h2>
     <p class="dsub">From the performance audit, not the imagination</p>
+    <p class="cmd"><span>$</span> curl -s -o /dev/null -w "%{http_code} %{time_total}s\n" https://flexurl.app</p>
     <div class="statboxes rv">
       <div class="sbox"><div class="n">410<em>+</em></div><div class="l">REDIRECTS / SEC<br>on a 2vcpu box · 100% success</div></div>
       <div class="sbox b"><div class="n">42<em>ms</em></div><div class="l">AVG LATENCY<br>p95 &lt; 210ms</div></div>
@@ -67,6 +68,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§2</span>A redirect</h2>
     <p class="dsub">The hot path is Redis-shaped; Postgres is the fallback, not the default</p>
+    <p class="cmd"><span>$</span> redis-cli ping</p>
     <div class="arch rv">
       <svg viewBox="0 0 1060 320" fill="none" font-family="JetBrains Mono" font-size="11">
         <g class="pp"><rect class="box" x="10" y="40" width="130" height="56" rx="10" stroke-width="1.2"/>
@@ -116,6 +118,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§3</span>Details</h2>
     <p class="dsub">Production systems are won in the boring corners</p>
+    <p class="cmd"><span>$</span> gh repo view err0rgod/urlshortener</p>
     <ul class="feat rv">
       <li><b>Crash-safe click accounting</b> - analytics increments live in Redis; every 30s a cron does batch <code>UPDATE … click_count + :inc</code>, and only <i>after Postgres commits</i> does it DECRBY the Redis counters. A worker crash mid-cycle loses nothing and double-counts nothing.</li>
       <li><b>Textbook distributed locking</b> - the flush lock is <code>SET NX EX</code> with a UUID token, released by a Lua compare-and-delete script that verifies the token first. No releasing someone else's lock.</li>
@@ -134,6 +137,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§4</span>From the code</h2>
     <p class="dsub">The crash-safe flush, condensed</p>
+    <p class="cmd"><span>$</span> gh api repos/err0rgod/urlshortener --jq .ssh_url</p>
     <pre class="code rv"><span class="c"># 1. read counts → 2. commit to postgres → 3. then decrement redis</span>
 <span class="k">async with</span> db.begin():
     <span class="k">await</span> db.execute(

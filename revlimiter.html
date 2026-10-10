@@ -52,6 +52,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§1</span>Numbers</h2>
     <p class="dsub">Small, sharp, downloaded</p>
+    <p class="cmd"><span>$</span> pip index versions revlimiter</p>
     <div class="statboxes rv">
       <div class="sbox p"><div class="n">700<em>+</em></div><div class="l">PYPI DOWNLOADS · ALL TIME<br>organic adoption</div></div>
       <div class="sbox"><div class="n">1</div><div class="l">PURPOSE<br>rate limiting, done right</div></div>
@@ -64,6 +65,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§2</span>Why</h2>
     <p class="dsub">Every production service eventually needs a bouncer</p>
+    <p class="cmd"><span>$</span> gh repo view err0rgod/revlimiter</p>
     <ul class="feat rv">
       <li><b>Built from production scars</b> - FlexURL's API serves tiered limits (60 / 180 / 600 req/min by plan) off a Redis token bucket; revlimiter packages that pattern so the next project doesn't re-derive it at 2 AM.</li>
       <li><b>Pluggable storage</b> - same duck-typed philosophy as tokenly: bring Redis, memcached, or anything with the right primitives. Your infra, your choice.</li>
@@ -76,6 +78,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§3</span>The interface</h2>
     <p class="dsub">The idea in four lines</p>
+    <p class="cmd"><span>$</span> pip install revlimiter</p>
     <pre class="code rv"><span class="k">from</span> revlimiter <span class="k">import</span> RateLimiter
 
 limiter = <span class="s">RateLimiter</span>(storage=redis, max_requests=<span class="n">60</span>, window=<span class="n">60</span>)

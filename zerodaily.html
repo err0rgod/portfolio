@@ -51,6 +51,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§1</span>Numbers</h2>
     <p class="dsub">Measured, not imagined - pulled from the running system</p>
+    <p class="cmd"><span>$</span> curl -s -o /dev/null -w "%{http_code} %{time_total}s\n" https://zerodaily.in</p>
     <div class="statboxes rv">
       <div class="sbox"><div class="n">2,500<em>+</em></div><div class="l">ARTICLES INGESTED / DAY<br>24+ RSS feeds · 7 domains</div></div>
       <div class="sbox b"><div class="n">500<em>+</em></div><div class="l">PUBLISHED / DAY<br>after semantic dedup</div></div>
@@ -67,6 +68,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§2</span>The pipeline</h2>
     <p class="dsub">Every box below is real running infrastructure - follow the packets</p>
+    <p class="cmd"><span>$</span> aws events list-rules --region us-east-1</p>
     <div class="arch rv">
       <a href="assets/zerodaily-architecture-light.svg" target="_blank" rel="noopener" class="arch-link arch-link-light" title="Click to view full resolution system architecture">
         <img src="assets/zerodaily-architecture-light.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
@@ -85,6 +87,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§3</span>Four repositories</h2>
     <p class="dsub">Each subsystem is its own repo, its own CI, its own deploy gate</p>
+    <p class="cmd"><span>$</span> gh repo view err0rgod/bot1 --json name,description</p>
     <div class="repo-grid rv">
       <a class="repo" href="https://github.com/err0rgod/bot1" target="_blank" rel="noopener">
         <div class="rn">err0rgod/bot1 ↗</div>
@@ -109,6 +112,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§4</span>Details</h2>
     <p class="dsub">The details that don't show up in a demo</p>
+    <p class="cmd"><span>$</span> dig +short api.zerodaily.in</p>
     <ul class="feat rv">
       <li><b>CDN pre-warming on breaking news</b> - when a breaking article hits DynamoDB, the Streams worker purges the affected feed URLs via Cloudflare's API, then issues HTTP GETs against the feeds + up to 20 fresh image URLs. The first real user gets a cache hit, not a cold Lambda.</li>
       <li><b>Atomic notification cooldown without Redis</b> - a DynamoDB conditional write (<code>attribute_not_exists OR ttl &lt;= now</code>) per category gives a 30-minute anti-spam lock that <b>fails closed</b>: any unexpected DB error suppresses the notification instead of risking a storm.</li>
@@ -127,6 +131,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§5</span>From the code</h2>
     <p class="dsub">The atomic cooldown lock, verbatim from the stream worker</p>
+    <p class="cmd"><span>$</span> aws dynamodb list-tables --region us-east-1</p>
     <pre class="code rv"><span class="c"># 30-min anti-spam lock per category - no Redis, fails closed</span>
 table.put_item(
     Item={

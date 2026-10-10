@@ -52,6 +52,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§1</span>Numbers</h2>
     <p class="dsub">The whole point is "no limit"</p>
+    <p class="cmd"><span>$</span> ss -ltn | awk '$4 ~ /:8501/'</p>
     <div class="statboxes rv">
       <div class="sbox a"><div class="n">∞</div><div class="l">FILE SIZE - DOCKER MODE<br>your ram is the only ceiling</div></div>
       <div class="sbox"><div class="n">2</div><div class="l">RUN MODES<br>hosted web · local docker</div></div>
@@ -64,6 +65,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§2</span>What it reads</h2>
     <p class="dsub">Wireshark answers, browser ergonomics</p>
+    <p class="cmd"><span>$</span> tshark -r capture.pcap -q -z conv,ip</p>
     <ul class="feat rv">
       <li><b>Conversation flows</b> - who talked to whom, when, how often. The first question in any capture, answered visually.</li>
       <li><b>DNS resolutions</b> - every lookup in the capture, surfaced and searchable. Suspicious domains don't get to hide in packet 48,291.</li>

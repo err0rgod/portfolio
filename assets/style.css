@@ -136,6 +136,19 @@ section { padding: 64px 0; }
   text-transform: uppercase;
   color: var(--faint);
 }
+.cmd {
+  margin: 8px 0 0;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--soft);
+  white-space: nowrap;
+  overflow-x: auto;
+}
+.cmd span { color: var(--faint); margin-right: 0.65em; user-select: none; }
+.dsec .cmd { margin: 2px 0 16px; }
+.dsub + .cmd { margin-top: -8px; }
+header .cmd { margin-top: 22px; }
 
 .work { margin-top: 8px; }
 .piece {

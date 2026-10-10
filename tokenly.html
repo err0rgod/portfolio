@@ -53,6 +53,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§1</span>Numbers</h2>
     <p class="dsub">Small library, real users</p>
+    <p class="cmd"><span>$</span> pip index versions tokenly-auth</p>
     <div class="statboxes rv">
       <div class="sbox p"><div class="n">1,480</div><div class="l">PYPI DOWNLOADS · ALL TIME<br>and compounding</div></div>
       <div class="sbox"><div class="n">v1.1.4</div><div class="l">CURRENT RELEASE<br>actively maintained</div></div>
@@ -65,6 +66,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§2</span>Design</h2>
     <p class="dsub">Security primitives, not opinions about your schema</p>
+    <p class="cmd"><span>$</span> gh repo view err0rgod/tokenly</p>
     <ul class="feat rv">
       <li><b>Argon2id by default</b> - password hashing via argon2-cffi's PasswordHasher with the OWASP-recommended algorithm. No md5 nostalgia here.</li>
       <li><b>Refresh tokens are NOT JWTs</b> - they're <code>secrets.token_urlsafe(64)</code> opaque strings, and only their <b>SHA-256 hash</b> ever touches a database. A leaked refresh-token table leaks nothing usable.</li>
@@ -80,6 +82,7 @@ try {
   <div class="dsec">
     <h2><span class="k">§3</span>In use</h2>
     <p class="dsub">Three lines to a protected route</p>
+    <p class="cmd"><span>$</span> pip install tokenly-auth</p>
     <pre class="code rv"><span class="k">from</span> tokenly_auth <span class="k">import</span> TokenHandler, require_auth, Security
 
 handler = <span class="s">TokenHandler</span>(SECRET_KEY=<span class="s">"…"</span>)
