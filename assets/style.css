@@ -160,6 +160,9 @@ section { padding: 64px 0; }
   text-align: right;
 }
 .piece:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+.more { margin-top: 22px; font-size: 17px; }
+.more a { color: var(--soft); border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+.more a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
 .figures {
   display: grid;
@@ -238,6 +241,7 @@ footer a:hover { color: var(--ink); }
 
 /* project pages */
 .dhead { padding: 56px 0 8px; }
+.dhead + main > section { padding-top: 20px; }
 .dhead .back { display: inline-block; margin-bottom: 22px; color: var(--soft); font-size: 16px; border-bottom: 1px solid transparent; }
 .dhead .back:hover { color: var(--ink); border-bottom-color: var(--line); }
 .dhead h1 {

@@ -6,6 +6,7 @@ Static personal portfolio for Nirbhay Katiyar (err0rgod), a software developer a
 
 - index.html - profile, selected work, experience, and contact
 - one page per project, linked from the work list
+- other.html - libraries, tools, and lab notes kept off the front page
 
 ## Selected work
 
