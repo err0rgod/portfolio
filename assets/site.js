@@ -11,7 +11,7 @@
 
   var saved = null;
   try { saved = localStorage.getItem('nk-theme'); } catch (e) {}
-  apply(saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  apply(saved === 'dark' ? 'dark' : 'light');
 
   if (sw) sw.addEventListener('click', function () {
     apply(root.classList.contains('dark') ? 'light' : 'dark');
