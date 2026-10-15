@@ -31,6 +31,7 @@ try {
     <div class="links">
       <a href="#ship">Work</a>
       <a href="projects.html">Projects</a>
+      <a href="#contributions">Contributions</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
       <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
@@ -76,6 +77,25 @@ try {
       </a>
     </div>
     <p class="more"><a href="projects.html">All projects</a></p>
+  </div>
+</section>
+
+<section id="contributions">
+  <div class="wrap">
+    <div class="shead"><h2>Open-source contributions</h2></div>
+    <p class="cmd"><span>$</span> gh pr list --author err0rgod --state merged</p>
+    <div class="work">
+      <a class="piece" href="https://github.com/LibrePhotos/librephotos/pull/2558" target="_blank" rel="noopener">
+        <h3>LibrePhotos — a "Without Location" view</h3>
+        <p>Added a backend endpoint and web page that list every photo missing GPS coordinates, with tests across the Django API, the shared API client, and the React frontend. Merged by the maintainer.</p>
+        <span class="where">merged · 8.1k★ self-hosted photo manager</span>
+      </a>
+      <a class="piece" href="https://github.com/stephenberry/glaze/pull/2998" target="_blank" rel="noopener">
+        <h3>Glaze — fix integer indexing on generic JSON</h3>
+        <p>Made <code>operator[]</code> on a generic JSON value accept an integer variable, not only a literal, by taking the index by value. Added tests for the lvalue and rvalue forms.</p>
+        <span class="where">merged · 3.1k★ C++ JSON &amp; reflection library</span>
+      </a>
+    </div>
   </div>
 </section>
 
