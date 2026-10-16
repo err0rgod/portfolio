@@ -6,6 +6,13 @@
 <title>FlexURL - Nirbhay Katiyar</title>
 <meta name="description" content="FlexURL - production URL management platform. Sonyflake+Base62 redirects at 410 req/s, crash-safe ARQ analytics, Cloudflare for SaaS custom domains, Razorpay monetization.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FlexURL - Nirbhay Katiyar">
+<meta property="og:description" content="FlexURL - production URL management platform. Sonyflake+Base62 redirects at 410 req/s, crash-safe ARQ analytics, Cloudflare for SaaS custom domains, Razorpay monetization.">
+<meta property="og:image" content="https://nirbhay.me/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -49,10 +56,9 @@ try {
 
   <!-- ============ NUMBERS ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>Numbers</h2>
+    <h2>Numbers</h2>
     <p class="dsub">From the performance audit, not the imagination</p>
-    <p class="cmd"><span>$</span> curl -s -o /dev/null -w "%{http_code} %{time_total}s\n" https://flexurl.app</p>
-    <div class="statboxes rv">
+    <div class="statboxes">
       <div class="sbox"><div class="n">410<em>+</em></div><div class="l">REDIRECTS / SEC<br>on a 2vcpu box · 100% success</div></div>
       <div class="sbox b"><div class="n">42<em>ms</em></div><div class="l">AVG LATENCY<br>p95 &lt; 210ms</div></div>
       <div class="sbox p"><div class="n">100<em>ms</em></div><div class="l">HOT-PATH REDIS TIMEOUT<br>scheduler gets its own client</div></div>
@@ -66,10 +72,9 @@ try {
 
   <!-- ============ REDIRECT PIPELINE ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>A redirect</h2>
+    <h2>A redirect</h2>
     <p class="dsub">The hot path is Redis-shaped; Postgres is the fallback, not the default</p>
-    <p class="cmd"><span>$</span> redis-cli ping</p>
-    <div class="arch rv">
+    <div class="arch">
       <svg viewBox="0 0 1060 320" fill="none" font-family="JetBrains Mono" font-size="11">
         <g class="pp"><rect class="box" x="10" y="40" width="130" height="56" rx="10" stroke-width="1.2"/>
           <text class="nd" x="75" y="64" text-anchor="middle">🌍 request</text>
@@ -116,10 +121,9 @@ try {
 
   <!-- ============ DETAILS ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>Details</h2>
+    <h2>Details</h2>
     <p class="dsub">Production systems are won in the boring corners</p>
-    <p class="cmd"><span>$</span> gh repo view err0rgod/urlshortener</p>
-    <ul class="feat rv">
+    <ul class="feat">
       <li><b>Crash-safe click accounting</b> - analytics increments live in Redis; every 30s a cron does batch <code>UPDATE … click_count + :inc</code>, and only <i>after Postgres commits</i> does it DECRBY the Redis counters. A worker crash mid-cycle loses nothing and double-counts nothing.</li>
       <li><b>Textbook distributed locking</b> - the flush lock is <code>SET NX EX</code> with a UUID token, released by a Lua compare-and-delete script that verifies the token first. No releasing someone else's lock.</li>
       <li><b>Sonyflake IDs with a custom epoch (2014-09-01)</b>, Base62-encoded with a hand-rolled encoder - short, sortable, collision-free aliases without a central counter.</li>
@@ -135,10 +139,9 @@ try {
 
   <!-- ============ CODE ============ -->
   <div class="dsec">
-    <h2><span class="k">§4</span>From the code</h2>
+    <h2>From the code</h2>
     <p class="dsub">The crash-safe flush, condensed</p>
-    <p class="cmd"><span>$</span> gh api repos/err0rgod/urlshortener --jq .ssh_url</p>
-    <pre class="code rv"><span class="c"># 1. read counts → 2. commit to postgres → 3. then decrement redis</span>
+    <pre class="code"><span class="c"># 1. read counts → 2. commit to postgres → 3. then decrement redis</span>
 <span class="k">async with</span> db.begin():
     <span class="k">await</span> db.execute(
         text(<span class="s">"UPDATE urldata SET click_count = click_count + :inc WHERE short_url = :u"</span>),
@@ -160,10 +163,10 @@ try {
   <div class="wrap">
     <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
-      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
-      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
-      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
-      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>
+      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">X</a>
     </span>
   </div>
 </footer>

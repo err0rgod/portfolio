@@ -6,6 +6,13 @@
 <title>Conduit - Nirbhay Katiyar</title>
 <meta name="description" content="Conduit - local-first, security-focused bridge that lets AI agents drive your real browser. P-256 proof-of-possession pairing, one-time confirmations, redacted audit log. Live on Chrome Web Store & Firefox Add-ons.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Conduit - Nirbhay Katiyar">
+<meta property="og:description" content="Conduit - local-first, security-focused bridge that lets AI agents drive your real browser. P-256 proof-of-possession pairing, one-time confirmations, redacted audit log. Live on Chrome Web Store & Firefox Add-ons.">
+<meta property="og:image" content="https://nirbhay.me/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -52,10 +59,9 @@ try {
 
   <!-- ============ NUMBERS ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>Numbers</h2>
+    <h2>Numbers</h2>
     <p class="dsub">Security parameters are features too</p>
-    <p class="cmd"><span>$</span> ss -ltn | awk '$4 ~ /127.0.0.1/'</p>
-    <div class="statboxes rv">
+    <div class="statboxes">
       <div class="sbox"><div class="n">P-256</div><div class="l">PROOF-OF-POSSESSION<br>per-request signed nonces</div></div>
       <div class="sbox b"><div class="n">60<em>s</em></div><div class="l">CONFIRMATION TTL<br>one-time, operation-bound</div></div>
       <div class="sbox p"><div class="n">4</div><div class="l">BROWSERS SUPPORTED<br>chrome · firefox · edge · brave</div></div>
@@ -69,10 +75,9 @@ try {
 
   <!-- ============ COMMAND FLOW ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>One command</h2>
+    <h2>One command</h2>
     <p class="dsub">What happens when an agent says "click the login button" - every hop is authenticated</p>
-    <p class="cmd"><span>$</span> gh repo clone err0rgod/conduit</p>
-    <div class="arch rv">
+    <div class="arch">
       <svg viewBox="0 0 1060 300" fill="none" font-family="JetBrains Mono" font-size="11">
         <g class="pp"><rect class="box" x="10" y="110" width="140" height="66" rx="10" stroke-width="1.2"/>
           <text class="nd" x="80" y="138" text-anchor="middle">🤖 AI agent</text>
@@ -112,10 +117,9 @@ try {
 
   <!-- ============ REPOS ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>Three repositories</h2>
+    <h2>Three repositories</h2>
     <p class="dsub">Pnpm monorepos, typescript everywhere, vitest + playwright</p>
-    <p class="cmd"><span>$</span> gh repo list err0rgod --limit 30 | grep conduit</p>
-    <div class="repo-grid rv">
+    <div class="repo-grid">
       <a class="repo" href="https://github.com/err0rgod/conduit" target="_blank" rel="noopener">
         <div class="rn">err0rgod/conduit ↗</div>
         <div class="rd">Daemon + CLI + MCP server. Owns transport, policy, pairing, confirmations, audit. Node 22+, Zod-validated protocol envelopes, bearer token in OS app-data with 0o600 perms, constant-time compare.</div>
@@ -137,10 +141,9 @@ try {
 
   <!-- ============ SECURITY MODEL ============ -->
   <div class="dsec">
-    <h2><span class="k">§4</span>The security model</h2>
+    <h2>The security model</h2>
     <p class="dsub">A bridge between AI and your logged-in browser deserves paranoia</p>
-    <p class="cmd"><span>$</span> gh api repos/err0rgod/conduit --jq .html_url</p>
-    <ul class="feat rv">
+    <ul class="feat">
       <li><b>P-256 proof-of-possession for remote devices</b> - pairing produces a revocable public-key identity. Every remote request binds to a fresh 32-byte daemon nonce + a SHA-256 digest of the canonical JSON, signed by the device key. Bearer tokens alone are never enough.</li>
       <li><b>Two authority gates, by design</b> - the browser's own per-site host permission (owned by Chromium, requestable only from a popup click) AND the daemon's capability+domain policy. Neither can bypass the other.</li>
       <li><b>No blanket site access at install</b> - <code>http://*/*</code> is an <i>optional</i> host permission the background worker is forbidden by code from requesting. Only a user's popup click can trigger the native prompt.</li>
@@ -155,10 +158,9 @@ try {
 
   <!-- ============ CODE ============ -->
   <div class="dsec">
-    <h2><span class="k">§5</span>From the code</h2>
+    <h2>From the code</h2>
     <p class="dsub">The remote-request proof, condensed</p>
-    <p class="cmd"><span>$</span> gh api repos/err0rgod/conduit/commits/HEAD --jq .sha</p>
-    <pre class="code rv"><span class="c">// device signs: domain separation + challenge + request digest</span>
+    <pre class="code"><span class="c">// device signs: domain separation + challenge + request digest</span>
 <span class="k">const</span> payload = [
   <span class="s">"conduit.remote.v1"</span>,
   challengeId,
@@ -183,10 +185,10 @@ crypto.verify(<span class="s">"sha256"</span>, payload, deviceP256Pubkey, signat
   <div class="wrap">
     <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
-      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
-      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
-      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
-      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>
+      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">X</a>
     </span>
   </div>
 </footer>

@@ -6,6 +6,13 @@
 <title>ZeroDaily - Nirbhay Katiyar</title>
 <meta name="description" content="ZeroDaily - autonomous multi-repo tech-intelligence platform. Tech news with no PR fluff: 24+ feeds, LLM dedup, Bedrock roasting, serverless FastAPI, CDN pre-warming, FCM push.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZeroDaily - Nirbhay Katiyar">
+<meta property="og:description" content="ZeroDaily - autonomous multi-repo tech-intelligence platform. Tech news with no PR fluff: 24+ feeds, LLM dedup, Bedrock roasting, serverless FastAPI, CDN pre-warming, FCM push.">
+<meta property="og:image" content="https://nirbhay.me/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -49,27 +56,25 @@ try {
 
   <!-- ============ NUMBERS ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>Numbers</h2>
+    <h2>Numbers</h2>
     <p class="dsub">Measured, not imagined - pulled from the running system</p>
-    <p class="cmd"><span>$</span> curl -s -o /dev/null -w "%{http_code} %{time_total}s\n" https://zerodaily.in</p>
-    <div class="statboxes rv">
+    <div class="statboxes">
       <div class="sbox"><div class="n">2,500<em>+</em></div><div class="l">ARTICLES INGESTED / DAY<br>24+ RSS feeds · 7 domains</div></div>
       <div class="sbox b"><div class="n">500<em>+</em></div><div class="l">PUBLISHED / DAY<br>after semantic dedup</div></div>
       <div class="sbox p"><div class="n">2–3<em>M</em></div><div class="l">LLM TOKENS / DAY<br>aws bedrock</div></div>
-      <div class="sbox a"><div class="n">&lt;20<em>ms</em></div><div class="l">EDGE RESPONSE<br>k6-tested · CDN-cached</div></div>
+      <div class="sbox a"><div class="n">30–100<em>ms</em></div><div class="l">API RESPONSE<br>k6-tested · CDN-cached</div></div>
       <div class="sbox"><div class="n">8<em>min</em></div><div class="l">SCRAPE CADENCE<br>eventbridge cron</div></div>
       <div class="sbox b"><div class="n">172</div><div class="l">UNIT TESTS<br>66 bot1 + 106 backend</div></div>
-      <div class="sbox p"><div class="n">0<em>ms</em></div><div class="l">APP COLD BOOT<br>last 20 cards from disk</div></div>
-      <div class="sbox a"><div class="n">20<em>+</em></div><div class="l">DAILY ACTIVE USERS<br>organic, growing</div></div>
+      <div class="sbox p"><div class="n">Instant</div><div class="l">APP COLD BOOT<br>last 20 cards from disk, no network wait</div></div>
+      <div class="sbox a"><div class="n">4</div><div class="l">REPOSITORIES<br>own CI and deploy gate each</div></div>
     </div>
   </div>
 
   <!-- ============ THE PIPELINE ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>The pipeline</h2>
+    <h2>The pipeline</h2>
     <p class="dsub">Every box below is real running infrastructure - follow the packets</p>
-    <p class="cmd"><span>$</span> aws events list-rules --region us-east-1</p>
-    <div class="arch rv">
+    <div class="arch">
       <a href="assets/zerodaily-architecture-light.svg" target="_blank" rel="noopener" class="arch-link arch-link-light" title="Click to view full resolution system architecture">
         <img src="assets/zerodaily-architecture-light.svg" alt="ZeroDaily Production System Architecture" class="arch-img" loading="lazy">
       </a>
@@ -85,10 +90,9 @@ try {
 
   <!-- ============ REPOS ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>Four repositories</h2>
+    <h2>Four repositories</h2>
     <p class="dsub">Each subsystem is its own repo, its own CI, its own deploy gate</p>
-    <p class="cmd"><span>$</span> gh repo view err0rgod/bot1 --json name,description</p>
-    <div class="repo-grid rv">
+    <div class="repo-grid">
       <a class="repo" href="https://github.com/err0rgod/bot1" target="_blank" rel="noopener">
         <div class="rn">err0rgod/bot1 ↗</div>
         <div class="rd">The ingestion engine. Containerized Python 3.12 Lambda on an 8-minute cron: RSS scrape → LLM semantic dedup → two-tier extraction (cloudscraper, Firecrawl fallback) → SSRF-guarded media pipeline → dual-persona Bedrock roasting → DynamoDB.</div>
@@ -99,7 +103,7 @@ try {
       </a>
       <a class="repo" href="https://zerodaily.in/apk" target="_blank" rel="noopener">
         <div class="rn">the phone app · get the apk ↗</div>
-        <div class="rd">React Native / Expo SDK 52, Inshorts-style vertical swipe, 0ms cold boot from disk cache, N−8 prefetch, on-device personalization (18% exploration, anti-clumping), FCM topic push with zero server-side device tokens. <i>(private repo)</i></div>
+        <div class="rd">React Native / Expo SDK 52, Inshorts-style vertical swipe, instant cold boot from disk cache, N−8 prefetch, on-device personalization (18% exploration, anti-clumping), FCM topic push with zero server-side device tokens. <i>(private repo)</i></div>
       </a>
       <a class="repo" href="https://github.com/err0rgod/zerodaily-web" target="_blank" rel="noopener">
         <div class="rn">err0rgod/zerodaily-web ↗</div>
@@ -110,10 +114,9 @@ try {
 
   <!-- ============ ENGINEERING DETAILS ============ -->
   <div class="dsec">
-    <h2><span class="k">§4</span>Details</h2>
+    <h2>Details</h2>
     <p class="dsub">The details that don't show up in a demo</p>
-    <p class="cmd"><span>$</span> dig +short api.zerodaily.in</p>
-    <ul class="feat rv">
+    <ul class="feat">
       <li><b>CDN pre-warming on breaking news</b> - when a breaking article hits DynamoDB, the Streams worker purges the affected feed URLs via Cloudflare's API, then issues HTTP GETs against the feeds + up to 20 fresh image URLs. The first real user gets a cache hit, not a cold Lambda.</li>
       <li><b>Atomic notification cooldown without Redis</b> - a DynamoDB conditional write (<code>attribute_not_exists OR ttl &lt;= now</code>) per category gives a 30-minute anti-spam lock that <b>fails closed</b>: any unexpected DB error suppresses the notification instead of risking a storm.</li>
       <li><b>SSRF defense that actually resolves DNS</b> - the media pipeline resolves hostnames pre-connection and rejects RFC-1918, loopback, link-local, and <code>169.254.169.254</code> (AWS metadata), strips <code>user:pass@host</code>, blocks <code>file://</code>/<code>gopher://</code>, then streams with a 10MB ceiling in 64KB chunks.</li>
@@ -129,10 +132,9 @@ try {
 
   <!-- ============ CODE ============ -->
   <div class="dsec">
-    <h2><span class="k">§5</span>From the code</h2>
+    <h2>From the code</h2>
     <p class="dsub">The atomic cooldown lock, verbatim from the stream worker</p>
-    <p class="cmd"><span>$</span> aws dynamodb list-tables --region us-east-1</p>
-    <pre class="code rv"><span class="c"># 30-min anti-spam lock per category - no Redis, fails closed</span>
+    <pre class="code"><span class="c"># 30-min anti-spam lock per category - no Redis, fails closed</span>
 table.put_item(
     Item={
         <span class="s">"id"</span>: <span class="s">f"NOTIF_COOLDOWN#{category}"</span>,
@@ -157,10 +159,10 @@ table.put_item(
   <div class="wrap">
     <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
-      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
-      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
-      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
-      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>
+      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">X</a>
     </span>
   </div>
 </footer>

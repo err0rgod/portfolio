@@ -58,8 +58,6 @@ nav .wrap {
   padding-bottom: 12px;
 }
 .brand { font-size: 18px; font-weight: 500; letter-spacing: -0.02em; }
-.brand em { font-style: italic; font-weight: 400; }
-nav .ci { display: none; }
 nav .links {
   margin-left: auto;
   display: flex;
@@ -151,19 +149,6 @@ section { padding: 64px 0; }
   text-transform: uppercase;
   color: var(--faint);
 }
-.cmd {
-  margin: 8px 0 0;
-  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--soft);
-  white-space: nowrap;
-  overflow-x: auto;
-}
-.cmd span { color: var(--faint); margin-right: 0.65em; user-select: none; }
-.dsec .cmd { margin: 2px 0 16px; }
-.dsub + .cmd { margin-top: -8px; }
-header .cmd { margin-top: 22px; }
 
 .work { margin-top: 8px; }
 .piece {
@@ -232,6 +217,25 @@ header .cmd { margin-top: 22px; }
 .arch-cap a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 html.dark .arch-link-light { display: none; }
 html:not(.dark) .arch-link-dark { display: none; }
+
+.cal { margin-top: 14px; }
+.cal-total { color: var(--soft); font-size: 17px; margin-bottom: 14px; }
+.cal-total a { color: var(--ink); border-bottom: 1px solid var(--line); }
+.cal-total a:hover { border-bottom-color: var(--ink); }
+.cal-scroll { overflow-x: auto; padding-bottom: 4px; }
+.cal-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 11px);
+  grid-auto-flow: column;
+  grid-auto-columns: 11px;
+  gap: 3px;
+  width: max-content;
+}
+.cal-grid i { display: block; border-radius: 2px; background: var(--line); }
+.cal-grid i.l1 { background: color-mix(in srgb, var(--ink) 25%, var(--line)); }
+.cal-grid i.l2 { background: color-mix(in srgb, var(--ink) 50%, var(--line)); }
+.cal-grid i.l3 { background: color-mix(in srgb, var(--ink) 75%, var(--line)); }
+.cal-grid i.l4 { background: var(--ink); }
 
 .roles { margin-top: 8px; }
 .role {
@@ -305,7 +309,6 @@ footer a:hover { color: var(--ink); }
   color: var(--ink);
   margin-bottom: 8px;
 }
-.dsec h2 .k { display: none; }
 .dsec .dsub { color: var(--faint); font-size: 16px; font-style: italic; margin-bottom: 18px; }
 .dsec p.body { color: var(--soft); max-width: 42rem; margin-bottom: 10px; }
 .dsec p.body b { color: var(--ink); font-weight: 500; }
@@ -403,8 +406,6 @@ pre.code .n { color: #e3c7a1; }
   font-size: 16px;
   line-height: 1.5;
 }
-
-.rv { opacity: 1; transform: none; }
 
 @media (max-width: 800px) {
   nav .wrap { align-items: flex-start; row-gap: 8px; }

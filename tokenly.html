@@ -6,6 +6,13 @@
 <title>tokenly - Nirbhay Katiyar</title>
 <meta name="description" content="tokenly-auth - database-agnostic Python authentication library on PyPI. Argon2id, JWT access tokens, opaque refresh tokens, 1,480 all-time downloads.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tokenly - Nirbhay Katiyar">
+<meta property="og:description" content="tokenly-auth - database-agnostic Python authentication library on PyPI. Argon2id, JWT access tokens, opaque refresh tokens, 1,480 all-time downloads.">
+<meta property="og:image" content="https://nirbhay.me/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -51,10 +58,9 @@ try {
 
   <!-- ============ NUMBERS ============ -->
   <div class="dsec">
-    <h2><span class="k">§1</span>Numbers</h2>
+    <h2>Numbers</h2>
     <p class="dsub">Small library, real users</p>
-    <p class="cmd"><span>$</span> pip index versions tokenly-auth</p>
-    <div class="statboxes rv">
+    <div class="statboxes">
       <div class="sbox p"><div class="n">1,480</div><div class="l">PYPI DOWNLOADS · ALL TIME<br>and compounding</div></div>
       <div class="sbox"><div class="n">v1.1.4</div><div class="l">CURRENT RELEASE<br>actively maintained</div></div>
       <div class="sbox b"><div class="n">0</div><div class="l">ORM / DB DEPENDENCIES<br>postgres? mongo? your call</div></div>
@@ -64,10 +70,9 @@ try {
 
   <!-- ============ DESIGN ============ -->
   <div class="dsec">
-    <h2><span class="k">§2</span>Design</h2>
+    <h2>Design</h2>
     <p class="dsub">Security primitives, not opinions about your schema</p>
-    <p class="cmd"><span>$</span> gh repo view err0rgod/tokenly</p>
-    <ul class="feat rv">
+    <ul class="feat">
       <li><b>Argon2id by default</b> - password hashing via argon2-cffi's PasswordHasher with the OWASP-recommended algorithm. No md5 nostalgia here.</li>
       <li><b>Refresh tokens are NOT JWTs</b> - they're <code>secrets.token_urlsafe(64)</code> opaque strings, and only their <b>SHA-256 hash</b> ever touches a database. A leaked refresh-token table leaks nothing usable.</li>
       <li><b>JWT access tokens, 15-minute fuse</b> - <code>sub</code>, <code>jti</code>, <code>iat</code>, <code>exp</code> - short-lived by default so a stolen access token expires before lunch.</li>
@@ -80,10 +85,9 @@ try {
 
   <!-- ============ CODE ============ -->
   <div class="dsec">
-    <h2><span class="k">§3</span>In use</h2>
+    <h2>In use</h2>
     <p class="dsub">Three lines to a protected route</p>
-    <p class="cmd"><span>$</span> pip install tokenly-auth</p>
-    <pre class="code rv"><span class="k">from</span> tokenly_auth <span class="k">import</span> TokenHandler, require_auth, Security
+    <pre class="code"><span class="k">from</span> tokenly_auth <span class="k">import</span> TokenHandler, require_auth, Security
 
 handler = <span class="s">TokenHandler</span>(SECRET_KEY=<span class="s">"…"</span>)
 tokens  = handler.createJwt(sub=user.id)   <span class="c"># {access_token, refresh_token, refresh_days}</span>
@@ -107,10 +111,10 @@ tokens  = handler.createJwt(sub=user.id)   <span class="c"># {access_token, refr
   <div class="wrap">
     <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
-      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github</a>
-      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">x</a>
-      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">medium</a>
-      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>
+      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">X</a>
     </span>
   </div>
 </footer>

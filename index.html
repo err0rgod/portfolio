@@ -11,6 +11,10 @@
 <meta property="og:title" content="Nirbhay Katiyar">
 <meta property="og:description" content="Production backends, serverless systems, and authorized security research.">
 <meta property="og:url" content="https://nirbhay.me/">
+<meta property="og:image" content="https://nirbhay.me/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -41,16 +45,16 @@ try {
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">Software developer</p>
+    <p class="eyebrow">Backend engineer at Plany AI · B.Tech student, class of 2029</p>
     <h1 class="htitle">Nirbhay Katiyar</h1>
     <p class="lede">I build production backends and the systems around them. Python and Go, mostly on AWS. I also do authorized security research, with valid disclosures at <b>Spotify</b>, <b>IBM</b>, and <b>Lightspark</b>.</p>
     <p class="hero-links">
       <a href="mailto:nirbhay.bin@gmail.com">nirbhay.bin@gmail.com</a>
       <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="assets/resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
     </p>
     <p class="avail">Open to work.</p>
-    <p class="cmd"><span>$</span> gh api users/err0rgod --jq ".login, .public_repos"</p>
   </div>
 </header>
 
@@ -58,7 +62,6 @@ try {
 <section id="ship">
   <div class="wrap">
     <div class="shead"><h2>Work</h2></div>
-    <p class="cmd"><span>$</span> gh repo list err0rgod --limit 5 --public</p>
     <div class="work">
       <a class="piece" href="zerodaily.html">
         <h3>ZeroDaily</h3>
@@ -83,7 +86,6 @@ try {
 <section id="contributions">
   <div class="wrap">
     <div class="shead"><h2>Open-source contributions</h2></div>
-    <p class="cmd"><span>$</span> gh pr list --author err0rgod --state merged</p>
     <div class="work">
       <a class="piece" href="https://github.com/LibrePhotos/librephotos/pull/2558" target="_blank" rel="noopener">
         <h3>LibrePhotos — a "Without Location" view</h3>
@@ -104,10 +106,19 @@ try {
   </div>
 </section>
 
+<section id="activity">
+  <div class="wrap">
+    <div class="shead"><h2>GitHub activity</h2></div>
+    <div class="cal" id="ghcal" data-user="err0rgod">
+      <p class="cal-total"><a href="https://github.com/err0rgod" target="_blank" rel="noopener">Contributions on GitHub</a></p>
+      <div class="cal-scroll"><div class="cal-grid" aria-hidden="true"></div></div>
+    </div>
+  </div>
+</section>
+
 <section id="experience">
   <div class="wrap">
     <div class="shead"><h2>Experience</h2></div>
-    <p class="cmd"><span>$</span> aws sts get-caller-identity --query Account --output text</p>
     <div class="roles">
       <article class="role">
         <div class="when">Aug 2026 — now</div>
@@ -158,7 +169,6 @@ try {
 <section id="contact">
   <div class="wrap">
     <div class="shead"><h2>Contact</h2></div>
-    <p class="cmd"><span>$</span> gh api users/err0rgod --jq .html_url</p>
     <div class="contact">
       <p>Email is the fastest way to reach me. I read everything.</p>
       <a class="email" href="mailto:nirbhay.bin@gmail.com">nirbhay.bin@gmail.com</a>
@@ -177,8 +187,10 @@ try {
   <div class="wrap">
     <span>© 2026 Nirbhay Katiyar · Noida</span>
     <span class="handles">
-      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">github.com/err0rgod</a>
+      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>
+      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">X</a>
     </span>
   </div>
 </footer>
