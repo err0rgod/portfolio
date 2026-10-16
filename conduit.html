@@ -74,33 +74,6 @@ try {
     </div>
   </div>
 
-  <!-- ============ COMMAND FLOW ============ -->
-  <div class="dsec">
-    <h2>One command</h2>
-    <p class="dsub">What happens when an agent says "click the login button" - every hop is authenticated</p>
-    <div class="arch flowbox">
-      <p class="blabel">Request</p>
-      <ol class="flow">
-        <li class="step"><b>AI agent</b><span>MCP or CLI</span></li>
-        <li class="step key"><b>Daemon</b><span>auth · zod · policy · redacted audit</span></li>
-        <li class="step key"><b>Confirm?</b><span>popup only · 60s · one-time</span></li>
-        <li class="step"><b>Extension</b><span>MV3 · authenticated WebSocket</span></li>
-        <li class="step"><b>Your tab</b><span>data-conduit-ref="e7"</span></li>
-      </ol>
-      <div class="branch"><p class="blabel">Response</p>
-      <ol class="flow sm par">
-        <li class="step"><b>Structured result</b><span>typed error on any failure</span></li>
-        <li class="step"><b>Audit event</b><span>secrets redacted before disk</span></li>
-        <li class="step"><b>Correlation id</b><span>ties the hops together</span></li>
-      </ol>
-      </div>
-      <div class="arch-cap">
-        <span>fig. 1 - request path with two independent authority gates</span>
-        <span>failure at any hop ⇒ typed error code, logged redacted</span>
-      </div>
-    </div>
-  </div>
-
   <!-- ============ REPOS ============ -->
   <div class="dsec">
     <h2>Three repositories</h2>

@@ -72,38 +72,6 @@ try {
     </div>
   </div>
 
-  <!-- ============ REDIRECT PIPELINE ============ -->
-  <div class="dsec">
-    <h2>A redirect</h2>
-    <p class="dsub">The hot path is Redis-shaped; Postgres is the fallback, not the default</p>
-    <div class="arch flowbox">
-      <p class="blabel">Hot path</p>
-      <ol class="flow">
-        <li class="step"><b>Request</b><span>GET /{alias}</span></li>
-        <li class="step"><b>nginx</b><span>:80 → 127.0.0.1:8000</span></li>
-        <li class="step key"><b>Redis lookup</b><span>100ms socket timeout</span></li>
-        <li class="step"><b>302 to destination</b><span>avg 42ms</span></li>
-      </ol>
-      <div class="branch"><p class="blabel">Cache miss</p>
-      <ol class="flow sm">
-        <li class="step"><b>Postgres</b><span>pool 20 · pre_ping</span></li>
-        <li class="step"><b>Repopulate Redis</b><span>TTL capped at link expiry</span></li>
-      </ol>
-      </div>
-      <div class="branch"><p class="blabel">Click analytics, off the hot path</p>
-      <ol class="flow sm">
-        <li class="step"><b>ARQ enqueue</b><span>never blocks the 302</span></li>
-        <li class="step"><b>Redis counters</b><span>INCR per alias</span></li>
-        <li class="step key"><b>Flush every 30s</b><span>batch UPDATE, then DECRBY</span></li>
-      </ol>
-      </div>
-      <div class="arch-cap">
-        <span>fig. 1 - redirect hot path + async analytics</span>
-        <span>banned/expired sentinels cached too - abuse costs ~0ms</span>
-      </div>
-    </div>
-  </div>
-
   <!-- ============ DETAILS ============ -->
   <div class="dsec">
     <h2>Details</h2>
