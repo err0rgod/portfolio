@@ -32,9 +32,11 @@ try {
   <div class="wrap">
     <a class="brand" href="index.html">Nirbhay</a>
     <div class="links">
-      <a href="conduit.html">Conduit</a>
       <a href="index.html#ship">Work</a>
       <a href="projects.html">Projects</a>
+      <a href="index.html#contributions">Contributions</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
       <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
     </div>
   </div>
@@ -74,44 +76,27 @@ try {
   <div class="dsec">
     <h2>A redirect</h2>
     <p class="dsub">The hot path is Redis-shaped; Postgres is the fallback, not the default</p>
-    <div class="arch">
-      <svg viewBox="0 0 1060 320" fill="none" font-family="JetBrains Mono" font-size="11">
-        <g class="pp"><rect class="box" x="10" y="40" width="130" height="56" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="75" y="64" text-anchor="middle">🌍 request</text>
-          <text class="sub" x="75" y="80" text-anchor="middle" font-size="9">GET /{alias}</text></g>
-        <g class="pp" style="animation-delay:.3s"><rect class="box" x="200" y="40" width="130" height="56" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="265" y="64" text-anchor="middle">nginx</text>
-          <text class="sub" x="265" y="80" text-anchor="middle" font-size="9">:80 → 127.0.0.1:8000</text></g>
-        <g class="pp" style="animation-delay:.6s"><rect class="box" x="390" y="40" width="150" height="56" rx="10" stroke-width="1.2" style="stroke:var(--red)"/>
-          <text x="465" y="64" text-anchor="middle" fill="var(--red)">⚡ redis</text>
-          <text class="sub" x="465" y="80" text-anchor="middle" font-size="9">100ms socket timeout</text></g>
-        <g class="pp" style="animation-delay:.9s"><rect class="box" x="600" y="40" width="150" height="56" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="675" y="64" text-anchor="middle">302 ↗ dest</text>
-          <text class="sub" x="675" y="80" text-anchor="middle" font-size="9">avg 42ms</text></g>
-        <g class="pp" style="animation-delay:1.2s"><rect class="box" x="810" y="40" width="180" height="56" rx="10" stroke-width="1.2" style="stroke:var(--amb)"/>
-          <text x="900" y="64" text-anchor="middle" fill="var(--amb)">arq enqueue</text>
-          <text class="sub" x="900" y="80" text-anchor="middle" font-size="9">never blocks the 302</text></g>
-        <!-- miss path -->
-        <g class="pp" style="animation-delay:1.5s"><rect class="box" x="390" y="210" width="150" height="56" rx="10" stroke-width="1.2"/>
-          <text class="nd" x="465" y="234" text-anchor="middle">🐘 postgres</text>
-          <text class="sub" x="465" y="250" text-anchor="middle" font-size="9">pool 20 · pre_ping</text></g>
-        <g class="pp" style="animation-delay:1.8s"><rect class="box" x="810" y="210" width="180" height="56" rx="10" stroke-width="1.2" style="stroke:var(--pur)"/>
-          <text x="900" y="234" text-anchor="middle" fill="var(--pur)">flush cron · 30s</text>
-          <text class="sub" x="900" y="250" text-anchor="middle" font-size="9">batch UPDATE + DECRBY</text></g>
-        <!-- flows -->
-        <path class="flow" d="M140 68 H200" stroke="var(--ink)" stroke-width="1.8"/>
-        <path class="flow" d="M330 68 H390" stroke="var(--red)" stroke-width="1.8"/>
-        <path class="flow" d="M540 68 H600" stroke="var(--grn)" stroke-width="1.8"/>
-        <path class="flow" d="M750 68 H810" stroke="var(--amb)" stroke-width="1.8"/>
-        <path class="flow" d="M465 96 V210" stroke="var(--ink)" stroke-width="1.8" stroke-dasharray="4 6"/>
-        <text class="sub" x="478" y="160" font-size="9">cache miss → db → repopulate</text>
-        <path class="flow" d="M900 96 V210" stroke="var(--pur)" stroke-width="1.8"/>
-        <circle r="3.5" fill="var(--ink)"><animateMotion dur="1.4s" repeatCount="indefinite" path="M140 68 H200"/></circle>
-        <circle r="3.5" fill="var(--red)"><animateMotion dur="1.4s" begin=".3s" repeatCount="indefinite" path="M330 68 H390"/></circle>
-        <circle r="3.5" fill="var(--grn)"><animateMotion dur="1.4s" begin=".6s" repeatCount="indefinite" path="M540 68 H600"/></circle>
-        <circle r="3.5" fill="var(--amb)"><animateMotion dur="1.4s" begin=".9s" repeatCount="indefinite" path="M750 68 H810"/></circle>
-        <circle r="3.5" fill="var(--pur)"><animateMotion dur="1.8s" begin="1.2s" repeatCount="indefinite" path="M900 96 V210"/></circle>
-      </svg>
+    <div class="arch flowbox">
+      <p class="blabel">Hot path</p>
+      <ol class="flow">
+        <li class="step"><b>Request</b><span>GET /{alias}</span></li>
+        <li class="step"><b>nginx</b><span>:80 → 127.0.0.1:8000</span></li>
+        <li class="step key"><b>Redis lookup</b><span>100ms socket timeout</span></li>
+        <li class="step"><b>302 to destination</b><span>avg 42ms</span></li>
+      </ol>
+      <div class="branch"><p class="blabel">Cache miss</p>
+      <ol class="flow sm">
+        <li class="step"><b>Postgres</b><span>pool 20 · pre_ping</span></li>
+        <li class="step"><b>Repopulate Redis</b><span>TTL capped at link expiry</span></li>
+      </ol>
+      </div>
+      <div class="branch"><p class="blabel">Click analytics, off the hot path</p>
+      <ol class="flow sm">
+        <li class="step"><b>ARQ enqueue</b><span>never blocks the 302</span></li>
+        <li class="step"><b>Redis counters</b><span>INCR per alias</span></li>
+        <li class="step key"><b>Flush every 30s</b><span>batch UPDATE, then DECRBY</span></li>
+      </ol>
+      </div>
       <div class="arch-cap">
         <span>fig. 1 - redirect hot path + async analytics</span>
         <span>banned/expired sentinels cached too - abuse costs ~0ms</span>

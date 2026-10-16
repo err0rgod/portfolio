@@ -199,10 +199,42 @@ section { padding: 64px 0; }
   background: var(--panel);
   padding: 12px;
 }
-.arch svg { width: 100%; height: auto; display: block; }
-.arch svg rect.box { fill: var(--paper); stroke: var(--line); }
-.arch svg text.nd { fill: var(--ink); }
-.arch svg text.sub { fill: var(--soft); }
+.flowbox { padding: 22px 22px 14px; }
+.blabel { color: var(--faint); font-size: 15px; font-style: italic; margin-bottom: 10px; }
+.flow { list-style: none; display: flex; align-items: stretch; }
+.flow .step {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.flow .step.key { border-color: var(--soft); }
+.flow .step + .step { margin-left: 30px; }
+.flow .step + .step::before {
+  content: "→";
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--faint);
+}
+.flow .step b { display: block; font-size: 17px; font-weight: 500; line-height: 1.25; }
+.flow .step span {
+  display: block;
+  margin-top: 4px;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--soft);
+  overflow-wrap: anywhere;
+}
+.flow.sm .step b { font-size: 16px; }
+.flow.par .step + .step { margin-left: 12px; }
+.flow.par .step + .step::before { content: none; }
+.flowbox .arch-cap { margin-top: 16px; }
+.branch { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line); }
 .arch-img { width: 100%; height: auto; display: block; }
 .arch-cap, figcaption.arch-cap {
   display: flex;
@@ -414,6 +446,10 @@ pre.code .n { color: #e3c7a1; }
   .piece .where { text-align: left; }
   .figures, .statboxes { grid-template-columns: 1fr 1fr; }
   .repo-grid { grid-template-columns: 1fr; }
+  .flow { flex-direction: column; }
+  .flow .step + .step { margin-left: 0; margin-top: 28px; }
+  .flow .step + .step::before { content: "↓"; left: 50%; top: -24px; transform: translateX(-50%); }
+  .flow.par .step + .step { margin-left: 0; margin-top: 10px; }
   .lede { font-size: 19px; }
   .wrap { padding: 0 20px; }
 }
