@@ -106,6 +106,8 @@ header.hero { padding: 72px 0 28px; }
   text-transform: uppercase;
   margin-bottom: 14px;
 }
+.eyebrow a { color: var(--soft); border-bottom: 1px solid var(--line); }
+.eyebrow a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .htitle {
   font-size: clamp(46px, 7vw, 78px);
   font-weight: 500;
