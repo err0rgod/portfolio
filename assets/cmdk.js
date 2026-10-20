@@ -2,18 +2,24 @@
 (function () {
   var mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
   var EMAIL = 'nirbhay.bin@gmail.com';
+  var RESUME = 'assets/resume.pdf?v=73116dfe';
 
   function go(href, blank) {
     return function () { if (blank) window.open(href, '_blank', 'noopener'); else location.href = href; };
   }
   function jump(id) {
-    return function () { var e = document.getElementById(id); if (e) e.scrollIntoView({ behavior: 'smooth' }); };
+    return function () {
+      var e = document.getElementById(id);
+      if (e && !e.hidden) e.scrollIntoView({ behavior: 'smooth' });
+      else location.href = 'index.html#' + id;
+    };
   }
   var items = [
     { g: 'Go to', t: 'Experience', k: 'work jobs plany', run: jump('experience') },
     { g: 'Go to', t: 'Live from zerodaily.in', k: 'news wire headlines', run: jump('live') },
     { g: 'Go to', t: 'Projects', k: 'work', run: jump('projects') },
     { g: 'Go to', t: 'Open source', k: 'pull requests prs contributions', run: jump('contributions') },
+    { g: 'Go to', t: 'Writing', k: 'blog medium posts articles', run: jump('writing') },
     { g: 'Go to', t: 'GitHub activity', k: 'graph commits', run: jump('activity') },
     { g: 'Go to', t: 'Contact', k: 'email reach', run: jump('contact') },
     { g: 'Projects', t: 'ZeroDaily', k: 'news app aws', run: go('zerodaily.html') },
@@ -26,7 +32,7 @@
         else location.href = 'mailto:' + EMAIL;
       } },
     { g: 'Actions', t: 'Send an email', k: 'mail contact', run: go('mailto:' + EMAIL) },
-    { g: 'Actions', t: 'Open resume', k: 'cv pdf', run: go(document.querySelector('a[href*="resume.pdf"]') ? document.querySelector('a[href*="resume.pdf"]').getAttribute('href') : 'assets/resume.pdf', true) },
+    { g: 'Actions', t: 'Open resume', k: 'cv pdf', run: go(RESUME, true) },
     { g: 'Actions', t: 'Switch theme', k: 'dark light mode', run: function () { var s = document.getElementById('themeSw'); if (s) s.click(); } },
     { g: 'Elsewhere', t: 'GitHub', k: 'code err0rgod', run: go('https://github.com/err0rgod', true) },
     { g: 'Elsewhere', t: 'LinkedIn', k: 'profile', run: go('https://linkedin.com/in/nirbhay-katiyar', true) },
