@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=a9d96ffb">
 <script>
 try {
   var t = localStorage.getItem('nk-theme');
@@ -42,6 +42,7 @@ try {
 
 <aside class="h-index" aria-label="On this page">
   <p>Index</p>
+  <a href="#live" hidden>Live</a>
   <a href="#experience">Experience</a>
   <a href="#projects">Projects</a>
   <a href="#contributions">Open source</a>
@@ -51,13 +52,21 @@ try {
 
 <div class="h-col">
 
+<figure class="h-hero">
+  <canvas id="sky" aria-label="Pixel-art Noida skyline that follows the time of day in India" role="img"></canvas>
+  <figcaption><span id="skyMood">Noida</span><span id="skyClock"></span></figcaption>
+</figure>
+
 <header class="h-head">
   <img class="h-avatar" src="assets/img/avatar.jpg" alt="Nirbhay Katiyar" width="64" height="64">
   <div class="h-who">
     <h1>Nirbhay Katiyar</h1>
     <p>Noida, India</p>
   </div>
-  <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
+  <div class="h-tools">
+    <button class="h-k" id="kOpen" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button>
+    <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
+  </div>
 </header>
 
 <section class="h-intro">
@@ -78,6 +87,13 @@ try {
     <a class="h-chip" href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg>LinkedIn</a>
     <a class="h-chip" href="https://err0rgod.medium.com" target="_blank" rel="noopener"><svg><use href="#i-md"/></svg>Medium</a>
   </div>
+</section>
+
+<section id="live" class="h-sec h-live" hidden>
+  <h2>Live from zerodaily.in</h2>
+  <p class="h-live-status">Connecting…</p>
+  <ol class="h-wire"></ol>
+  <p class="h-live-more"><a href="https://zerodaily.in/wire" target="_blank" rel="noopener">Read the full wire <svg><use href="#i-arrow"/></svg></a></p>
 </section>
 
 <section id="experience" class="h-sec">
@@ -215,6 +231,9 @@ try {
 
 </div>
 
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v=4fc0b7d2"></script>
+<script src="assets/hero.js?v=73bb0a71"></script>
+<script src="assets/live.js?v=9ff87a3d"></script>
+<script src="assets/cmdk.js?v=d39893f4"></script>
 </body>
 </html>

@@ -606,3 +606,77 @@ pre.code .n { color: #e3c7a1; }
   .h-job ul { margin-left: 0; }
   .h-who h1 { font-size: 26px; }
 }
+
+/* home: skyline banner */
+.h-hero { position: relative; margin: 0 0 28px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #070b1f; }
+.h-hero canvas { display: block; width: 100%; height: auto; aspect-ratio: 5 / 2; image-rendering: pixelated; }
+.h-hero figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  color: rgba(255, 250, 235, 0.88);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+#skyClock { font-variant-numeric: tabular-nums; }
+
+.h-tools { display: flex; align-items: center; gap: 10px; }
+.h-k {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 6px;
+  padding: 2px 8px;
+  cursor: pointer;
+  color: var(--soft);
+}
+.h-k kbd { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 12px; }
+.h-k:hover { border-color: var(--soft); color: var(--ink); }
+
+/* home: live wire */
+.h-live-status { display: flex; align-items: center; gap: 8px; color: var(--faint); font-size: 14px; margin: -8px 0 12px; }
+.h-live-status .dot { width: 7px; height: 7px; border-radius: 50%; background: #3f9b5a; box-shadow: 0 0 0 0 rgba(63, 155, 90, 0.5); animation: hpulse 2s infinite; }
+.h-live-status .dot.down { background: #c0883f; animation: none; }
+@keyframes hpulse { 70% { box-shadow: 0 0 0 7px rgba(63, 155, 90, 0); } 100% { box-shadow: 0 0 0 0 rgba(63, 155, 90, 0); } }
+.h-wire { list-style: none; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
+.h-wire li + li { border-top: 1px solid var(--line); }
+.h-wire a { display: flex; gap: 14px; align-items: center; padding: 12px 14px; }
+.h-wire a:hover { background: var(--paper); }
+.h-wire img { width: 56px; height: 56px; flex: none; border-radius: 8px; object-fit: cover; background: var(--line); }
+.h-wire-text { min-width: 0; }
+.h-wire-meta { color: var(--faint); font-size: 13px; }
+.h-wire-meta .h-tag { margin-left: 0; margin-right: 4px; }
+.h-wire-head { margin-top: 2px; font-size: 17px; line-height: 1.35; }
+.h-wire a:hover .h-wire-head { text-decoration: underline; text-underline-offset: 3px; }
+.h-live-more { margin-top: 10px; font-size: 15px; }
+.h-live-more a { display: inline-flex; align-items: center; gap: 4px; color: var(--soft); }
+.h-live-more a:hover { color: var(--ink); }
+.h-live-more svg { width: 15px; height: 15px; }
+
+/* home: experience as a timeline */
+.h-exp { position: relative; }
+.h-exp::before { content: ""; position: absolute; left: 20px; top: 38px; bottom: 38px; border-left: 1px dashed var(--line); }
+.h-logo { position: relative; z-index: 1; }
+
+/* command palette */
+.k-wrap { position: fixed; inset: 0; z-index: 50; display: grid; place-items: start center; padding: 14vh 16px 0; background: rgba(20, 18, 14, 0.35); backdrop-filter: blur(3px); }
+.k-wrap[hidden] { display: none; }
+.k-box { width: min(560px, 100%); border: 1px solid var(--line); border-radius: 14px; background: var(--paper); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25); overflow: hidden; }
+.k-in { width: 100%; padding: 16px 18px; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); font: inherit; font-size: 18px; outline: none; }
+.k-list { list-style: none; max-height: 340px; overflow-y: auto; padding: 6px; }
+.k-group { padding: 10px 12px 4px; color: var(--faint); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+.k-item { padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 16px; }
+.k-item.on { background: var(--panel); box-shadow: inset 2px 0 0 var(--ink); }
+.k-none { padding: 14px 12px; color: var(--faint); }
+.k-foot { display: flex; gap: 16px; padding: 8px 14px; border-top: 1px solid var(--line); color: var(--faint); font-size: 12px; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; }
+.k-toast { position: fixed; left: 50%; bottom: 28px; z-index: 60; transform: translateX(-50%); padding: 8px 14px; border-radius: 8px; background: var(--ink); color: var(--paper); font-size: 15px; }
+@media (max-width: 640px) {
+  .h-k { display: none; }
+  .k-foot { display: none; }
+}
