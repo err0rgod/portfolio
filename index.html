@@ -27,164 +27,193 @@ try {
 } catch (e) {}
 </script>
 </head>
-<body>
+<body class="home">
 
-<nav>
-  <div class="wrap">
-    <a class="brand" href="index.html">Nirbhay</a>
-    <div class="links">
-      <a href="#ship">Work</a>
-      <a href="projects.html">Projects</a>
-      <a href="#contributions">Contributions</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-      <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
-    </div>
-  </div>
-</nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-gh" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+  <symbol id="i-md" viewBox="0 0 24 24"><g fill="currentColor"><ellipse cx="6.5" cy="12" rx="6.5" ry="7"/><ellipse cx="17.4" cy="12" rx="3.2" ry="6.6"/><ellipse cx="22.6" cy="12" rx="1.2" ry="6"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></g></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+</svg>
 
-<header class="hero">
-  <div class="wrap">
-    <p class="eyebrow">Building <a href="https://zerodaily.in" target="_blank" rel="noopener">zerodaily.in</a></p>
-    <h1 class="htitle">Nirbhay Katiyar</h1>
-    <p class="lede">I build production backends and the systems around them. Python and Go, mostly on AWS. I also do authorized security research, with valid disclosures at <b>Spotify</b>, <b>IBM</b>, and <b>Lightspark</b>.</p>
-    <p class="hero-links">
-      <a href="mailto:nirbhay.bin@gmail.com">nirbhay.bin@gmail.com</a>
-      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="assets/resume.pdf?v=73116dfe" target="_blank" rel="noopener">Resume (PDF)</a>
-    </p>
-    <p class="avail">Open to work.</p>
+<aside class="h-index" aria-label="On this page">
+  <p>Index</p>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contributions">Open source</a>
+  <a href="#activity">Activity</a>
+  <a href="#contact">Contact</a>
+</aside>
+
+<div class="h-col">
+
+<header class="h-head">
+  <img class="h-avatar" src="assets/img/avatar.jpg" alt="Nirbhay Katiyar" width="64" height="64">
+  <div class="h-who">
+    <h1>Nirbhay Katiyar</h1>
+    <p>Noida, India</p>
   </div>
+  <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
 </header>
 
-<main>
-<section id="ship">
-  <div class="wrap">
-    <div class="shead"><h2>Work</h2></div>
-    <div class="work">
-      <a class="piece" href="zerodaily.html">
-        <h3>ZeroDaily</h3>
-        <p>A fully automated tech news platform. A serverless AWS pipeline ingests 2,500+ articles a day from 24 feeds, dedupes them with an LLM, and pushes 400+ short summaries a day to a React Native app, with no human editor.</p>
-        <span class="where">zerodaily.in</span>
-      </a>
-      <a class="piece" href="conduit.html">
-        <h3>Conduit</h3>
-        <p>Gives AI agents your real, signed-in browser instead of a throwaway headless one. An MCP daemon and a browser extension, secured with P-256 device pairing, a domain policy, and your confirmation before anything sensitive.</p>
-        <span class="where">Chrome · Firefox</span>
-      </a>
-      <a class="piece" href="flexurl.html">
-        <h3>FlexURL</h3>
+<section class="h-intro">
+  <p class="h-lede">Software engineer. I build production backends, serverless systems, and security tooling.</p>
+  <ul>
+    <li>Building <a href="https://zerodaily.in" target="_blank" rel="noopener"><b>zerodaily.in</b></a>, a fully automated tech news platform that turns <b>2,500+ articles a day</b> into short summaries.</li>
+    <li><b>Backend &amp; operations engineer at Plany</b>. Moved the platform to AWS with zero downtime and cut cloud costs by <b>37%</b>.</li>
+    <li>Valid security disclosures at <b>Spotify</b>, <b>IBM</b>, and <b>Lightspark</b>, and merged PRs in <b>LibrePhotos</b> and <b>Glaze</b>.</li>
+  </ul>
+  <div class="h-cta">
+    <a class="h-btn solid" href="mailto:nirbhay.bin@gmail.com"><svg><use href="#i-mail"/></svg>Send an email</a>
+    <a class="h-btn" href="assets/resume.pdf?v=73116dfe" target="_blank" rel="noopener"><svg><use href="#i-doc"/></svg>Resume</a>
+  </div>
+  <p class="h-label">Here are my <b>socials</b></p>
+  <div class="h-socials">
+    <a class="h-chip" href="https://github.com/err0rgod" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>GitHub</a>
+    <a class="h-chip" href="https://x.com/err0rgod" target="_blank" rel="noopener"><svg><use href="#i-x"/></svg>X</a>
+    <a class="h-chip" href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg>LinkedIn</a>
+    <a class="h-chip" href="https://err0rgod.medium.com" target="_blank" rel="noopener"><svg><use href="#i-md"/></svg>Medium</a>
+  </div>
+</section>
+
+<section id="experience" class="h-sec">
+  <h2>Experience</h2>
+  <div class="h-exp">
+    <details class="h-job" open>
+      <summary>
+        <img class="h-logo" src="assets/img/plany.png" alt="" width="40" height="40">
+        <div class="h-jobtext">
+          <p class="h-co">Plany <span class="h-tag">Remote</span></p>
+          <p class="h-role">Backend &amp; Operations Engineer</p>
+          <p class="h-when">Aug 2026 – Present <svg class="h-chev"><use href="#i-chev"/></svg></p>
+        </div>
+      </summary>
+      <ul>
+        <li>Migrated the platform from InsForge to AWS with zero downtime, designing the cloud layout across services, data, networking, and deployment.</li>
+        <li>Integrated AI capabilities into the backend services and built the platform's authentication layer.</li>
+        <li>Optimized infrastructure usage and resource allocation, cutting cloud costs by 37% while keeping it reliable.</li>
+      </ul>
+    </details>
+    <details class="h-job">
+      <summary>
+        <span class="h-logo h-mono" aria-hidden="true">IX</span>
+        <div class="h-jobtext">
+          <p class="h-co">InlighnX <span class="h-tag">Internship</span></p>
+          <p class="h-role">Offensive Security Engineer</p>
+          <p class="h-when">May 2025 – Aug 2025 <svg class="h-chev"><use href="#i-chev"/></svg></p>
+        </div>
+      </summary>
+      <ul>
+        <li>Reviewed auth flows, authorization boundaries, and exposed endpoints.</li>
+        <li>Built Python for recon, subdomain discovery, and checks that could be repeated.</li>
+        <li>Turned findings into proofs an engineer could act on, then retested the fix.</li>
+      </ul>
+    </details>
+    <details class="h-job">
+      <summary>
+        <img class="h-logo" src="assets/img/hackerone.png" alt="" width="40" height="40">
+        <div class="h-jobtext">
+          <p class="h-co">HackerOne <span class="h-tag">Remote</span></p>
+          <p class="h-role">Independent Security Researcher</p>
+          <p class="h-when">Feb 2024 – Jan 2025 <svg class="h-chev"><use href="#i-chev"/></svg></p>
+        </div>
+      </summary>
+      <ul>
+        <li>Valid, triaged reports to IBM, Spotify, and Lightspark.</li>
+        <li>IDOR, authentication flaws, information disclosure, and business-logic bugs.</li>
+        <li>Wrote reproducible proofs and stayed through remediation.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section id="projects" class="h-sec">
+  <h2>Projects</h2>
+  <div class="h-cards">
+    <a class="h-card" href="zerodaily.html">
+      <img src="assets/img/zerodaily.webp" alt="zerodaily.in home page" width="880" height="550" loading="lazy">
+      <div class="h-cardbody">
+        <p class="h-cardtitle">ZeroDaily <span class="h-status live">Live</span></p>
+        <p>A fully automated tech news platform. A serverless AWS pipeline ingests 2,500+ articles a day from 24 feeds, dedupes them with an LLM, and pushes 400+ short summaries a day to a React Native app.</p>
+        <p class="h-stack"><span>Python</span><span>FastAPI</span><span>Lambda</span><span>DynamoDB</span><span>Bedrock</span><span>React Native</span></p>
+        <span class="h-more">View project <svg><use href="#i-arrow"/></svg></span>
+      </div>
+    </a>
+    <a class="h-card" href="conduit.html">
+      <img src="assets/img/conduit.webp" alt="conduit.nirbhay.me home page" width="880" height="550" loading="lazy">
+      <div class="h-cardbody">
+        <p class="h-cardtitle">Conduit <span class="h-status live">Live</span></p>
+        <p>Gives AI agents your real, signed-in browser instead of a throwaway headless one. An MCP daemon and browser extension, secured with P-256 device pairing and your confirmation before anything sensitive.</p>
+        <p class="h-stack"><span>TypeScript</span><span>Node.js</span><span>MCP</span><span>Manifest V3</span></p>
+        <span class="h-more">View project <svg><use href="#i-arrow"/></svg></span>
+      </div>
+    </a>
+    <a class="h-card" href="flexurl.html">
+      <img src="assets/img/flexurl.webp" alt="flexurl.app home page" width="880" height="550" loading="lazy">
+      <div class="h-cardbody">
+        <p class="h-cardtitle">FlexURL <span class="h-status live">Live</span></p>
         <p>A production URL platform with analytics, custom domains, and a developer API. Redis-first redirects at about 410 a second (42ms average), with click counts that survive a crash.</p>
-        <span class="where">flexurl.app</span>
-      </a>
-    </div>
-    <p class="more"><a href="projects.html">All projects</a></p>
+        <p class="h-stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Redis</span></p>
+        <span class="h-more">View project <svg><use href="#i-arrow"/></svg></span>
+      </div>
+    </a>
+    <a class="h-card" href="tokenly.html">
+      <img src="assets/img/tokenly.webp" alt="tokenly-auth on PyPI" width="880" height="550" loading="lazy">
+      <div class="h-cardbody">
+        <p class="h-cardtitle">tokenly <span class="h-status">PyPI</span></p>
+        <p>Authentication for Python services that already have a database. Argon2id hashing, short-lived JWT access tokens, and refresh tokens stored only as hashes. 1,000+ users.</p>
+        <p class="h-stack"><span>Python</span><span>Argon2</span><span>JWT</span></p>
+        <span class="h-more">View project <svg><use href="#i-arrow"/></svg></span>
+      </div>
+    </a>
+  </div>
+  <p class="h-all"><a class="h-btn" href="projects.html">All projects <svg><use href="#i-arrow"/></svg></a></p>
+</section>
+
+<section id="contributions" class="h-sec">
+  <h2>Open source</h2>
+  <div class="h-list">
+    <a class="h-row" href="https://github.com/LibrePhotos/librephotos/pull/2558" target="_blank" rel="noopener">
+      <p class="h-rowtitle">LibrePhotos <span class="h-tag">Merged</span></p>
+      <p>Added a "Without Location" view for every photo missing GPS data, with tests across the Django API, the shared API client, and the React frontend.</p>
+      <p class="h-meta">8.1k★ self-hosted photo manager</p>
+    </a>
+    <a class="h-row" href="https://github.com/LibrePhotos/librephotos/pull/2659" target="_blank" rel="noopener">
+      <p class="h-rowtitle">LibrePhotos <span class="h-tag">Merged</span></p>
+      <p>A follow-up the maintainer asked me to take: server-side "select all", so bulk actions cover every matching photo, not just the loaded page.</p>
+      <p class="h-meta">second PR to LibrePhotos</p>
+    </a>
+    <a class="h-row" href="https://github.com/stephenberry/glaze/pull/2998" target="_blank" rel="noopener">
+      <p class="h-rowtitle">Glaze <span class="h-tag">Merged</span></p>
+      <p>Made <code>operator[]</code> on a generic JSON value accept an integer variable, not only a literal, with tests for the lvalue and rvalue forms.</p>
+      <p class="h-meta">3.1k★ C++ JSON &amp; reflection library</p>
+    </a>
   </div>
 </section>
 
-<section id="contributions">
-  <div class="wrap">
-    <div class="shead"><h2>Open-source contributions</h2></div>
-    <div class="work">
-      <a class="piece" href="https://github.com/LibrePhotos/librephotos/pull/2558" target="_blank" rel="noopener">
-        <h3>LibrePhotos — a "Without Location" view</h3>
-        <p>Added a backend endpoint and web page that list every photo missing GPS coordinates, with tests across the Django API, the shared API client, and the React frontend. Merged by the maintainer.</p>
-        <span class="where">merged · 8.1k★ self-hosted photo manager</span>
-      </a>
-      <a class="piece" href="https://github.com/LibrePhotos/librephotos/pull/2659" target="_blank" rel="noopener">
-        <h3>LibrePhotos — server-side "select all"</h3>
-        <p>Follow-up the maintainer asked me to take: made "select all" on the Without Location view act on every matching photo, not just the loaded page, by adding a server-side query flag and reusing the existing predicate. Merged.</p>
-        <span class="where">merged · second PR to LibrePhotos</span>
-      </a>
-      <a class="piece" href="https://github.com/stephenberry/glaze/pull/2998" target="_blank" rel="noopener">
-        <h3>Glaze — fix integer indexing on generic JSON</h3>
-        <p>Made <code>operator[]</code> on a generic JSON value accept an integer variable, not only a literal, by taking the index by value. Added tests for the lvalue and rvalue forms.</p>
-        <span class="where">merged · 3.1k★ C++ JSON &amp; reflection library</span>
-      </a>
-    </div>
+<section id="activity" class="h-sec">
+  <h2>GitHub activity</h2>
+  <div class="cal" id="ghcal" data-user="err0rgod">
+    <p class="cal-total"><a href="https://github.com/err0rgod" target="_blank" rel="noopener">Contributions on GitHub</a></p>
+    <div class="cal-scroll"><div class="cal-grid" aria-hidden="true"></div></div>
   </div>
 </section>
 
-<section id="activity">
-  <div class="wrap">
-    <div class="shead"><h2>GitHub activity</h2></div>
-    <div class="cal" id="ghcal" data-user="err0rgod">
-      <p class="cal-total"><a href="https://github.com/err0rgod" target="_blank" rel="noopener">Contributions on GitHub</a></p>
-      <div class="cal-scroll"><div class="cal-grid" aria-hidden="true"></div></div>
-    </div>
-  </div>
+<section id="contact" class="h-sec">
+  <h2>Contact</h2>
+  <p class="h-contact">Email is the fastest way to reach me. I read everything.</p>
+  <a class="email" href="mailto:nirbhay.bin@gmail.com">nirbhay.bin@gmail.com</a>
 </section>
 
-<section id="experience">
-  <div class="wrap">
-    <div class="shead"><h2>Experience</h2></div>
-    <div class="roles">
-      <article class="role">
-        <div class="when">Aug 2026 — now</div>
-        <div>
-          <h3>Backend &amp; operations engineer <span>at Plany</span></h3>
-          <ul>
-            <li>Migrated the platform from InsForge to AWS with zero downtime, designing the cloud layout across services, data, networking, and deployment.</li>
-            <li>Integrated AI capabilities into the backend services and built the platform's authentication layer.</li>
-            <li>Optimized infrastructure usage and resource allocation, cutting cloud costs by 37% while keeping it reliable.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="role">
-        <div class="when">May 2025 — Aug 2025</div>
-        <div>
-          <h3>Offensive security engineer <span>at InlighnX</span></h3>
-          <ul>
-            <li>Reviewed auth flows, authorization boundaries, and exposed endpoints.</li>
-            <li>Built Python for recon, subdomain discovery, and checks that could be repeated.</li>
-            <li>Turned findings into proofs an engineer could act on, then retested the fix.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="role">
-        <div class="when">Feb 2024 — Jan 2025</div>
-        <div>
-          <h3>Security researcher <span>on HackerOne</span></h3>
-          <ul>
-            <li>Valid, triaged reports to IBM, Spotify, and Lightspark.</li>
-            <li>IDOR, authentication flaws, information disclosure, and business-logic bugs.</li>
-            <li>Wrote reproducible proofs and stayed through remediation.</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="shead"><h2>Contact</h2></div>
-    <div class="contact">
-      <p>Email is the fastest way to reach me. I read everything.</p>
-      <a class="email" href="mailto:nirbhay.bin@gmail.com">nirbhay.bin@gmail.com</a>
-      <p class="hero-links">
-        <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>
-        <a href="https://x.com/err0rgod" target="_blank" rel="noopener">X</a>
-      </p>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>© 2026 Nirbhay Katiyar · Noida</span>
-    <span class="handles">
-      <a href="https://github.com/err0rgod" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/nirbhay-katiyar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://err0rgod.medium.com" target="_blank" rel="noopener">Medium</a>
-      <a href="https://x.com/err0rgod" target="_blank" rel="noopener">X</a>
-    </span>
-  </div>
+<footer class="h-foot">
+  <span>© 2026 Nirbhay Katiyar · Noida</span>
 </footer>
+
+</div>
 
 <script src="assets/site.js"></script>
 </body>
