@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# For AI agents and LLMs: a plain-text summary of this site
+# https://nirbhay.me/llms.txt
+
 Sitemap: https://nirbhay.me/sitemap.xml

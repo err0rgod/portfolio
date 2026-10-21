@@ -99,9 +99,10 @@
     if (!nodes.length) return;
     var len = 0;
     nodes.forEach(function (o) { o.at = len; len += o.t.length; });
-    var dur = Math.min(1400, 380 + len * 7), tick = -1;
+    /* the first fifth is pure noise so the eye catches it, then it resolves at reading pace */
+    var dur = Math.min(2800, 1000 + len * 30), tick = -1;
     function draw(p) {
-      var shown = Math.floor(p * (len + 1));
+      var shown = Math.floor(Math.max(0, (p - 0.2) / 0.8) * (len + 1));
       nodes.forEach(function (o) {
         var k = shown - o.at;
         if (k >= o.t.length) { if (o.n.nodeValue !== o.t) o.n.nodeValue = o.t; return; }
@@ -113,8 +114,8 @@
     draw(0);
     var st = { p: 0 };
     animate(st, {
-      p: 1, duration: dur, delay: delay || 0, ease: 'inOutSine',
-      onUpdate: function () { var t = Math.floor(st.p * dur / 45); if (t !== tick) { tick = t; draw(st.p); } },
+      p: 1, duration: dur, delay: delay || 0, ease: 'linear',
+      onUpdate: function () { var t = Math.floor(st.p * dur / 60); if (t !== tick) { tick = t; draw(st.p); } },
       onComplete: function () { nodes.forEach(function (o) { o.n.nodeValue = o.t; }); }
     });
   }
@@ -162,7 +163,7 @@
     tl.add(hero, { clipPath: 'inset(0% 0% 0% 0% round 14px)', duration: 1300, ease: 'inOutQuart' })
       .add('.h-avatar', { opacity: 1, scale: 1, rotate: 0, ease: spring }, '-=450')
       .add(name, { y: '0%', delay: stagger(32), duration: 1100 }, '<<+=80')
-      .call(function () { place.style.opacity = 1; scramble(place, 800); }, '<<+=250')
+      .call(function () { place.style.opacity = 1; scramble(place, 1500); }, '<<+=250')
       .add('.h-tools > *', { opacity: 1, y: 0, delay: stagger(90) }, '<<')
       .add(lede, { opacity: 1, y: 0, duration: 1100 }, '<<+=300')
       .call(function () { decode(lede); }, '<<')

@@ -851,3 +851,33 @@ html.dark .m-glare { background: radial-gradient(480px circle at var(--gx, 50%) 
   .h-wire a { padding: 12px; }
   .proj .dhead .dlinks .btn { padding: 10px 14px; }
 }
+
+/* Byte the cat (assets/pet.js) */
+.pet {
+  position: fixed;
+  left: 0;
+  bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 25;
+  width: 48px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  line-height: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.pet canvas { display: block; image-rendering: pixelated; }
+.pet:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.pet-puff {
+  position: fixed;
+  bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+  z-index: 26;
+  pointer-events: none;
+  opacity: 0;
+  color: var(--soft);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+}
+.pet-puff.heart { color: #d2545d; font-size: 17px; }
+@media print { .pet, .sg-side, .sg-bar, .m-progress { display: none; } }

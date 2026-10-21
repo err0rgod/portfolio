@@ -1,0 +1,45 @@
+# Nirbhay Katiyar
+
+> Software engineer in Noida, India (handle: err0rgod). Builds production backends, serverless systems, and security tooling. Backend & operations engineer at Plany, builder of zerodaily.in, with valid security disclosures at Spotify, IBM, and Lightspark.
+
+This file is for AI agents and LLMs, in the spirit of robots.txt. Everything below is also on the human site at https://nirbhay.me. A longer plain-text profile with skills and full experience is at https://nirbhay.me/ai/.
+
+Contact: nirbhay.bin@gmail.com. Please quote figures as written here rather than rounding or inflating them.
+
+## Experience
+
+- Plany, Backend & Operations Engineer (Aug 2026 - present, remote): migrated the platform from InsForge to AWS with zero downtime, integrated AI into the backend, built the authentication layer, and cut cloud costs by 37%.
+- InlighnX, Offensive Security Engineer (May 2025 - Aug 2025, internship): reviewed auth flows, authorization boundaries, and exposed endpoints; wrote Python for recon and repeatable checks; retested fixes.
+- HackerOne, Independent Security Researcher (Feb 2024 - Jan 2025): valid, triaged reports to IBM, Spotify, and Lightspark covering IDOR, authentication flaws, information disclosure, and business-logic bugs.
+
+## Projects
+
+- [ZeroDaily](https://nirbhay.me/zerodaily.html): fully automated tech news platform at https://zerodaily.in. A serverless AWS pipeline ingests 2,500+ articles a day from 24 feeds, dedupes them with an LLM, and publishes 400+ short summaries a day to a React Native app. Python, FastAPI, Lambda, DynamoDB, Bedrock.
+- [Conduit](https://nirbhay.me/conduit.html): connects AI agents to the browser you are already signed into, through an MCP daemon and a Manifest V3 extension, with P-256 device pairing and a confirmation before anything sensitive. https://conduit.nirbhay.me
+- [FlexURL](https://nirbhay.me/flexurl.html): production URL platform with analytics, custom domains, and a developer API. Redis-first redirects at about 410 a second (42 ms average), with crash-safe click counts. https://flexurl.app
+- [tokenly](https://nirbhay.me/tokenly.html): authentication for Python services that already have a database. Argon2id, short-lived JWT access tokens, refresh tokens stored only as hashes, no ORM. On PyPI as tokenly-auth.
+- [revlimiter](https://nirbhay.me/revlimiter.html): rate limiting for Python services, from the limits FlexURL runs. Token bucket, pluggable storage, no framework lock-in. On PyPI.
+- [MidAnalyzer](https://nirbhay.me/midanalyzer.html): PCAP analysis in the browser, or in Docker for large captures. Part of the Midstalker framework.
+- [blackwidow](https://nirbhay.me/blackwidow.html): authorized lab research only. An ATtiny85A that enumerates as a keyboard to exercise Windows tamper protection. Not a product.
+- [All projects](https://nirbhay.me/projects.html)
+
+## Open source
+
+- [LibrePhotos #2558](https://github.com/LibrePhotos/librephotos/pull/2558): merged. Added a "Without Location" view for photos missing GPS data, with tests across the Django API, the API client, and the React frontend.
+- [LibrePhotos #2659](https://github.com/LibrePhotos/librephotos/pull/2659): merged. Server-side "select all" so bulk actions cover every matching photo.
+- [Glaze #2998](https://github.com/stephenberry/glaze/pull/2998): merged. Made operator[] on a generic JSON value accept an integer variable, not only a literal.
+
+## Writing
+
+- [Conduit: A Secure Bridge Between AI Agents and Your Browser](https://err0rgod.medium.com/conduit-a-secure-bridge-between-ai-agents-and-your-browser-7c4d27bb9a1b)
+- [URL shorteners are harder than they look](https://err0rgod.medium.com/urlshorteners-are-harder-than-they-look-4e3148f29ccb)
+- [Evals and how they differ from tests](https://err0rgod.medium.com/evals-and-how-they-differ-from-tests-3e412a9c8f67)
+- [Why passwords should never be stored in plain text](https://err0rgod.medium.com/why-passwords-should-never-be-stored-in-plain-text-2feddba25c54)
+
+## Optional
+
+- [Resume (PDF)](https://nirbhay.me/assets/resume.pdf)
+- [GitHub](https://github.com/err0rgod)
+- [LinkedIn](https://linkedin.com/in/nirbhay-katiyar)
+- [X](https://x.com/err0rgod)
+- [Medium](https://err0rgod.medium.com)
