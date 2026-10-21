@@ -742,3 +742,36 @@ pre.code .n { color: #e3c7a1; }
   .proj .statboxes { grid-template-columns: 1fr 1fr; }
   .proj .sbox .n { font-size: 24px; }
 }
+
+/* motion (assets/motion.js). html.m-js is set in <head> only when motion is allowed */
+.m-js:not(.m-ready) .h-hero,
+.m-js:not(.m-ready) .h-head,
+.m-js:not(.m-ready) .h-intro,
+.m-js:not(.m-ready) .p-bar,
+.m-js:not(.m-ready) .dhead { opacity: 0; }
+.m-w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.14em; margin-bottom: -0.14em; white-space: nowrap; }
+.m-c, .m-b { display: inline-block; }
+.m-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.m-js .h-intro li b.m-hl {
+  --hl: color-mix(in srgb, #e8b64c 38%, transparent);
+  background: linear-gradient(var(--hl), var(--hl)) no-repeat 0 88% / var(--hlw, 100%) 0.42em;
+  font-variant-numeric: tabular-nums;
+}
+html.dark.m-js .h-intro li b.m-hl { --hl: color-mix(in srgb, #e8b64c 26%, transparent); }
+.m-js .sbox .n { font-variant-numeric: tabular-nums; }
+.h-exp::before { transform: scaleY(var(--draw, 1)); transform-origin: top; }
+.m-js .h-cards { perspective: 1400px; }
+.m-js .h-card { position: relative; transition: border-color 0.15s ease; will-change: transform; }
+.m-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(480px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.18), transparent 45%);
+  transition: opacity 0.3s ease;
+}
+html.dark .m-glare { background: radial-gradient(480px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 245, 225, 0.08), transparent 45%); }
+.h-card:hover .m-glare { opacity: 1; }
+.m-progress { position: fixed; top: 0; left: 0; right: 0; z-index: 40; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none; }
+.m-wipe { position: fixed; inset: 0; z-index: 100; pointer-events: none; }
+.m-js .email { display: inline-block; }
