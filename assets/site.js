@@ -32,15 +32,24 @@
       if (!days.length) return;
       // pad so the first column starts on Sunday, like GitHub
       var lead = new Date(days[0].date + 'T00:00:00').getDay();
-      var html = '';
-      for (var i = 0; i < lead; i++) html += '<i style="visibility:hidden"></i>';
+      var cells = [];
+      for (var i = 0; i < lead; i++) cells.push('<i style="visibility:hidden"></i>');
       days.forEach(function (d) {
-        html += '<i class="l' + d.level + '" title="' + d.count + ' on ' + d.date + '"></i>';
+        cells.push('<i class="l' + d.level + '" title="' + d.count + ' on ' + d.date + '"></i>');
       });
-      grid.innerHTML = html;
+      // show as many recent weeks as fit at a readable size, so nothing scrolls sideways
+      var last = 0;
+      function render() {
+        var fit = Math.max(1, Math.floor((grid.parentNode.clientWidth + 3) / 11));
+        var weeks = Math.min(Math.ceil(cells.length / 7), fit);
+        if (weeks === last) return;
+        last = weeks;
+        grid.style.gridTemplateColumns = 'repeat(' + weeks + ', minmax(0, 1fr))';
+        grid.innerHTML = cells.slice(Math.max(0, Math.ceil(cells.length / 7) - weeks) * 7).join('');
+      }
+      render();
+      window.addEventListener('resize', render);
       total.textContent = data.total.lastYear.toLocaleString() + ' contributions in the last year';
-      var sc = cal.querySelector('.cal-scroll');
-      sc.scrollLeft = sc.scrollWidth;
     })
     .catch(function () { grid.parentNode.style.display = 'none'; });
 })();
