@@ -1,10 +1,9 @@
-/* Live from zerodaily.in: real headlines and a real health check */
+/* Live from zerodaily.in: the latest real headlines */
 (function () {
   var box = document.getElementById('live');
   if (!box || !window.fetch) return;
   var API = 'https://api.zerodaily.in';
   var list = box.querySelector('.h-wire');
-  var stat = box.querySelector('.h-live-status');
   var CATS = { cybersec: 'Security', ai: 'AI', hardware: 'Silicon', finance: 'Finance', defense_aerospace: 'Defense', robotics: 'Robotics', software: 'Software' };
 
   function ago(iso) {
@@ -21,18 +20,10 @@
     return e;
   }
 
-  var t0 = performance.now();
-  var health = fetch(API + '/health', { cache: 'no-store' })
+  fetch(API + '/api/v1/feed')
     .then(function (r) { if (!r.ok) throw r; return r.json(); })
-    .then(function (h) { return { ok: h.status === 'healthy', region: h.region, ms: Math.round(performance.now() - t0) }; })
-    .catch(function () { return null; });
-
-  var feed = fetch(API + '/api/v1/feed')
-    .then(function (r) { if (!r.ok) throw r; return r.json(); })
-    .then(function (d) { return d.data || []; });
-
-  Promise.all([health, feed]).then(function (res) {
-    var h = res[0], items = res[1];
+    .then(function (d) { return d.data || []; })
+    .then(function (items) {
     if (!items.length) return;
 
     /* one story per desk, newest first, so the wire shows the spread */
@@ -64,14 +55,6 @@
       list.appendChild(li);
     });
 
-    var dot = el('span', 'dot' + (h && h.ok ? '' : ' down'));
-    stat.textContent = '';
-    stat.appendChild(dot);
-    stat.appendChild(document.createTextNode(
-      h && h.ok
-        ? 'API healthy · ' + h.region + ' · ' + h.ms + ' ms round trip from your browser'
-        : 'Showing the latest cached stories'
-    ));
     box.hidden = false;
     var idx = document.querySelector('.h-index a[href="#live"]');
     if (idx) idx.hidden = false;
