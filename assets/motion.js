@@ -78,60 +78,6 @@
     });
   }
 
-  /* Decode: text arrives as noise and resolves left to right. Works across nested markup;
-     numbers that count up and screen-reader copies are left alone. */
-  var GLYPH = { a: 'abcdefghijklmnopqrstuvwxyz', A: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', d: '0123456789', p: '#%&*+=?/<>' };
-  function noise(ch) {
-    var pool = /[a-z]/.test(ch) ? GLYPH.a : /[A-Z]/.test(ch) ? GLYPH.A : /\d/.test(ch) ? GLYPH.d : /\s/.test(ch) ? null : GLYPH.p;
-    return pool ? pool[Math.random() * pool.length | 0] : ch;
-  }
-  function decode(el, delay) {
-    if (!el || el._dec) return;
-    el._dec = true;
-    var nodes = [], walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
-      acceptNode: function (n) {
-        var p = n.parentNode;
-        if (!n.nodeValue.trim() || p.closest('.m-hl, .sbox .n, .m-sr, pre, svg, script, style')) return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-    while (walk.nextNode()) nodes.push({ n: walk.currentNode, t: walk.currentNode.nodeValue });
-    if (!nodes.length) return;
-    var len = 0;
-    nodes.forEach(function (o) { o.at = len; len += o.t.length; });
-    var dur = Math.min(1400, 380 + len * 7), tick = -1;
-    function draw(p) {
-      var shown = Math.floor(p * (len + 1));
-      nodes.forEach(function (o) {
-        var k = shown - o.at;
-        if (k >= o.t.length) { if (o.n.nodeValue !== o.t) o.n.nodeValue = o.t; return; }
-        var out = k > 0 ? o.t.slice(0, k) : '';
-        for (var i = Math.max(0, k); i < o.t.length; i++) out += noise(o.t[i]);
-        o.n.nodeValue = out;
-      });
-    }
-    draw(0);
-    var st = { p: 0 };
-    animate(st, {
-      p: 1, duration: dur, delay: delay || 0, ease: 'inOutSine',
-      onUpdate: function () { var t = Math.floor(st.p * dur / 45); if (t !== tick) { tick = t; draw(st.p); } },
-      onComplete: function () { nodes.forEach(function (o) { o.n.nodeValue = o.t; }); }
-    });
-  }
-  function decodeAll(els, step, start) {
-    els.forEach(function (el, i) { decode(el, (start || 0) + i * (step || 0)); });
-  }
-  /* only the short text that reads as a label or a title gets decoded, never running prose */
-  var DEC = '.h-rowtitle, .h-meta, .h-cardtitle, .h-stack span, .h-co, .h-role, .h-when, .h-wire-meta, .h-wire-head, .rn, .cal-total, .dsub, .sbox .l, .h-foot span, .h-live-more a';
-  function decodeIn(els, step, start) {
-    els.forEach(function (el, i) {
-      if (!el) return;
-      var t = el.matches(DEC) ? [el] : $(DEC, el);
-      t = t.filter(function (x) { return !t.some(function (o) { return o !== x && o.contains(x); }); });
-      decodeAll(t, 40, (start || 0) + i * (step || 0));
-    });
-  }
-
   /* ---------- intro ---------- */
   var tl = A.createTimeline({ defaults: { ease: 'outExpo', duration: 1000 } });
   var later = [];
@@ -140,7 +86,7 @@
     var hero = document.querySelector('.h-hero');
     var name = split(document.querySelector('.h-who h1'), 'chars');
     var place = document.querySelector('.h-who p');
-    var lede = document.querySelector('.h-lede');
+    var lede = split(document.querySelector('.h-lede'), 'blur');
     var bullets = $('.h-intro li');
     var marks = [], counts = [];
     $('.h-intro li b').forEach(function (b) {
@@ -154,7 +100,7 @@
     set(name, { y: '110%' });
     set(place, { opacity: 0 });
     set('.h-tools > *', { opacity: 0, y: -10 });
-    set(lede, { opacity: 0, y: 14 });
+    set(lede, { opacity: 0, y: 14, filter: 'blur(8px)' });
     set(bullets, { opacity: 0, x: -18 });
     set(marks, { '--hlw': '0%' });
     set(tail, { opacity: 0, y: 14 });
@@ -164,10 +110,8 @@
       .add(name, { y: '0%', delay: stagger(32), duration: 1100 }, '<<+=80')
       .call(function () { place.style.opacity = 1; scramble(place, 800); }, '<<+=250')
       .add('.h-tools > *', { opacity: 1, y: 0, delay: stagger(90) }, '<<')
-      .add(lede, { opacity: 1, y: 0, duration: 1100 }, '<<+=300')
-      .call(function () { decode(lede); }, '<<')
+      .add(lede, { opacity: 1, y: 0, filter: 'blur(0px)', delay: stagger(26), duration: 1100 }, '<<+=300')
       .add(bullets, { opacity: 1, x: 0, delay: stagger(110) }, '<<+=350')
-      .call(function () { decodeAll($('.h-index a'), 60, 200); }, '<<')
       .call(function () { counts.forEach(function (go) { go(); }); }, '<<')
       .add(marks, { '--hlw': '100%', delay: stagger(140), duration: 900, ease: 'inOutCubic' }, '<<+=300')
       .add(tail, { opacity: 1, y: 0, delay: stagger(45), duration: 900 }, '<<+=100');
@@ -181,13 +125,13 @@
       var sub = h1 ? $('.g', h1) : [];
       var rest = $(':scope > :not(h1)', box);
       var tag = box.querySelector('.tagline');
-      var words = tag ? [tag] : [];
+      var words = tag ? split(tag, 'blur') : [];
 
       if (bar) set(bar, { opacity: 0, y: -12 });
       set(chars, { y: '110%' });
       set(sub, { opacity: 0, y: 12 });
       set(rest.filter(function (e) { return e !== tag; }), { opacity: 0, y: 14 });
-      set(words, { opacity: 0, y: 10 });
+      set(words, { opacity: 0, y: 10, filter: 'blur(6px)' });
 
       var back = rest.filter(function (e) { return e.classList.contains('back'); });
       var links = rest.filter(function (e) { return e !== tag && back.indexOf(e) < 0; });
@@ -196,8 +140,8 @@
         [back, { opacity: 1, y: 0 }, '<<+=100'],
         [chars, { y: '0%', delay: stagger(26), duration: 1100 }, '<<+=100'],
         [sub, { opacity: 1, y: 0 }, '<<+=350'],
-        [words, { opacity: 1, y: 0, duration: 900 }, '<<+=150'],
-        [links, { opacity: 1, y: 0, delay: stagger(80), onBegin: function () { decodeAll(back); } }, '<<+=300']
+        [words, { opacity: 1, y: 0, filter: 'blur(0px)', delay: stagger(10), duration: 900 }, '<<+=150'],
+        [links, { opacity: 1, y: 0, delay: stagger(80) }, '<<+=300']
       ].forEach(function (s) {
         var t = s[0].filter(Boolean);
         if (t.length) tl.add(t, s[1], s[2]);
@@ -230,7 +174,7 @@
     });
   }
 
-  var rise = function (els) { animate(els, { opacity: 1, y: 0, duration: 1000, delay: stagger(80), ease: 'outExpo' }); decodeIn(els, 80); };
+  var rise = function (els) { animate(els, { opacity: 1, y: 0, duration: 1000, delay: stagger(80), ease: 'outExpo' }); };
   var hide = function (el) { set(el, { opacity: 0, y: 26 }); };
 
   watch($('.h-sec > h2, .dsec > h2'), function (el) {
@@ -240,7 +184,6 @@
   }, function (els) {
     els.forEach(function (el, i) {
       animate(el._w, { opacity: 1, y: el._w[0] === el ? 0 : '0%', duration: 1100, delay: stagger(60, { start: i * 80 }), ease: 'outExpo' });
-      decode(el, i * 80);
     });
   });
 
@@ -263,7 +206,6 @@
       var d = i * 120;
       animate(el, { opacity: 1, y: 0, duration: 1200, delay: d, ease: 'outExpo' });
       animate(el.querySelector('img'), { scale: 1, duration: 1600, delay: d, ease: 'outExpo' });
-      decodeIn([el.querySelector('.h-cardbody')], 0, d + 150);
       animate($('.h-stack span', el), { opacity: 1, scale: 1, delay: stagger(40, { start: d + 450 }), ease: spring });
     });
   });
@@ -281,7 +223,6 @@
       animate(el, { '--draw': 1, duration: 1600, ease: 'inOutQuart' });
       animate($('.h-logo', el), { opacity: 1, scale: 1, delay: stagger(220), ease: spring });
       animate($('.h-jobtext', el), { opacity: 1, x: 0, duration: 1000, delay: stagger(220, { start: 80 }), ease: 'outExpo' });
-      decodeIn($('.h-jobtext', el), 220, 80);
       animate($('.h-job[open] li', el), { opacity: 1, x: 0, duration: 800, delay: stagger(70, { start: 500 }), ease: 'outExpo' });
     });
     /* details[open] fires a toggle on load; only animate the ones people click */
@@ -341,7 +282,6 @@
       }, function (els) {
         animate(els[0], { opacity: 1, y: 0, duration: 900, ease: 'outExpo' });
         animate($('.h-wire li', els[0]), { opacity: 1, x: 0, duration: 1000, delay: stagger(90, { start: 250 }), ease: 'outExpo' });
-        decodeIn($('.h-wire-text', els[0]), 90, 250);
       });
     }).observe(live, { attributes: true, attributeFilter: ['hidden'] });
   }
