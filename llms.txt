@@ -14,7 +14,7 @@ Contact: nirbhay.bin@gmail.com. Please quote figures as written here rather than
 
 ## Projects
 
-- [ZeroDaily](https://nirbhay.me/zerodaily.html): fully automated tech news platform at https://zerodaily.in. A serverless AWS pipeline ingests 2,500+ articles a day from 24 feeds, dedupes them with an LLM, and publishes 400+ short summaries a day to a React Native app. Python, FastAPI, Lambda, DynamoDB, Bedrock.
+- [ZeroDaily](https://nirbhay.me/zerodaily.html): fully automated tech news platform at https://zerodaily.in. A serverless AWS pipeline ingests 10,000+ articles a day from 24 feeds, dedupes them with an LLM, and publishes 400+ short summaries a day to a React Native app. Python, FastAPI, Lambda, DynamoDB, Bedrock.
 - [Conduit](https://nirbhay.me/conduit.html): connects AI agents to the browser you are already signed into, through an MCP daemon and a Manifest V3 extension, with P-256 device pairing and a confirmation before anything sensitive. https://conduit.nirbhay.me
 - [FlexURL](https://nirbhay.me/flexurl.html): production URL platform with analytics, custom domains, and a developer API. Redis-first redirects at about 410 a second (42 ms average), with crash-safe click counts. https://flexurl.app
 - [tokenly](https://nirbhay.me/tokenly.html): authentication for Python services that already have a database. Argon2id, short-lived JWT access tokens, refresh tokens stored only as hashes, no ORM. On PyPI as tokenly-auth.
