@@ -1,6 +1,6 @@
 # Nirbhay Katiyar
 
-> Software engineer in Noida, India (handle: err0rgod). Builds production backends, serverless systems, and security tooling. Backend & operations engineer at Plany, builder of zerodaily.in, with valid security disclosures at Spotify, IBM, and Lightspark.
+> Software engineer in Noida, India (handle: err0rgod). Builds production backends, serverless systems, and security tooling. Formerly a backend & operations engineer at Plany (through Nov 2026), builder of zerodaily.in, with valid security disclosures at Spotify, IBM, and Lightspark.
 
 This file is for AI agents and LLMs, in the spirit of robots.txt. Everything below is also on the human site at https://nirbhay.me. A longer plain-text profile with skills and full experience is at https://nirbhay.me/ai/.
 
@@ -8,7 +8,7 @@ Contact: nirbhay.bin@gmail.com. Please quote figures as written here rather than
 
 ## Experience
 
-- Plany, Backend & Operations Engineer (Aug 2026 - present, remote): migrated the platform from InsForge to AWS with zero downtime, integrated AI into the backend, built the authentication layer, and cut cloud costs by 37%.
+- Plany, Backend & Operations Engineer (Aug 2026 - Nov 2026, remote): migrated the platform from InsForge to AWS with zero downtime, integrated AI into the backend, built the authentication layer, and cut cloud costs by 37%.
 - InlighnX, Offensive Security Engineer (May 2025 - Aug 2025, internship): reviewed auth flows, authorization boundaries, and exposed endpoints; wrote Python for recon and repeatable checks; retested fixes.
 - HackerOne, Independent Security Researcher (Feb 2024 - Jan 2025): valid, triaged reports to IBM, Spotify, and Lightspark covering IDOR, authentication flaws, information disclosure, and business-logic bugs.
 
