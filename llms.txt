@@ -25,6 +25,7 @@ Contact: nirbhay.bin@gmail.com. Please quote figures as written here rather than
 
 ## Open source
 
+- [Meshery #24271](https://github.com/meshery/meshery/pull/24271): merged. Replaced Cobra's generic argument error in mesheryctl system start with the structured MeshKit error and usage message its sibling commands return, and added the missing table-driven test.
 - [LibrePhotos #2558](https://github.com/LibrePhotos/librephotos/pull/2558): merged. Added a "Without Location" view for photos missing GPS data, with tests across the Django API, the API client, and the React frontend.
 - [LibrePhotos #2659](https://github.com/LibrePhotos/librephotos/pull/2659): merged. Server-side "select all" so bulk actions cover every matching photo.
 - [Glaze #2998](https://github.com/stephenberry/glaze/pull/2998): merged. Made operator[] on a generic JSON value accept an integer variable, not only a literal.
