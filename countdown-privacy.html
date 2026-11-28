@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Countdown New Tab</title>
+<meta name="description" content="Privacy policy for the Countdown New Tab browser extension.">
+<link rel="canonical" href="https://nirbhay.me/countdown-privacy.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy Policy - Countdown New Tab">
+<meta property="og:url" content="https://nirbhay.me/countdown-privacy.html">
+<meta property="og:image" content="https://nirbhay.me/assets/og.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6b807eea">
+<script>
+try {
+  var t = localStorage.getItem('nk-theme');
+  if (t === 'dark')
+    document.documentElement.classList.add('dark');
+} catch (e) {}
+if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('m-js');
+  setTimeout(function () { if (!window.__mOk) document.documentElement.classList.remove('m-js'); }, 2500);
+}
+</script>
+</head>
+<body class="proj">
+
+<div class="h-col">
+<header class="p-bar">
+  <a class="p-home" href="index.html"><img src="assets/img/avatar.jpg" alt="" width="28" height="28">Nirbhay Katiyar</a>
+  <div class="h-tools">
+    <button class="h-k" id="kOpen" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button>
+    <button class="theme-sw" id="themeSw" type="button" aria-label="Switch color theme"></button>
+  </div>
+</header>
+
+<div class="dhead">
+  <a class="back" href="projects.html">← Projects</a>
+  <h1>Privacy Policy — Countdown New Tab</h1>
+  <p class="tagline">Last updated: November 2025</p>
+</div>
+
+<section class="h-sec p-first">
+  <h2>Summary</h2>
+  <p>Countdown New Tab stores all of your settings locally in your browser. It does not collect, transmit, or share any personal data with me or any third party.</p>
+</section>
+
+<section class="h-sec">
+  <h2>What data the extension handles</h2>
+  <ul>
+    <li><strong>Countdown target date, label, and appearance preferences</strong> — stored in <code>chrome.storage.sync</code>, which syncs across your own signed-in Chrome profiles. This data never leaves your Google account's sync storage.</li>
+    <li><strong>Wallpaper image</strong> (if you upload one) — stored in <code>chrome.storage.local</code> on your device only.</li>
+    <li><strong>Focus timer state</strong> — stored in <code>chrome.storage.local</code> on your device only.</li>
+  </ul>
+</section>
+
+<section class="h-sec">
+  <h2>Permissions</h2>
+  <ul>
+    <li><strong>storage</strong> — used to save your countdown settings and preferences.</li>
+    <li><strong>alarms</strong> — used to notify you when a focus timer session completes.</li>
+    <li><strong>notifications</strong> — used to show the focus-complete notification.</li>
+    <li><strong>theme</strong> — used only when you enable "Sync browser theme" to recolor the browser frame to match your wallpaper. Disable it and no theme changes are made.</li>
+  </ul>
+  <p>The extension does not request access to your browsing history, tabs, bookmarks, or any website content.</p>
+</section>
+
+<section class="h-sec">
+  <h2>What the extension does not do</h2>
+  <ul>
+    <li>No analytics, telemetry, or tracking of any kind.</li>
+    <li>No network requests to external servers. All processing happens on your device.</li>
+    <li>No account required. No data is shared with me or third parties.</li>
+  </ul>
+</section>
+
+<section class="h-sec">
+  <h2>Data removal</h2>
+  <p>Uninstalling the extension removes all locally stored data. To also clear synced settings, remove the extension and delete its sync data via your Google account settings.</p>
+</section>
+
+<section class="h-sec">
+  <h2>Changes to this policy</h2>
+  <p>If the extension's data practices change, this page will be updated before the change ships. The "Last updated" date above reflects the current version.</p>
+</section>
+
+<section class="h-sec">
+  <h2>Contact</h2>
+  <p>Questions about this policy: <a href="mailto:err0rgod.dev@gmail.com">err0rgod.dev@gmail.com</a></p>
+</section>
+
+<footer class="h-foot">
+  <span>© 2026 Nirbhay Katiyar · Noida</span>
+  <a href="index.html">Home</a>
+</footer>
+</div>
+
+<script src="assets/site.js?v=932088d8"></script>
+<script src="assets/cmdk.js?v=eb5fa84e"></script>
+<script src="assets/vendor/anime.umd.min.js?v=4.5.0"></script>
+<script src="assets/motion.js?v=ef8c6bb3"></script>
+<script src="assets/sign.js?v=d46a797c"></script>
+<script src="assets/pet.js?v=a736d54f"></script>
+</body>
+</html>
